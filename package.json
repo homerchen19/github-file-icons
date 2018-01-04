@@ -1,0 +1,66 @@
+{
+  "name": "github-file-icon",
+  "description": "A Chrome Extension which energizes GitHub file system.",
+  "author": "xxhomey19",
+  "license": "MIT",
+  "homepage": "https://github.com/xxhomey19/github-file-icon#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xxhomey19/github-file-icon/tree/master"
+  },
+  "bugs": {
+    "url": "https://github.com/xxhomey19/github-file-icon/issues"
+  },
+  "version": "0.0.1",
+  "scripts": {
+    "build": "node utils/build.js",
+    "precommit": "lint-staged",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "node utils/webserver.js"
+  },
+  "dependencies": {
+    "file-icons-js": "^1.0.3",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.1.2",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.3.1",
+    "css-loader": "^0.25.0",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.24.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2",
+    "prettier-package-json": "^1.4.0",
+    "style-loader": "^0.19.1",
+    "write-file-webpack-plugin": "^3.4.2"
+  },
+  "keywords": [
+    "Chrome Extension",
+    "GitHub",
+    "icon"
+  ],
+  "lint-staged": {
+    "package.json": [
+      "prettier-package-json --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
