@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "GitHub File Icon",
+  "author": "xxhomey19",
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*"],
+      "js": ["contentscript.bundle.js"],
+      "css": ["contentscript.css"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "img/icon-48.png"
+  },
+  "icons": {
+    "16": "img/icon-16.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "content_security_policy":
+    "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "web_accessible_resources": ["*.woff2"],
+  "permissions": ["*://github.com/*", "tabs", "webNavigation"]
+}
