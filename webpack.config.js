@@ -23,7 +23,6 @@ const fileExtensions = [
 
 const options = {
   entry: {
-    popup: path.join(__dirname, 'src', 'js', 'popup.js'),
     contentscript: path.join(__dirname, 'src', 'js', 'contentscript.js'),
     background: path.join(__dirname, 'src', 'js', 'background.js'),
   },
@@ -84,11 +83,6 @@ const options = {
         to: 'img',
       },
     ]),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'popup.html'),
-      filename: 'popup.html',
-      chunks: ['popup'],
-    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'background.html'),
       filename: 'background.html',
