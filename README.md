@@ -1,7 +1,7 @@
 # GitHub File Icon
 
 <p align=center>
-<img width="1013" alt="screen shot" src="https://user-images.githubusercontent.com/12113222/34595083-f31dbd0a-f20f-11e7-8bb2-3669af3fbe8a.png">
+<img width="1013" alt="screen shot" src="https://user-images.githubusercontent.com/12113222/34595351-31adce0a-f212-11e7-860a-c2ada55536c8.png">
 </p>
 <p align=center>
 <a target="_blank" href="https://travis-ci.org/xxhomey19/github-file-icon" title="Build Status"><img src="https://travis-ci.org/xxhomey19/github-file-icon.svg?branch=master"></a>
