@@ -10,7 +10,7 @@
 </p>
 
 > Inspired by [file-icons/atom](https://github.com/file-icons/atom) <br>
-> A simple Chrome Extension changes file's icon on GitHub.
+> A simple Chrome Extension changes file's icon on GitHub. <br> [Dowload](https://chrome.google.com/webstore/detail/github-file-icon/ficfmibkjjnpogdcfhfokmihanoldbfe)
 
 ## License
 

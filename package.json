@@ -21,7 +21,8 @@
     "test": "npm run lint:fix && npm run testonly:cov",
     "testonly": "jest",
     "testonly:cov": "jest --coverage --runInBand --forceExit --no-cache",
-    "testonly:watch": "jest --watch"
+    "testonly:watch": "jest --watch",
+    "zip": "zip -r build/GitHub_File_Icon_$npm_package_version.zip build"
   },
   "dependencies": {
     "file-icons-js": "^1.0.3",
