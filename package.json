@@ -17,7 +17,11 @@
     "precommit": "lint-staged",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
-    "start": "node utils/webserver.js"
+    "start": "node utils/webserver.js",
+    "test": "npm run lint:fix && npm run testonly:cov",
+    "testonly": "jest",
+    "testonly:cov": "jest --coverage --runInBand --forceExit --no-cache",
+    "testonly:watch": "jest --watch"
   },
   "dependencies": {
     "file-icons-js": "^1.0.3",
@@ -26,6 +30,9 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.25.0",
@@ -42,6 +49,7 @@
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.24.1",
     "husky": "^0.14.3",
+    "jest": "^21.2.0",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2",
     "prettier-package-json": "^1.4.0",
@@ -53,6 +61,16 @@
     "GitHub",
     "icon"
   ],
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "utils/**/*.js"
+    ],
+    "coverageDirectory": "./coverage/",
+    "resetModules": true,
+    "resetMocks": true
+  },
   "lint-staged": {
     "package.json": [
       "prettier-package-json --write",
