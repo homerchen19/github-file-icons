@@ -15,7 +15,7 @@
 ## Install
 
 - [Chrome Extension](https://chrome.google.com/webstore/detail/github-file-icon/ficfmibkjjnpogdcfhfokmihanoldbfe)  
-- [FIrefox Add-ons](https://addons.mozilla.org/zh-TW/firefox/addon/github-file-icon/)
+- [FIrefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/github-file-icon/)
 
 ## License
 
