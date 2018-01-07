@@ -14,8 +14,11 @@
 
 ## Install
 
-- [Chrome Extension](https://chrome.google.com/webstore/detail/github-file-icon/ficfmibkjjnpogdcfhfokmihanoldbfe)  
-- [FIrefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/github-file-icon/)
+[Chrome Extension](https://chrome.google.com/webstore/detail/github-file-icon/ficfmibkjjnpogdcfhfokmihanoldbfe)
+
+<a href="https://addons.mozilla.org/en-US/firefox/addon/github-file-icon/">
+<img border="0" src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png" width="172" height="60">
+</a>
 
 ## License
 
