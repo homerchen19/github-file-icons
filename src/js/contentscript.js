@@ -17,9 +17,13 @@ const update = () => {
     for (let i = 0; i < filenameDomsLength; i += 1) {
       const { innerText: filename } = filenameDoms[i];
       const iconDom = iconDoms[i];
+
+      const oldIcon = iconDom.querySelector('.octicon');
+      const isDirectory = oldIcon.classList.contains('octicon-file-directory');
+
       const className = fileIcons.getClassWithColor(filename);
 
-      if (className) {
+      if (className && !isDirectory) {
         iconDom.innerHTML = `<span class='${className}'></span>`;
       }
     }
