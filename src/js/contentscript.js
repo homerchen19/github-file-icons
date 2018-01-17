@@ -24,7 +24,7 @@ const update = () => {
       const className = fileIcons.getClassWithColor(filename);
 
       if (className && !isDirectory) {
-        iconDom.innerHTML = `<span class='${className}'></span>`;
+        iconDom.innerHTML = `<span class='icon ${className}'></span>`;
       }
     }
   }
@@ -41,6 +41,7 @@ const init = () => {
     }
   };
 
+  update();
   observeFragment();
   document.addEventListener('pjax:end', update);
   document.addEventListener('pjax:end', observeFragment);
