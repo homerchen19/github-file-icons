@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/xxhomey19/github-file-icon/issues"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "scripts": {
     "build": "node utils/build.js",
     "precommit": "lint-staged",
