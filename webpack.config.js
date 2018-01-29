@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const env = require('./utils/env');
 
@@ -101,12 +102,9 @@ if (env.NODE_ENV === 'development') {
       minimize: true,
       debug: false,
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-      },
+    new UglifyJSPlugin({
       sourceMap: true,
+      parallel: true,
     })
   );
 }

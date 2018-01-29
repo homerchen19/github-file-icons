@@ -13,7 +13,7 @@
   },
   "version": "0.2.2",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --display-error-details --progress --colors --optimize-minimize",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --display-error-details --progress --colors",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
@@ -56,6 +56,7 @@
     "prettier": "^1.9.2",
     "prettier-package-json": "^1.4.0",
     "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "write-file-webpack-plugin": "^3.4.2"
   },
   "keywords": [
