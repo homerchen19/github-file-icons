@@ -9,7 +9,7 @@ const getSelector = () => {
   switch (window.location.hostname) {
     case 'github.com':
       return {
-        filenameSelector: 'tr.js-navigation-item > td.content > span > a',
+        filenameSelector: 'tr.js-navigation-item > td.content > span a',
         iconSelector: 'tr.js-navigation-item > td.icon',
         host: 'github',
       };
