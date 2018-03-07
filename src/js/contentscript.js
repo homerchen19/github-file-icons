@@ -9,7 +9,8 @@ const getSelector = () => {
   switch (window.location.hostname) {
     case 'github.com':
       return {
-        filenameSelector: 'tr.js-navigation-item > td.content > span a',
+        filenameSelector:
+          'tr.js-navigation-item > td.content > span a, .files-list > a.list-item',
         iconSelector:
           'tr.js-navigation-item > td.icon, .files-list > a.list-item',
         host: 'github',
@@ -44,8 +45,17 @@ const update = () => {
   const filenameDomsLength = filenameDoms.length;
 
   if (filenameDomsLength !== 0) {
+    const getGithubFilename = filenameDom =>
+      Array.from(filenameDom.childNodes)
+        .filter(node => node.nodeType === node.TEXT_NODE)
+        .map(node => node.nodeValue.trim())
+        .join('');
+
     for (let i = 0; i < filenameDomsLength; i += 1) {
-      const { innerText: filename } = filenameDoms[i];
+      const filename =
+        host === 'github'
+          ? getGithubFilename(filenameDoms[i])
+          : filenameDoms[i].innerText;
       const iconDom =
         host === 'github' ? iconDoms[i].querySelector('.octicon') : iconDoms[i];
 
