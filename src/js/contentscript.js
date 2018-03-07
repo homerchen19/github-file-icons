@@ -10,7 +10,8 @@ const getSelector = () => {
     case 'github.com':
       return {
         filenameSelector: 'tr.js-navigation-item > td.content > span a',
-        iconSelector: 'tr.js-navigation-item > td.icon',
+        iconSelector:
+          'tr.js-navigation-item > td.icon, .files-list > a.list-item',
         host: 'github',
       };
     case 'gitlab.com':
