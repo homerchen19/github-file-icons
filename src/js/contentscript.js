@@ -66,14 +66,14 @@ const update = () => {
       const className = fileIcons.getClassWithColor(filename);
 
       if (className && !isDirectory) {
+        const icon = document.createElement('span');
         if (host === 'github') {
-          iconDoms[i].innerHTML = `<span class='icon ${className}'></span>`;
+          icon.className = `icon octicon ${className}`;
         } else {
-          const icon = document.createElement('span');
           icon.className = `${className}`;
           icon.style.marginRight = host === 'bitbucket' ? '10px' : '3px';
-          iconDoms[i].parentNode.replaceChild(icon, iconDoms[i]);
         }
+        iconDom.parentNode.replaceChild(icon, iconDom);
       }
     }
   }
