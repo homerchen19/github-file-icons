@@ -21,6 +21,11 @@
     "48": "img/icon-48.png",
     "128": "img/icon-128.png"
   },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true,
+    "open_in_tab": true
+  },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
   "permissions": ["*://github.com/*", "tabs", "webNavigation"]
