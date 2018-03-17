@@ -12,20 +12,19 @@ function showMessage(message, duration) {
   }
 }
 
-chrome.storage.sync.get('colorsEnabled', result => {
-  $form.colors.checked =
-    result.colorsEnabled || result.colorsEnabled === undefined;
+chrome.storage.sync.get('colorsDisabled', result => {
+  $form.colors.checked = !(result || {}).colorsDisabled;
 });
 
 $form.addEventListener('submit', e => {
   e.preventDefault();
 
-  const colorsEnabled = $form.colors.checked;
+  const colorsDisabled = !$form.colors.checked;
 
   showMessage('Saving...');
   $form.save.disabled = true;
 
-  chrome.storage.sync.set({ colorsEnabled }, () => {
+  chrome.storage.sync.set({ colorsDisabled }, () => {
     showMessage('Saved!', 1000);
     $form.save.disabled = false;
   });
