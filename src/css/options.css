@@ -1,0 +1,26 @@
+.wrapper {
+  width: 90vw;
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+header img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+}
+
+footer {
+  margin-top: 32px;
+}
