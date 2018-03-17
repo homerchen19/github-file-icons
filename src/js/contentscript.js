@@ -36,6 +36,29 @@ const getSelector = () => {
   }
 };
 
+const loadFonts = () => {
+  const fonts = [
+    { name: 'FontAwesome', path: 'fonts/fontawesome.woff2' },
+    { name: 'Mfizz', path: 'fonts/mfixx.woff2' },
+    { name: 'Devicons', path: 'fonts/devopicons.woff2' },
+    { name: 'file-icons', path: 'fonts/file-icons.woff2' },
+    { name: 'octicons', path: 'fonts/octicons.woff2' },
+  ];
+
+  fonts.forEach(font => {
+    const fontFace = new FontFace(
+      font.name,
+      `url("${chrome.extension.getURL(font.path)}")`,
+      {
+        style: 'normal',
+        weight: 'normal',
+      }
+    );
+    document.fonts.add(fontFace);
+    fontFace.load();
+  });
+};
+
 const update = () => {
   const { filenameSelector, iconSelector, host } = getSelector();
 
@@ -90,6 +113,7 @@ const init = () => {
     }
   };
 
+  loadFonts();
   update();
   observeFragment();
   document.addEventListener('pjax:end', update);
