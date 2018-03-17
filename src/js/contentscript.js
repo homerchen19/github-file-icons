@@ -48,14 +48,13 @@ const loadFonts = () => {
   fonts.forEach(font => {
     const fontFace = new FontFace(
       font.name,
-      `url("${chrome.extension.getURL(font.path)}")`,
+      `url("${chrome.extension.getURL(font.path)}") format("woff2")`,
       {
         style: 'normal',
         weight: 'normal',
       }
     );
-    document.fonts.add(fontFace);
-    fontFace.load();
+    fontFace.load().then(loadedFontFace => document.fonts.add(loadedFontFace));
   });
 };
 
