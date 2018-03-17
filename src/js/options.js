@@ -13,7 +13,8 @@ function showMessage(message, duration) {
 }
 
 chrome.storage.sync.get('colorsEnabled', result => {
-  $form.colors.checked = Boolean(result.colorsEnabled);
+  $form.colors.checked =
+    result.colorsEnabled || result.colorsEnabled === undefined;
 });
 
 $form.addEventListener('submit', e => {
