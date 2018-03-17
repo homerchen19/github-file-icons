@@ -24,3 +24,14 @@ label {
 footer {
   margin-top: 32px;
 }
+
+p.message {
+  display: inline-block;
+  vertical-align: center;
+  margin: 0;
+  margin-left: 8px;
+}
+
+p.message:empty {
+  display: none;
+}
