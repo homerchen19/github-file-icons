@@ -5,6 +5,8 @@ import '../css/icons.css';
 const select = document.querySelector.bind(document);
 select.all = document.querySelectorAll.bind(document);
 
+let colorsEnabled = true;
+
 const getSelector = () => {
   switch (window.location.hostname) {
     case 'github.com':
@@ -85,7 +87,9 @@ const update = () => {
         iconDom.classList.contains('octicon-file-directory') ||
         iconDom.classList.contains('fa-folder');
 
-      const className = fileIcons.getClassWithColor(filename);
+      const className = colorsEnabled
+        ? fileIcons.getClassWithColor(filename)
+        : fileIcons.getClass(filename);
 
       if (className && !isDirectory) {
         const icon = document.createElement('span');
@@ -119,4 +123,7 @@ const init = () => {
   document.addEventListener('pjax:end', observeFragment);
 };
 
-init();
+chrome.storage.sync.get('colorsEnabled', result => {
+  colorsEnabled = result.colorsEnabled || result.colorsEnabled === undefined;
+  init();
+});
