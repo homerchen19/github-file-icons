@@ -28,5 +28,5 @@
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
-  "permissions": ["*://github.com/*", "tabs", "webNavigation"]
+  "permissions": ["*://github.com/*", "storage", "tabs", "webNavigation"]
 }
