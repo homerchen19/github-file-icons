@@ -9,8 +9,10 @@ const getSelector = () => {
   switch (window.location.hostname) {
     case 'github.com':
       return {
-        filenameSelector: 'tr.js-navigation-item > td.content > span a',
-        iconSelector: 'tr.js-navigation-item > td.icon',
+        filenameSelector:
+          'tr.js-navigation-item > td.content > span a, .files-list > a.list-item',
+        iconSelector:
+          'tr.js-navigation-item > td.icon, .files-list > a.list-item',
         host: 'github',
       };
     case 'gitlab.com':
@@ -34,6 +36,28 @@ const getSelector = () => {
   }
 };
 
+const loadFonts = () => {
+  const fonts = [
+    { name: 'FontAwesome', path: 'fonts/fontawesome.woff2' },
+    { name: 'Mfizz', path: 'fonts/mfixx.woff2' },
+    { name: 'Devicons', path: 'fonts/devopicons.woff2' },
+    { name: 'file-icons', path: 'fonts/file-icons.woff2' },
+    { name: 'octicons', path: 'fonts/octicons.woff2' },
+  ];
+
+  fonts.forEach(font => {
+    const fontFace = new FontFace(
+      font.name,
+      `url("${chrome.extension.getURL(font.path)}") format("woff2")`,
+      {
+        style: 'normal',
+        weight: 'normal',
+      }
+    );
+    fontFace.load().then(loadedFontFace => document.fonts.add(loadedFontFace));
+  });
+};
+
 const update = () => {
   const { filenameSelector, iconSelector, host } = getSelector();
 
@@ -43,8 +67,17 @@ const update = () => {
   const filenameDomsLength = filenameDoms.length;
 
   if (filenameDomsLength !== 0) {
+    const getGithubFilename = filenameDom =>
+      Array.from(filenameDom.childNodes)
+        .filter(node => node.nodeType === node.TEXT_NODE)
+        .map(node => node.nodeValue.trim())
+        .join('');
+
     for (let i = 0; i < filenameDomsLength; i += 1) {
-      const { innerText: filename } = filenameDoms[i];
+      const filename =
+        host === 'github'
+          ? getGithubFilename(filenameDoms[i])
+          : filenameDoms[i].innerText;
       const iconDom =
         host === 'github' ? iconDoms[i].querySelector('.octicon') : iconDoms[i];
 
@@ -55,14 +88,14 @@ const update = () => {
       const className = fileIcons.getClassWithColor(filename);
 
       if (className && !isDirectory) {
+        const icon = document.createElement('span');
         if (host === 'github') {
-          iconDoms[i].innerHTML = `<span class='icon ${className}'></span>`;
+          icon.className = `icon octicon ${className}`;
         } else {
-          const icon = document.createElement('span');
           icon.className = `${className}`;
           icon.style.marginRight = host === 'bitbucket' ? '10px' : '3px';
-          iconDoms[i].parentNode.replaceChild(icon, iconDoms[i]);
         }
+        iconDom.parentNode.replaceChild(icon, iconDom);
       }
     }
   }
@@ -79,6 +112,7 @@ const init = () => {
     }
   };
 
+  loadFonts();
   update();
   observeFragment();
   document.addEventListener('pjax:end', update);
