@@ -42,14 +42,20 @@ const options = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+              },
+            },
+          ],
         }),
         exclude: /node_modules/,
       },
       {
         test: new RegExp(`.(${fileExtensions.join('|')})$`),
-        loader: 'file-loader?name=[name].[ext]',
-        exclude: /node_modules/,
+        loader: 'file-loader?name=/fonts/[name].[ext]',
       },
       {
         test: /\.html$/,
@@ -74,10 +80,6 @@ const options = {
               ...JSON.parse(content.toString()),
             })
           ),
-      },
-      {
-        from: 'src/fonts',
-        to: 'fonts',
       },
       {
         from: 'src/img',
