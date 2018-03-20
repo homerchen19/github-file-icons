@@ -22,6 +22,17 @@
 <img border="0" src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png" width="172" height="60">
 </a>
 
+## Options
+
+### Disable icons' color
+
+1. Right click extension's icon.
+2. Select **Options**.
+3. Unclick **Enable icon colors**, click **Save**. That's it.
+
+<img width="437" alt="screen shot 2018-03-20 at 12 05 22 pm" src="https://user-images.githubusercontent.com/12113222/37635530-097f8a86-2c37-11e8-8e9f-b5007439ace1.png">
+
+
 ## License
 
 MIT © [xxhomey19](https://github.com/xxhomey19)
