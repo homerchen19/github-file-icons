@@ -23,8 +23,7 @@
   },
   "options_ui": {
     "page": "options.html",
-    "chrome_style": true,
-    "open_in_tab": true
+    "chrome_style": true
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
