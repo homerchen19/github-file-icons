@@ -1,13 +1,11 @@
 body {
   font-family: system-ui, sans-serif;
-  font-size: 75%;
   color: #333;
 }
 
 .wrapper {
   width: 90vw;
   max-width: 400px;
-  margin: 50px auto;
 }
 
 header {
