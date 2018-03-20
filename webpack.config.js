@@ -26,6 +26,7 @@ const options = {
   entry: {
     contentscript: path.join(__dirname, 'src', 'js', 'contentscript.js'),
     background: path.join(__dirname, 'src', 'js', 'background.js'),
+    options: path.join(__dirname, 'src', 'js', 'options.js'),
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -90,6 +91,11 @@ const options = {
       template: path.join(__dirname, 'src', 'background.html'),
       filename: 'background.html',
       chunks: ['background'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'options.html'),
+      filename: 'options.html',
+      chunks: ['options'],
     }),
     new WriteFilePlugin(),
     new ExtractTextPlugin('[name].css'),
