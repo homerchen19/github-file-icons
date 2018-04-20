@@ -6,8 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
-const env = require('./utils/env');
+const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 
 const fileExtensions = [
   'jpg',
@@ -68,7 +67,7 @@ const options = {
   plugins: [
     new CleanWebpackPlugin(['build']),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
     new CopyWebpackPlugin([
       {
@@ -102,9 +101,21 @@ const options = {
   ],
 };
 
-if (env.NODE_ENV === 'development') {
-  options.devtool = 'cheap-module-eval-source-map';
-} else if (env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
+  options.mode = 'development';
+  options.devtool = 'cheap-module-source-map';
+  options.plugins.push(
+    new ChromeExtensionReloader({
+      port: 9090,
+      reloadPage: true,
+      entries: {
+        contentScript: 'contentscript',
+        background: 'background',
+      },
+    })
+  );
+} else if (process.env.NODE_ENV === 'production') {
+  options.mode = 'production';
   options.plugins.push(
     new webpack.LoaderOptionsPlugin({
       minimize: true,

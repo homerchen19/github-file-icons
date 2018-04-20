@@ -5,7 +5,8 @@ import '../css/icons.css';
 const select = document.querySelector.bind(document);
 select.all = document.querySelectorAll.bind(document);
 
-let colorsDisabled = true;
+let colorsEnabled = true;
+let darkMode = false;
 
 const getSelector = () => {
   switch (window.location.hostname) {
@@ -87,18 +88,22 @@ const update = () => {
         iconDom.classList.contains('octicon-file-directory') ||
         iconDom.classList.contains('fa-folder');
 
-      const className = colorsDisabled
-        ? fileIcons.getClass(filename)
-        : fileIcons.getClassWithColor(filename);
+      const className = colorsEnabled
+        ? fileIcons.getClassWithColor(filename)
+        : fileIcons.getClass(filename);
+
+      const darkClassName = darkMode ? 'dark' : '';
 
       if (className && !isDirectory) {
         const icon = document.createElement('span');
+
         if (host === 'github') {
-          icon.className = `icon octicon ${className}`;
+          icon.className = `icon octicon ${className} ${darkClassName}`;
         } else {
-          icon.className = `${className}`;
+          icon.className = `${className} ${darkClassName}`;
           icon.style.marginRight = host === 'bitbucket' ? '10px' : '3px';
         }
+
         iconDom.parentNode.replaceChild(icon, iconDom);
       }
     }
@@ -119,12 +124,17 @@ const init = () => {
   loadFonts();
   update();
   observeFragment();
+
   document.addEventListener('pjax:end', update);
   document.addEventListener('pjax:end', observeFragment);
 };
 
-chrome.storage.sync.get('colorsDisabled', result => {
+chrome.storage.sync.get(['colorsEnabled', 'darkMode'], result => {
   // eslint-disable-next-line prefer-destructuring
-  colorsDisabled = (result || {}).colorsDisabled;
+  colorsEnabled =
+    result.colorsEnabled === undefined ? colorsEnabled : result.colorsEnabled;
+  // eslint-disable-next-line prefer-destructuring
+  darkMode = result.darkMode === undefined ? darkMode : result.darkMode;
+
   init();
 });

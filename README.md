@@ -26,12 +26,25 @@
 
 ### Disable icons' color
 
+Display colorless icon.
+
 1. Right click extension's icon.
 2. Select **Options**.
-3. Unclick **Enable icon colors**, click **Save**. That's it.
+3. Uncheck **Enable icon colors**, click **Save**. That's it.
 
 <img width="437" alt="screen shot 2018-03-20 at 12 05 22 pm" src="https://user-images.githubusercontent.com/12113222/37635530-097f8a86-2c37-11e8-8e9f-b5007439ace1.png">
 
+### Turn on Dark Mode
+
+Let icons be brighter and more readable on GitHub dark theme.
+
+1. Right click extension's icon.
+2. Select **Options**.
+3. Check **Dark Mode**, then click **Save**.
+
+<br />
+
+![compare](https://user-images.githubusercontent.com/454813/38455054-4a924cf4-3a40-11e8-86d6-29a030dfde49.jpg)
 
 ## License
 
