@@ -92,8 +92,6 @@ const update = () => {
         ? fileIcons.getClassWithColor(filename)
         : fileIcons.getClass(filename);
 
-      console.log({ colorsEnabled, darkMode });
-
       const darkClassName = darkMode ? 'dark' : '';
 
       if (className && !isDirectory) {

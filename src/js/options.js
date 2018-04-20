@@ -13,10 +13,12 @@ function showMessage(message, duration) {
   }
 }
 
-chrome.storage.sync.get(['colorsEnabled', 'darkMode'], result => {
-  $form.colors.checked = result.colorsEnabled || true;
-  $form.darkMode.checked = result.darkMode || false;
-});
+document.body.onload = () => {
+  chrome.storage.sync.get(['colorsEnabled', 'darkMode'], result => {
+    $form.colors.checked = result.colorsEnabled || true;
+    $form.darkMode.checked = result.darkMode || false;
+  });
+};
 
 $form.addEventListener('submit', e => {
   e.preventDefault();
