@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "GitHub File Icon",
+  "name": "File Icon for GitHub, GitLab, Bitbucket",
   "author": "xxhomey19",
   "background": {
     "page": "background.html",
@@ -8,17 +8,23 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://github.com/*", "https://gitlab.com/*", "https://bitbucket.org/*", "https://*.gogs.io/*", "https://*.gitea.io/*"],
+      "matches": [
+        "https://github.com/*",
+        "https://gitlab.com/*",
+        "https://bitbucket.org/*",
+        "https://*.gogs.io/*",
+        "https://*.gitea.io/*"
+      ],
       "js": ["contentscript.bundle.js"],
       "css": ["contentscript.css"]
     }
   ],
   "browser_action": {
-    "default_icon": "img/icon-48.png"
+    "default_icon": "img/icon-64.png"
   },
   "icons": {
     "16": "img/icon-16.png",
-    "48": "img/icon-48.png",
+    "64": "img/icon-64.png",
     "128": "img/icon-128.png"
   },
   "options_ui": {
@@ -27,5 +33,5 @@
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
-  "permissions": ["*://github.com/*", "storage", "tabs", "webNavigation"]
+  "permissions": ["storage", "tabs", "webNavigation"]
 }
