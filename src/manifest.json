@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "File Icon for GitHub, GitLab, Bitbucket",
+  "name": "File Icon for GitHub, GitLab and Bitbucket",
   "author": "xxhomey19",
   "background": {
     "page": "background.html",

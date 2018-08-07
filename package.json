@@ -22,7 +22,7 @@
     "testonly": "jest",
     "testonly:cov": "jest --coverage --runInBand --forceExit --no-cache",
     "testonly:watch": "jest --watch",
-    "zip": "npm run build && zip -r build/GitHub_File_Icon_$npm_package_version.zip build"
+    "zip": "npm run build && zip -r build/File_Icon_For_GitHub_GitLab_And_Bitbucket_$npm_package_version.zip build"
   },
   "dependencies": {
     "file-icons-js": "^1.0.3"
