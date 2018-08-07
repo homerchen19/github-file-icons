@@ -5,7 +5,7 @@ import '../css/icons.css';
 const select = document.querySelector.bind(document);
 select.all = document.querySelectorAll.bind(document);
 
-let colorsEnabled = true;
+let colorsDisabled = false;
 let darkMode = false;
 
 const getSelector = () => {
@@ -88,9 +88,9 @@ const update = () => {
         iconDom.classList.contains('octicon-file-directory') ||
         iconDom.classList.contains('fa-folder');
 
-      const className = colorsEnabled
-        ? fileIcons.getClassWithColor(filename)
-        : fileIcons.getClass(filename);
+      const className = colorsDisabled
+        ? fileIcons.getClass(filename)
+        : fileIcons.getClassWithColor(filename);
 
       const darkClassName = darkMode ? 'dark' : '';
 
@@ -129,11 +129,12 @@ const init = () => {
   document.addEventListener('pjax:end', observeFragment);
 };
 
-chrome.storage.sync.get(['colorsEnabled', 'darkMode'], result => {
-  // eslint-disable-next-line prefer-destructuring
-  colorsEnabled =
-    result.colorsEnabled === undefined ? colorsEnabled : result.colorsEnabled;
-  // eslint-disable-next-line prefer-destructuring
+chrome.storage.sync.get(['colorsDisabled', 'darkMode'], result => {
+  colorsDisabled =
+    result.colorsDisabled === undefined
+      ? colorsDisabled
+      : result.colorsDisabled;
+
   darkMode = result.darkMode === undefined ? darkMode : result.darkMode;
 
   init();

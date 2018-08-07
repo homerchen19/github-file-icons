@@ -9,15 +9,8 @@ body {
 }
 
 header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-header img {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 label {
@@ -27,6 +20,13 @@ label {
 
 footer {
   margin-top: 32px;
+}
+
+button.save {
+  padding: 5px 10px;
+  background-color: #fff;
+  border-color: #000;
+  cursor: pointer;
 }
 
 p.message {
