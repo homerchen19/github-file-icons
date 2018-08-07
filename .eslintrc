@@ -1,31 +1,24 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "eslint:recommended",
-    "airbnb",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "airbnb", "prettier"],
   "globals": {
     "chrome": true
   },
   "env": {
     "browser": true,
     "node": true,
-    "jest": true,
+    "jest": true
   },
   "rules": {
     "prettier/prettier": [
       "error",
       {
-        trailingComma: 'es5',
-        singleQuote: true,
+        "trailingComma": "es5",
+        "singleQuote": true
       }
     ],
     "no-param-reassign": "off",
     "func-names": "off"
   },
-  "plugins": [
-    "babel",
-    "prettier"
-  ]
+  "plugins": ["babel", "prettier"]
 }
