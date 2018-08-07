@@ -20,16 +20,13 @@
     }
   ],
   "browser_action": {
-    "default_icon": "img/icon-64.png"
+    "default_icon": "img/icon-64.png",
+    "default_popup": "popup.html"
   },
   "icons": {
     "16": "img/icon-16.png",
     "64": "img/icon-64.png",
     "128": "img/icon-128.png"
-  },
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
