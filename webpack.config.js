@@ -25,7 +25,7 @@ const options = {
   entry: {
     contentscript: path.join(__dirname, 'src', 'js', 'contentscript.js'),
     background: path.join(__dirname, 'src', 'js', 'background.js'),
-    options: path.join(__dirname, 'src', 'js', 'options.js'),
+    popup: path.join(__dirname, 'src', 'js', 'popup.js'),
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -92,9 +92,9 @@ const options = {
       chunks: ['background'],
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'options.html'),
-      filename: 'options.html',
-      chunks: ['options'],
+      template: path.join(__dirname, 'src', 'popup.html'),
+      filename: 'popup.html',
+      chunks: ['popup'],
     }),
     new WriteFilePlugin(),
     new ExtractTextPlugin('[name].css'),
