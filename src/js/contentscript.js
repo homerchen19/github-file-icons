@@ -8,8 +8,8 @@ select.all = document.querySelectorAll.bind(document);
 let colorsDisabled = false;
 let darkMode = false;
 
-const getSelector = () => {
-  switch (window.location.hostname) {
+const getSelector = hostname => {
+  switch (hostname) {
     case 'github.com':
       return {
         filenameSelector:
@@ -20,7 +20,7 @@ const getSelector = () => {
       };
     case 'gitlab.com':
       return {
-        filenameSelector: 'tr.tree-item > td.tree-item-file-name > a > span',
+        filenameSelector: 'tr.tree-item > td.tree-item-file-name',
         iconSelector: 'tr.tree-item > td.tree-item-file-name > i',
         host: 'gitlab',
       };
@@ -61,8 +61,16 @@ const loadFonts = () => {
   });
 };
 
+const getGitHubFilename = filenameDom =>
+  Array.from(filenameDom.childNodes)
+    .filter(node => node.nodeType === node.TEXT_NODE)
+    .map(node => node.nodeValue.trim())
+    .join('');
+
 const update = () => {
-  const { filenameSelector, iconSelector, host } = getSelector();
+  const { filenameSelector, iconSelector, host } = getSelector(
+    window.location.hostname
+  );
 
   const filenameDoms = Array.from(select.all(filenameSelector));
   const iconDoms = Array.from(select.all(iconSelector));
@@ -70,17 +78,11 @@ const update = () => {
   const filenameDomsLength = filenameDoms.length;
 
   if (filenameDomsLength !== 0) {
-    const getGithubFilename = filenameDom =>
-      Array.from(filenameDom.childNodes)
-        .filter(node => node.nodeType === node.TEXT_NODE)
-        .map(node => node.nodeValue.trim())
-        .join('');
-
     for (let i = 0; i < filenameDomsLength; i += 1) {
       const filename =
         host === 'github'
-          ? getGithubFilename(filenameDoms[i])
-          : filenameDoms[i].innerText;
+          ? getGitHubFilename(filenameDoms[i])
+          : filenameDoms[i].innerText.trim();
       const iconDom =
         host === 'github' ? iconDoms[i].querySelector('.octicon') : iconDoms[i];
 
