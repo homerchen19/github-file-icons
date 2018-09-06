@@ -3,7 +3,7 @@ import '../css/popup.css';
 const $form = document.querySelector('form');
 const $message = document.querySelector('.message');
 
-const showMessage = (message, duration) => {
+function showMessage(message, duration) {
   $message.textContent = message;
 
   if (duration) {
@@ -11,7 +11,7 @@ const showMessage = (message, duration) => {
       $message.textContent = '';
     }, duration);
   }
-};
+}
 
 document.body.onload = () => {
   chrome.storage.sync.get(['colorsDisabled', 'darkMode'], result => {

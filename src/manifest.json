@@ -2,6 +2,10 @@
   "manifest_version": 2,
   "name": "File Icon for GitHub, GitLab and Bitbucket",
   "author": "xxhomey19",
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  },
   "content_scripts": [
     {
       "matches": [
@@ -26,5 +30,5 @@
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
-  "permissions": ["storage", "tabs"]
+  "permissions": ["storage", "tabs", "webNavigation"]
 }
