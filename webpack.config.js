@@ -24,7 +24,6 @@ const fileExtensions = [
 const options = {
   entry: {
     contentscript: path.join(__dirname, 'src', 'js', 'contentscript.js'),
-    background: path.join(__dirname, 'src', 'js', 'background.js'),
     popup: path.join(__dirname, 'src', 'js', 'popup.js'),
   },
   output: {
@@ -87,11 +86,6 @@ const options = {
       },
     ]),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'background.html'),
-      filename: 'background.html',
-      chunks: ['background'],
-    }),
-    new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'popup.html'),
       filename: 'popup.html',
       chunks: ['popup'],
@@ -110,7 +104,6 @@ if (process.env.NODE_ENV === 'development') {
       reloadPage: true,
       entries: {
         contentScript: 'contentscript',
-        background: 'background',
       },
     })
   );
