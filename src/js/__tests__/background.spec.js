@@ -35,8 +35,33 @@ describe('background', () => {
     });
   });
 
-  it('should not executeScript if url is not GitHub', () => {
+  it('should not executeScript if url does not matched', () => {
     setup('https://www.google.com.tw');
     expect(chrome.tabs.executeScript).not.toBeCalled();
+  });
+
+  it('should not executeScript if url is GitHub', () => {
+    setup('https://github.com/xxhomey19/github-file-icon');
+    expect(chrome.tabs.executeScript).toBeCalled();
+  });
+
+  it('should not executeScript if url is GiitLab', () => {
+    setup('https://gitlab.com/xxhomey19/github-file-icon');
+    expect(chrome.tabs.executeScript).toBeCalled();
+  });
+
+  it('should not executeScript if url is Bitbucket', () => {
+    setup('https://bitbucket.org/xxhomey19/github-file-icon');
+    expect(chrome.tabs.executeScript).toBeCalled();
+  });
+
+  it('should not executeScript if url is Gogs', () => {
+    setup('https://try.gogs.io/xxhomey19/github-file-icon');
+    expect(chrome.tabs.executeScript).toBeCalled();
+  });
+
+  it('should not executeScript if url is Gitea', () => {
+    setup('https://try.gitea.io/xxhomey19/github-file-icon');
+    expect(chrome.tabs.executeScript).toBeCalled();
   });
 });
