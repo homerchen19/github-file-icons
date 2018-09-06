@@ -19,24 +19,26 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
     "test": "npm run lint:fix && npm run testonly:cov",
-    "testonly": "jest",
-    "testonly:cov": "jest --coverage --runInBand --forceExit --no-cache",
-    "testonly:watch": "jest --watch",
+    "testonly": "jest --passWithNoTests",
+    "testonly:cov": "jest --coverage --runInBand --forceExit --no-cache --passWithNoTests",
+    "testonly:watch": "jest --watch --passWithNoTests",
     "zip": "npm run build && zip -r build/File_Icon_For_GitHub_GitLab_And_Bitbucket_$npm_package_version.zip build"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0",
     "file-icons-js": "^1.0.3"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
-    "eslint": "^5.4.0",
+    "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-babel": "^5.1.0",
@@ -45,7 +47,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^1.1.11",
+    "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^0.14.3",
@@ -53,12 +55,12 @@
     "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
     "prettier-package-json": "^2.0.0",
-    "style-loader": "^0.22.1",
+    "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^4.16.5",
+    "webpack": "^4.17.2",
     "webpack-chrome-extension-reloader": "^0.8.3",
     "webpack-cli": "^3.1.0",
-    "write-file-webpack-plugin": "^4.3.2"
+    "write-file-webpack-plugin": "^4.4.0"
   },
   "keywords": [
     "Chrome Extension",
@@ -68,8 +70,7 @@
   "jest": {
     "testEnvironment": "node",
     "collectCoverageFrom": [
-      "src/**/*.js",
-      "utils/**/*.js"
+      "src/**/*.js"
     ],
     "coverageDirectory": "./coverage/",
     "resetModules": true,
