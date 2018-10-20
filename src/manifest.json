@@ -16,7 +16,8 @@
         "https://*.gitea.io/*"
       ],
       "js": ["contentscript.bundle.js"],
-      "css": ["contentscript.css"]
+      "css": ["contentscript.css"],
+      "run_at": "document_start"
     }
   ],
   "browser_action": {
