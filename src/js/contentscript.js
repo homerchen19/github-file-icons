@@ -1,9 +1,8 @@
 import fileIcons from 'file-icons-js';
+import domLoaded from 'dom-loaded';
+import select from 'select-dom';
 
 import '../css/icons.css';
-
-const select = document.querySelector.bind(document);
-select.all = document.querySelectorAll.bind(document);
 
 let colorsDisabled = false;
 let darkMode = false;
@@ -112,20 +111,22 @@ const update = () => {
   }
 };
 
-const init = () => {
-  const observer = new MutationObserver(update);
-  const observeFragment = () => {
-    const ajaxFiles = select('.file-wrap');
-    if (ajaxFiles) {
-      observer.observe(ajaxFiles.parentNode, {
-        childList: true,
-      });
-    }
-  };
+const observer = new MutationObserver(update);
+const observeFragment = () => {
+  const ajaxFiles = select('.file-wrap');
+  if (ajaxFiles) {
+    observer.observe(ajaxFiles.parentNode, {
+      childList: true,
+    });
+  }
+};
 
+const init = async () => {
   loadFonts();
-  update();
   observeFragment();
+
+  await domLoaded;
+  update();
 
   document.addEventListener('pjax:end', update);
   document.addEventListener('pjax:end', observeFragment);
