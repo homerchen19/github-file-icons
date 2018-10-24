@@ -1,5 +1,5 @@
 const githubRegexp = /.*:\/\/github.com\/.*/i;
-const gitlabRegexp = /.*:\/\/gitlab.com\/.*/i;
+const gitlabRegexp = /.*:\/\/.*gitlab.*./i;
 const bitbucketRegexp = /.*:\/\/bitbucket.org\/.*/i;
 const gogsRegexp = /.*:\/\/.*.gogs.io\/.*/i;
 const giteaRegexp = /.*:\/\/.*.gitea.io\/.*/i;

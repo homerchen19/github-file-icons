@@ -9,11 +9,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://github.com/*",
-        "https://gitlab.com/*",
-        "https://bitbucket.org/*",
-        "https://*.gogs.io/*",
-        "https://*.gitea.io/*"
+        "*://*/*"
       ],
       "js": ["contentscript.bundle.js"],
       "css": ["contentscript.css"],

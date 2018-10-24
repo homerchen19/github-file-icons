@@ -7,9 +7,21 @@ import '../css/icons.css';
 let colorsDisabled = false;
 let darkMode = false;
 
+const getSiteInstance = hostname => {
+  if (hostname.match(/.*github.*./i)) {
+    return 'github';
+  } else if (hostname.match(/.*bitbucket.org/i)) {
+    return 'bitbucket';
+  } else if (hostname.match(/.*gitlab.*./i)) {
+    return 'gitlab';
+  } else {
+    return 'other';
+  }
+};
+
 const getSelector = hostname => {
-  switch (hostname) {
-    case 'github.com':
+  switch (getSiteInstance(hostname)) {
+    case 'github':
       return {
         filenameSelector:
           'tr.js-navigation-item > td.content > span a, .files-list > a.list-item',
@@ -17,17 +29,17 @@ const getSelector = hostname => {
           'tr.js-navigation-item > td.icon, .files-list > a.list-item',
         host: 'github',
       };
-    case 'gitlab.com':
-      return {
-        filenameSelector: 'tr.tree-item > td.tree-item-file-name',
-        iconSelector: 'tr.tree-item > td.tree-item-file-name > i',
-        host: 'gitlab',
-      };
-    case 'bitbucket.org':
+    case 'bitbucket':
       return {
         filenameSelector: 'tr.iterable-item > td.filename > div > a',
         iconSelector: 'tr.iterable-item > td.filename > div > a > span',
         host: 'bitbucket',
+      };
+    case 'gitlab':
+      return {
+        filenameSelector: 'tr.tree-item > td.tree-item-file-name',
+        iconSelector: 'tr.tree-item > td.tree-item-file-name > i',
+        host: 'gitlab',
       };
     default:
       return {
