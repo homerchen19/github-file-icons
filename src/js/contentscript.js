@@ -1,6 +1,7 @@
 import fileIcons from 'file-icons-js';
 import domLoaded from 'dom-loaded';
 import select from 'select-dom';
+import mobile from 'is-mobile';
 
 import '../css/icons.css';
 
@@ -12,7 +13,7 @@ const getSelector = hostname => {
     case 'github.com':
       return {
         filenameSelector:
-          'tr.js-navigation-item > td.content > span a, .files-list > a.list-item',
+          'tr.js-navigation-item > td.content > span, .files-list > a.list-item',
         iconSelector:
           'tr.js-navigation-item > td.icon, .files-list > a.list-item',
         host: 'github',
@@ -60,7 +61,7 @@ const loadFonts = () => {
   });
 };
 
-const getGitHubFilename = filenameDom =>
+const getGitHubMobileFilename = filenameDom =>
   Array.from(filenameDom.childNodes)
     .filter(node => node.nodeType === node.TEXT_NODE)
     .map(node => node.nodeValue.trim())
@@ -70,43 +71,45 @@ const update = () => {
   const { filenameSelector, iconSelector, host } = getSelector(
     window.location.hostname
   );
+  const isMobile = mobile();
+  const isGitHub = host === 'github';
 
-  const filenameDoms = Array.from(select.all(filenameSelector));
-  const iconDoms = Array.from(select.all(iconSelector));
+  const filenameDoms = select.all(filenameSelector);
+  const iconDoms = select.all(iconSelector);
 
   const filenameDomsLength = filenameDoms.length;
 
-  if (filenameDomsLength !== 0) {
-    for (let i = 0; i < filenameDomsLength; i += 1) {
-      const filename =
-        host === 'github'
-          ? getGitHubFilename(filenameDoms[i])
-          : filenameDoms[i].innerText.trim();
-      const iconDom =
-        host === 'github' ? iconDoms[i].querySelector('.octicon') : iconDoms[i];
+  for (let i = 0; i < filenameDomsLength; i += 1) {
+    const filename =
+      isGitHub && isMobile
+        ? getGitHubMobileFilename(filenameDoms[i])
+        : filenameDoms[i].innerText.trim();
 
-      const isDirectory =
-        iconDom.classList.contains('octicon-file-directory') ||
-        iconDom.classList.contains('fa-folder');
+    const iconDom = isGitHub
+      ? iconDoms[i].querySelector('.octicon')
+      : iconDoms[i];
 
-      const className = colorsDisabled
-        ? fileIcons.getClass(filename)
-        : fileIcons.getClassWithColor(filename);
+    const isDirectory =
+      iconDom.classList.contains('octicon-file-directory') ||
+      iconDom.classList.contains('fa-folder');
 
-      const darkClassName = darkMode ? 'dark' : '';
+    const className = colorsDisabled
+      ? fileIcons.getClass(filename)
+      : fileIcons.getClassWithColor(filename);
 
-      if (className && !isDirectory) {
-        const icon = document.createElement('span');
+    const darkClassName = darkMode ? 'dark' : '';
 
-        if (host === 'github') {
-          icon.className = `icon octicon ${className} ${darkClassName}`;
-        } else {
-          icon.className = `${className} ${darkClassName}`;
-          icon.style.marginRight = host === 'bitbucket' ? '10px' : '3px';
-        }
+    if (className && !isDirectory) {
+      const icon = document.createElement('span');
 
-        iconDom.parentNode.replaceChild(icon, iconDom);
+      if (isGitHub) {
+        icon.className = `icon octicon ${className} ${darkClassName}`;
+      } else {
+        icon.className = `${className} ${darkClassName}`;
+        icon.style.marginRight = host === 'bitbucket' ? '10px' : '3px';
       }
+
+      iconDom.parentNode.replaceChild(icon, iconDom);
     }
   }
 };
