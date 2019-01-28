@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -25,7 +24,6 @@ const options = {
   entry: {
     contentscript: path.join(__dirname, 'src', 'js', 'contentscript.js'),
     background: path.join(__dirname, 'src', 'js', 'background.js'),
-    popup: path.join(__dirname, 'src', 'js', 'popup.js'),
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -86,11 +84,6 @@ const options = {
         to: 'img',
       },
     ]),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'popup.html'),
-      filename: 'popup.html',
-      chunks: ['popup'],
-    }),
     new WriteFilePlugin(),
     new ExtractTextPlugin('[name].css'),
   ],

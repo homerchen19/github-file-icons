@@ -14,6 +14,12 @@ describe('background', () => {
       tabs: {
         executeScript: jest.fn(),
       },
+      contextMenus: {
+        create: jest.fn(),
+        onClicked: {
+          addListener: jest.fn(),
+        },
+      },
     };
     // eslint-disable-next-line global-require
     background = require('../background');
@@ -35,33 +41,38 @@ describe('background', () => {
     });
   });
 
-  it('should not executeScript if url does not matched', () => {
+  it('should not call executeScript if url does not matched', () => {
     setup('https://www.google.com.tw');
     expect(chrome.tabs.executeScript).not.toBeCalled();
   });
 
-  it('should not executeScript if url is GitHub', () => {
+  it('should not call executeScript if url is GitHub', () => {
     setup('https://github.com/xxhomey19/github-file-icon');
     expect(chrome.tabs.executeScript).toBeCalled();
   });
 
-  it('should not executeScript if url is GiitLab', () => {
+  it('should not call executeScript if url is GitLab', () => {
     setup('https://gitlab.com/xxhomey19/github-file-icon');
     expect(chrome.tabs.executeScript).toBeCalled();
   });
 
-  it('should not executeScript if url is Bitbucket', () => {
+  it('should not call executeScript if url is Bitbucket', () => {
     setup('https://bitbucket.org/xxhomey19/github-file-icon');
     expect(chrome.tabs.executeScript).toBeCalled();
   });
 
-  it('should not executeScript if url is Gogs', () => {
+  it('should not call executeScript if url is Gogs', () => {
     setup('https://try.gogs.io/xxhomey19/github-file-icon');
     expect(chrome.tabs.executeScript).toBeCalled();
   });
 
-  it('should not executeScript if url is Gitea', () => {
+  it('should not call executeScript if url is Gitea', () => {
     setup('https://try.gitea.io/xxhomey19/github-file-icon');
     expect(chrome.tabs.executeScript).toBeCalled();
+  });
+
+  it('should call chrome.contextMenus.create twice', () => {
+    setup();
+    expect(chrome.contextMenus.create).toHaveBeenCalledTimes(2);
   });
 });
