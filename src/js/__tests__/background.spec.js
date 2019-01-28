@@ -37,7 +37,7 @@ describe('background', () => {
     setup();
     expect(chrome.webNavigation.onHistoryStateUpdated.addListener).toBeCalled();
     expect(chrome.tabs.executeScript).toBeCalledWith(null, {
-      file: 'contentscript.bundle.js',
+      file: 'content.bundle.js',
     });
   });
 

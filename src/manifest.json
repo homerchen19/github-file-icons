@@ -16,8 +16,8 @@
         "https://*.gogs.io/*",
         "https://*.gitea.io/*"
       ],
-      "js": ["contentscript.bundle.js"],
-      "css": ["contentscript.css"],
+      "js": ["content.bundle.js"],
+      "css": ["content.css"],
       "run_at": "document_start"
     }
   ],
