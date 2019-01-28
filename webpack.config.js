@@ -43,9 +43,6 @@ const options = {
           use: [
             {
               loader: 'css-loader',
-              options: {
-                minimize: true,
-              },
             },
           ],
         }),
