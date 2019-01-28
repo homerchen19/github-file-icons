@@ -22,7 +22,7 @@ const fileExtensions = [
 
 const options = {
   entry: {
-    contentscript: path.join(__dirname, 'src', 'js', 'contentscript.js'),
+    content: path.join(__dirname, 'src', 'js', 'content.js'),
     background: path.join(__dirname, 'src', 'js', 'background.js'),
   },
   output: {
@@ -94,7 +94,7 @@ if (process.env.NODE_ENV === 'development') {
       port: 9090,
       reloadPage: true,
       entries: {
-        contentScript: 'contentscript',
+        contentScript: 'content',
         background: 'background',
       },
     })

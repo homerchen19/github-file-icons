@@ -13,7 +13,7 @@ const isGit = url =>
 
 chrome.webNavigation.onHistoryStateUpdated.addListener(({ url }) => {
   if (isGit(url)) {
-    chrome.tabs.executeScript(null, { file: 'contentscript.bundle.js' });
+    chrome.tabs.executeScript(null, { file: 'content.bundle.js' });
   }
 });
 
