@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 
 const fileExtensions = [
@@ -87,11 +87,6 @@ const options = {
       },
     ]),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'background.html'),
-      filename: 'background.html',
-      chunks: ['background'],
-    }),
-    new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'popup.html'),
       filename: 'popup.html',
       chunks: ['popup'],
@@ -121,10 +116,7 @@ if (process.env.NODE_ENV === 'development') {
       minimize: true,
       debug: false,
     }),
-    new UglifyJSPlugin({
-      sourceMap: true,
-      parallel: true,
-    })
+    new TerserPlugin()
   );
 }
 
