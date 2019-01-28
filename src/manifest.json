@@ -21,10 +21,6 @@
       "run_at": "document_start"
     }
   ],
-  "browser_action": {
-    "default_icon": "img/icon-64.png",
-    "default_popup": "popup.html"
-  },
   "icons": {
     "16": "img/icon-16.png",
     "64": "img/icon-64.png",
@@ -33,6 +29,7 @@
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
   "permissions": [
+    "contextMenus",
     "storage",
     "tabs",
     "webNavigation",
