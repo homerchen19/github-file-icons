@@ -24,39 +24,23 @@
 
 ## Options
 
-<img width="168" alt="screen shot 2018-08-07 at 14 15 32" src="https://user-images.githubusercontent.com/12113222/43754123-628937ca-9a4c-11e8-83ec-02c911ddb84e.png">
+<img width="320" alt="screen shot 2019-01-28 at 18 45 06" src="https://user-images.githubusercontent.com/12113222/51821342-f22bca00-232c-11e9-93f8-8b854a9c1558.png">
 
-### Disable icon colors
+### Change image colors
 
-Display colorless icon.
+> Change icon's color between colorful and monochrome.
 
-##### Step by Step:
-
-1. Click the extension's icon.
-2. Check **Disable icon colors**.
-3. Click **Save**.
-4. Refresh the page.
-
-Comparison:
+##### Comparison:
 
 <img width="157" alt="screen shot 2018-08-07 at 11 56 51" src="https://user-images.githubusercontent.com/12113222/43754021-f9b40946-9a4b-11e8-8144-ab7cb5cbea8e.png">
 
-### Turn on Dark Mode
+### Toggle Dark Mode
 
-Let icons be brighter and more readable on GitHub dark theme.
+> Make icons brighter and more readable on [GitHub dark theme](https://github.com/StylishThemes/GitHub-Dark).
 
-##### Step by Step:
+##### Comparison:
 
-1. Click the extension's icon.
-2. Check **Dark Mode**.
-3. Click **Save**.
-4. Refresh the page.
-
-<br />
-
-Left side is normal mode, and right side is dark mode.
-
-![compare](https://user-images.githubusercontent.com/454813/38455054-4a924cf4-3a40-11e8-86d6-29a030dfde49.jpg)
+![brightness comparison](https://user-images.githubusercontent.com/454813/38455054-4a924cf4-3a40-11e8-86d6-29a030dfde49.jpg)
 
 ## License
 
