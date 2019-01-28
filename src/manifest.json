@@ -2,8 +2,9 @@
   "manifest_version": 2,
   "name": "File Icon for GitHub, GitLab and Bitbucket",
   "author": "xxhomey19",
+  "homepage_url": "https://github.com/xxhomey19/github-file-icon",
   "background": {
-    "page": "background.html",
+    "scripts": ["background.bundle.js"],
     "persistent": false
   },
   "content_scripts": [
