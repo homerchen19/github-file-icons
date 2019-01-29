@@ -24,7 +24,9 @@
 
 ## Options
 
-<img width="320" alt="screen shot 2019-01-28 at 18 45 06" src="https://user-images.githubusercontent.com/12113222/51821342-f22bca00-232c-11e9-93f8-8b854a9c1558.png">
+> Right click on any space on the page or the extension's icon to open the menu.
+
+![untitled](https://user-images.githubusercontent.com/12113222/51907474-02ba6e00-241b-11e9-8199-83a18502fb6b.png)
 
 ### Change image colors
 

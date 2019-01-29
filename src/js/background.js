@@ -20,13 +20,27 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(({ url }) => {
 chrome.contextMenus.create({
   id: 'change-icon-color',
   title: 'Change icon colors',
-  contexts: ['all'],
+  contexts: ['page', 'page_action'],
+  documentUrlPatterns: [
+    'https://github.com/*',
+    'https://gitlab.com/*',
+    'https://bitbucket.org/*',
+    'https://*.gogs.io/*',
+    'https://*.gitea.io/*',
+  ],
 });
 
 chrome.contextMenus.create({
   id: 'toggle-dark-mode',
   title: 'Toggle dark mode',
-  contexts: ['all'],
+  contexts: ['page', 'page_action'],
+  documentUrlPatterns: [
+    'https://github.com/*',
+    'https://gitlab.com/*',
+    'https://bitbucket.org/*',
+    'https://*.gogs.io/*',
+    'https://*.gitea.io/*',
+  ],
 });
 
 const toggleStorage = key => tabs => {
