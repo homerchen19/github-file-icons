@@ -31,8 +31,6 @@
   "permissions": [
     "contextMenus",
     "storage",
-    "tabs",
-    "webNavigation",
     "https://github.com/*",
     "https://gitlab.com/*",
     "https://bitbucket.org/*",
