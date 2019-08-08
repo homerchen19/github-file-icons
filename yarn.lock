@@ -6657,10 +6657,10 @@ webext-domain-permission-toggle@^1.0.0:
   dependencies:
     webext-additional-permissions "^0.1.0"
 
-webext-dynamic-content-scripts@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/webext-dynamic-content-scripts/-/webext-dynamic-content-scripts-6.0.2.tgz#6f70916a104ac7c89364c4883be2ff766c165d95"
-  integrity sha512-8X2yqLPjP8jLMdCMLz/QXVkipt9H9J1kitUoG8S9O03urQnsRvduXnkmfpTZnNajr0q2mn5DN6ReXMZOp87vUw==
+webext-dynamic-content-scripts@^6.0.3-0:
+  version "6.0.3-0"
+  resolved "https://registry.yarnpkg.com/webext-dynamic-content-scripts/-/webext-dynamic-content-scripts-6.0.3-0.tgz#ea36d278f338cb7b7d38476a633b909f7ecea45f"
+  integrity sha512-6qWp+SJtrnAFv2E1HyZW+3wYNPm/tbltjtds1zKpIp8cbEwMFjc7c4VepIJmMclZGuPm0AMVunIjgbCwwF7Psg==
   dependencies:
     "@types/chrome" "0.0.86"
     content-scripts-register-polyfill "^1.0.0"
