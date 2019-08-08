@@ -1,21 +1,5 @@
-const githubRegexp = /.*:\/\/github.com\/.*/i;
-const gitlabRegexp = /.*:\/\/gitlab.com\/.*/i;
-const bitbucketRegexp = /.*:\/\/bitbucket.org\/.*/i;
-const gogsRegexp = /.*:\/\/.*.gogs.io\/.*/i;
-const giteaRegexp = /.*:\/\/.*.gitea.io\/.*/i;
-
-const isGit = url =>
-  url.match(githubRegexp) !== null ||
-  url.match(gitlabRegexp) !== null ||
-  url.match(bitbucketRegexp) !== null ||
-  url.match(gogsRegexp) !== null ||
-  url.match(giteaRegexp) !== null;
-
-chrome.webNavigation.onHistoryStateUpdated.addListener(({ url }) => {
-  if (isGit(url)) {
-    chrome.tabs.executeScript(null, { file: 'content.bundle.js' });
-  }
-});
+import 'webext-dynamic-content-scripts';
+import addDomainPermissionToggle from 'webext-domain-permission-toggle';
 
 chrome.contextMenus.create({
   id: 'change-icon-color',
@@ -42,6 +26,8 @@ chrome.contextMenus.create({
     'https://*.gitea.io/*',
   ],
 });
+
+addDomainPermissionToggle();
 
 const toggleStorage = key => tabs => {
   const activeTab = tabs[0];
