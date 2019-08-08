@@ -9,7 +9,7 @@
 
 > Inspired by [file-icons/atom](https://github.com/file-icons/atom)
 >
-> A simple browser tool changes file's icon on GitHub, GitLab, Bitbucket, gitea and gogs.
+> A simple browser tool changes file's icon on GitHub, GitLab, gitea and gogs.
 
 ## Install
 
