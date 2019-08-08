@@ -1,6 +1,8 @@
 import 'webext-dynamic-content-scripts';
 import addDomainPermissionToggle from 'webext-domain-permission-toggle';
 
+addDomainPermissionToggle();
+
 chrome.contextMenus.create({
   id: 'change-icon-color',
   title: 'Change icon colors',
@@ -26,8 +28,6 @@ chrome.contextMenus.create({
     'https://*.gitea.io/*',
   ],
 });
-
-addDomainPermissionToggle();
 
 const toggleStorage = key => tabs => {
   const activeTab = tabs[0];

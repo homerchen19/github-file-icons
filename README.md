@@ -3,7 +3,6 @@
 <img width="155" alt="screen shot 2018-08-07 at 11 52 14" src="https://user-images.githubusercontent.com/12113222/43749677-67bc7a86-9a38-11e8-9ed2-f5f762caacd4.png">
 
 <p>
-<a target="_blank" href="https://travis-ci.org/xxhomey19/github-file-icon" title="Build Status"><img src="https://travis-ci.org/xxhomey19/github-file-icon.svg?branch=master"></a>
 <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
 <a target="_blank" href="http://makeapullrequest.com" title="PRs Welcome"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
 </p>
