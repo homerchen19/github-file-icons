@@ -26,17 +26,23 @@
     "64": "img/icon-64.png",
     "128": "img/icon-128.png"
   },
+  "browser_action": {
+    "default_icon": "img/icon-64.png"
+  },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": ["*.woff2"],
   "permissions": [
     "contextMenus",
     "storage",
-    "tabs",
-    "webNavigation",
+    "activeTab",
     "https://github.com/*",
     "https://gitlab.com/*",
     "https://bitbucket.org/*",
     "https://*.gogs.io/*",
     "https://*.gitea.io/*"
+  ],
+  "optional_permissions": [
+    "http://*/*",
+    "https://*/*"
   ]
 }
