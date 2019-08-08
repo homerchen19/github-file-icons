@@ -1,12 +1,10 @@
 import 'webext-dynamic-content-scripts';
 import addDomainPermissionToggle from 'webext-domain-permission-toggle';
 
-addDomainPermissionToggle();
-
 chrome.contextMenus.create({
   id: 'change-icon-color',
   title: 'Change icon colors',
-  contexts: ['page', 'page_action'],
+  contexts: ['page', 'page_action', 'browser_action'],
   documentUrlPatterns: [
     'https://github.com/*',
     'https://gitlab.com/*',
@@ -18,7 +16,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.create({
   id: 'toggle-dark-mode',
   title: 'Toggle dark mode',
-  contexts: ['page', 'page_action'],
+  contexts: ['page', 'page_action', 'browser_action'],
   documentUrlPatterns: [
     'https://github.com/*',
     'https://gitlab.com/*',
@@ -26,6 +24,8 @@ chrome.contextMenus.create({
     'https://*.gitea.io/*',
   ],
 });
+
+addDomainPermissionToggle();
 
 const toggleStorage = key => tabs => {
   const activeTab = tabs[0];

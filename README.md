@@ -43,6 +43,12 @@
 
 ![brightness comparison](https://user-images.githubusercontent.com/454813/38455054-4a924cf4-3a40-11e8-86d6-29a030dfde49.jpg)
 
+### Enable on custom domain
+
+> Navigate to your self-hosted Git site. Right click on the extension's icon in the browser bar and click "Enable File Icon for GitHub and GitLab on this domain".
+
+![Screen Shot 2019-08-08 at 21 01 19](https://user-images.githubusercontent.com/12113222/62698132-b7af9200-ba1f-11e9-9edc-396b6b9295be.png)
+
 ## License
 
 MIT © [xxhomey19](https://github.com/xxhomey19)
