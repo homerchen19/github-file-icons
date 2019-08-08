@@ -77,9 +77,7 @@ const update = () => {
   const filenameDoms = select.all(filenameSelector);
   const iconDoms = select.all(iconSelector);
 
-  const filenameDomsLength = filenameDoms.length;
-
-  for (let i = 0; i < filenameDomsLength; i += 1) {
+  for (let i = 0; i < filenameDoms.length; i += 1) {
     const filename =
       isGitHub && isMobile
         ? getGitHubMobileFilename(filenameDoms[i])
