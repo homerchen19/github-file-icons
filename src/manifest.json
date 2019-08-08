@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "File Icon for GitHub, GitLab and Bitbucket",
+  "name": "File Icon for GitHub and GitLab",
   "author": "xxhomey19",
   "homepage_url": "https://github.com/xxhomey19/github-file-icon",
   "background": {
@@ -12,7 +12,6 @@
       "matches": [
         "https://github.com/*",
         "https://gitlab.com/*",
-        "https://bitbucket.org/*",
         "https://*.gogs.io/*",
         "https://*.gitea.io/*"
       ],
@@ -37,12 +36,8 @@
     "activeTab",
     "https://github.com/*",
     "https://gitlab.com/*",
-    "https://bitbucket.org/*",
     "https://*.gogs.io/*",
     "https://*.gitea.io/*"
   ],
-  "optional_permissions": [
-    "http://*/*",
-    "https://*/*"
-  ]
+  "optional_permissions": ["http://*/*", "https://*/*"]
 }

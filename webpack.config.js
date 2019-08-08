@@ -60,7 +60,6 @@ const options = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: 'build' }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
@@ -102,6 +101,7 @@ if (process.env.NODE_ENV === 'development') {
 } else if (process.env.NODE_ENV === 'production') {
   options.mode = 'production';
   options.plugins.push(
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: 'build' }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,

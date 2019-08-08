@@ -10,7 +10,6 @@ chrome.contextMenus.create({
   documentUrlPatterns: [
     'https://github.com/*',
     'https://gitlab.com/*',
-    'https://bitbucket.org/*',
     'https://*.gogs.io/*',
     'https://*.gitea.io/*',
   ],
@@ -23,7 +22,6 @@ chrome.contextMenus.create({
   documentUrlPatterns: [
     'https://github.com/*',
     'https://gitlab.com/*',
-    'https://bitbucket.org/*',
     'https://*.gogs.io/*',
     'https://*.gitea.io/*',
   ],

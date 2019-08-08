@@ -1,6 +1,6 @@
 {
   "name": "github-file-icon",
-  "description": "A Chrome Extension which gives different filetypes different icons to GitHub, Gitlab, Bitbucket, gitea and gogs.",
+  "description": "A Chrome Extension which gives different filetypes different icons to GitHub, GitLab, gitea and gogs.",
   "license": "MIT",
   "author": "xxhomey19",
   "homepage": "https://github.com/xxhomey19/github-file-icon#readme",
@@ -17,7 +17,7 @@
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
     "start": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
-    "zip": "npm run build && zip -r build/File_Icon_For_GitHub_GitLab_And_Bitbucket_$npm_package_version.zip build"
+    "zip": "npm run build && zip -r build/File_Icon_For_GitHub_And_GitLab_$npm_package_version.zip build"
   },
   "dependencies": {
     "dom-loaded": "^1.2.0",

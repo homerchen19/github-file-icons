@@ -9,8 +9,8 @@ let colorsDisabled = false;
 let darkMode = false;
 
 const getSelector = hostname => {
-  switch (hostname) {
-    case 'github.com':
+  switch (true) {
+    case /.*github.*/.test(hostname):
       return {
         filenameSelector:
           'tr.js-navigation-item > td.content > span, .files-list > a.list-item',
@@ -18,17 +18,11 @@ const getSelector = hostname => {
           'tr.js-navigation-item > td.icon, .files-list > a.list-item',
         host: 'github',
       };
-    case 'gitlab.com':
+    case /.*gitlab.*/.test(hostname):
       return {
-        filenameSelector: 'tr.tree-item > td.tree-item-file-name',
+        filenameSelector: 'tr.tree-item > td.tree-item-file-name > a > span',
         iconSelector: 'tr.tree-item > td.tree-item-file-name > i',
         host: 'gitlab',
-      };
-    case 'bitbucket.org':
-      return {
-        filenameSelector: 'tr.iterable-item > td.filename > div > a',
-        iconSelector: 'tr.iterable-item > td.filename > div > a > span',
-        host: 'bitbucket',
       };
     default:
       return {
@@ -104,7 +98,7 @@ const update = () => {
         icon.className = `icon octicon ${className} ${darkClassName}`;
       } else {
         icon.className = `${className} ${darkClassName}`;
-        icon.style.marginRight = host === 'bitbucket' ? '10px' : '3px';
+        icon.style.marginRight = '3px';
       }
 
       iconDom.parentNode.replaceChild(icon, iconDom);
