@@ -41,7 +41,7 @@
     "https://*.gogs.io/*",
     "https://*.gitea.io/*"
   ],
-	"optional_permissions": [
+  "optional_permissions": [
     "http://*/*",
     "https://*/*"
   ]
