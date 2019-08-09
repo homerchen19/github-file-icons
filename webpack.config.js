@@ -52,11 +52,6 @@ const options = {
         test: new RegExp(`.(${fileExtensions.join('|')})$`),
         loader: 'file-loader?name=/fonts/[name].[ext]',
       },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-        exclude: /node_modules/,
-      },
     ],
   },
   plugins: [
