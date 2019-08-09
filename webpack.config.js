@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -52,15 +52,9 @@ const options = {
         test: new RegExp(`.(${fileExtensions.join('|')})$`),
         loader: 'file-loader?name=/fonts/[name].[ext]',
       },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-        exclude: /node_modules/,
-      },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['build']),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
@@ -102,6 +96,7 @@ if (process.env.NODE_ENV === 'development') {
 } else if (process.env.NODE_ENV === 'production') {
   options.mode = 'production';
   options.plugins.push(
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: 'build' }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
