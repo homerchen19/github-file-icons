@@ -1,5 +1,9 @@
 @import '../../node_modules/file-icons-js/css/style.css';
 
+.database-icon::before {
+  left: 2px;
+}
+
 .dark {
   filter: brightness(125%) contrast(150%) drop-shadow(0 0 0 #fff)
     drop-shadow(1px 1px 1px #444);
