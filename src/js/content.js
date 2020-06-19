@@ -13,9 +13,9 @@ const getSelector = hostname => {
     case /.*github.*/.test(hostname):
       return {
         filenameSelector:
-          'tr.js-navigation-item > td.content > span, .files-list > a.list-item',
+          'tr.js-navigation-item > td.content > span, .files-list > a.list-item, div.js-navigation-item > div[role="rowheader"] > span',
         iconSelector:
-          'tr.js-navigation-item > td.icon, .files-list > a.list-item',
+          'tr.js-navigation-item > td.icon, .files-list > a.list-item, div.js-navigation-item > div[role="gridcell"]:first-child',
         host: 'github',
       };
     case /.*gitlab.*/.test(hostname):
@@ -108,9 +108,9 @@ const update = () => {
 
 const observer = new MutationObserver(update);
 const observeFragment = () => {
-  const ajaxFiles = select('.file-wrap');
+  const ajaxFiles = select('.repository-content > .Box.mb-3');
   if (ajaxFiles) {
-    observer.observe(ajaxFiles.parentNode, {
+    observer.observe(ajaxFiles, {
       childList: true,
     });
   }
