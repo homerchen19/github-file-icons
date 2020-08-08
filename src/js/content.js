@@ -2,6 +2,7 @@ import fileIcons from 'file-icons-js';
 import domLoaded from 'dom-loaded';
 import select from 'select-dom';
 import mobile from 'is-mobile';
+import { observe } from 'selector-observer';
 
 import '../css/icons.css';
 
@@ -61,70 +62,76 @@ const getGitHubMobileFilename = filenameDom =>
     .map(node => node.nodeValue.trim())
     .join('');
 
-const update = () => {
-  const { filenameSelector, iconSelector, host } = getSelector(
-    window.location.hostname
-  );
-  const isMobile = mobile();
-  const isGitHub = host === 'github';
+const { filenameSelector, iconSelector, host } = getSelector(
+  window.location.hostname
+);
+const isMobile = mobile();
+const isGitHub = host === 'github';
 
+const replaceIcon = ({ iconDom, filenameDom }) => {
+  const filename =
+    isGitHub && isMobile
+      ? getGitHubMobileFilename(filenameDom)
+      : filenameDom.innerText.trim();
+
+  const isDirectory =
+    iconDom.classList.contains('octicon-file-directory') ||
+    iconDom.classList.contains('fa-folder');
+
+  const className = colorsDisabled
+    ? fileIcons.getClass(filename)
+    : fileIcons.getClassWithColor(filename);
+
+  const darkClassName = darkMode ? 'dark' : '';
+
+  if (className && !isDirectory) {
+    const icon = document.createElement('span');
+
+    if (isGitHub) {
+      icon.className = `icon octicon-file ${className} ${darkClassName}`;
+    } else {
+      icon.className = `${className} ${darkClassName}`;
+      icon.style.marginRight = '3px';
+    }
+
+    iconDom.parentNode.replaceChild(icon, iconDom);
+  }
+};
+
+const update = () => {
   const filenameDoms = select.all(filenameSelector);
   const iconDoms = select.all(iconSelector);
 
   for (let i = 0; i < filenameDoms.length; i += 1) {
-    const filename =
-      isGitHub && isMobile
-        ? getGitHubMobileFilename(filenameDoms[i])
-        : filenameDoms[i].innerText.trim();
-
-    const iconDom = isGitHub
-      ? iconDoms[i].querySelector('.octicon')
-      : iconDoms[i];
-
-    const isDirectory =
-      iconDom.classList.contains('octicon-file-directory') ||
-      iconDom.classList.contains('fa-folder');
-
-    const className = colorsDisabled
-      ? fileIcons.getClass(filename)
-      : fileIcons.getClassWithColor(filename);
-
-    const darkClassName = darkMode ? 'dark' : '';
-
-    if (className && !isDirectory) {
-      const icon = document.createElement('span');
-
-      if (isGitHub) {
-        icon.className = `icon octicon ${className} ${darkClassName}`;
-      } else {
-        icon.className = `${className} ${darkClassName}`;
-        icon.style.marginRight = '3px';
-      }
-
-      iconDom.parentNode.replaceChild(icon, iconDom);
-    }
-  }
-};
-
-const observer = new MutationObserver(update);
-const observeFragment = () => {
-  const ajaxFiles = select('.repository-content > .Box.mb-3');
-  if (ajaxFiles) {
-    observer.observe(ajaxFiles, {
-      childList: true,
+    replaceIcon({
+      iconDom: iconDoms[i],
+      filenameDom: filenameDoms[i],
     });
   }
 };
 
 const init = async () => {
   loadFonts();
-  observeFragment();
 
   await domLoaded;
-  update();
 
-  document.addEventListener('pjax:end', update);
-  document.addEventListener('pjax:end', observeFragment);
+  if (isGitHub) {
+    observe('.js-navigation-container > .js-navigation-item', {
+      add(element) {
+        const filenameDom = select('div[role="rowheader"] > span', element);
+        if (!filenameDom) {
+          return;
+        }
+        replaceIcon({
+          iconDom: select('.octicon', element),
+          filenameDom,
+        });
+      },
+    });
+  } else {
+    update();
+    document.addEventListener('pjax:end', update);
+  }
 };
 
 chrome.storage.sync.get(['colorsDisabled', 'darkMode'], result => {
