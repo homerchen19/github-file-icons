@@ -22,8 +22,8 @@ const fileExtensions = [
 
 const options = {
   entry: {
-    content: path.join(__dirname, 'src', 'js', 'content.js'),
-    background: path.join(__dirname, 'src', 'js', 'background.js'),
+    content: path.join(__dirname, 'src', 'js', 'content.ts'),
+    background: path.join(__dirname, 'src', 'js', 'background.ts'),
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -32,8 +32,8 @@ const options = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
+        test: /\.ts$/,
+        loader: 'ts-loader',
         exclude: /node_modules/,
       },
       {

@@ -1,6 +1,11 @@
 import 'webext-dynamic-content-scripts';
 import addDomainPermissionToggle from 'webext-domain-permission-toggle';
 
+export const enum StorageKey {
+  ColorsDisabled = 'colorsDisabled',
+  DarkMode = 'darkMode',
+}
+
 chrome.contextMenus.create({
   id: 'change-icon-color',
   title: 'Change icon colors',
@@ -27,11 +32,12 @@ chrome.contextMenus.create({
 
 addDomainPermissionToggle();
 
-const toggleStorage = key => tabs => {
+const toggleStorage = (key: StorageKey) => (tabs: chrome.tabs.Tab[]) => {
   const activeTab = tabs[0];
+
   chrome.storage.sync.get(key, storage => {
     chrome.storage.sync.set({ [key]: !storage[key] }, () =>
-      chrome.tabs.reload(activeTab.id)
+      chrome.tabs.reload(activeTab.id!)
     );
   });
 };
@@ -43,7 +49,7 @@ chrome.contextMenus.onClicked.addListener(info => {
         active: true,
         currentWindow: true,
       },
-      toggleStorage('colorsDisabled')
+      toggleStorage(StorageKey.ColorsDisabled)
     );
   } else if (info.menuItemId === 'toggle-dark-mode') {
     chrome.tabs.query(
@@ -51,7 +57,7 @@ chrome.contextMenus.onClicked.addListener(info => {
         active: true,
         currentWindow: true,
       },
-      toggleStorage('darkMode')
+      toggleStorage(StorageKey.DarkMode)
     );
   }
 });

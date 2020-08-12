@@ -14,7 +14,7 @@
   "version": "1.1.0",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --display-error-details --progress --colors",
-    "lint": "eslint src",
+    "lint": "eslint src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "start": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
     "zip": "npm run build && zip -r build/File_Icon_For_GitHub_And_GitLab_$npm_package_version.zip build"
@@ -22,20 +22,18 @@
   "dependencies": {
     "dom-loaded": "^1.2.0",
     "file-icons-js": "^1.0.3",
-    "is-mobile": "^2.1.0",
-    "select-dom": "^5.1.0",
+    "is-mobile": "^2.2.2",
+    "select-dom": "^6.0.2",
     "selector-observer": "^2.1.6",
-    "webext-domain-permission-toggle": "^1.0.0",
+    "webext-domain-permission-toggle": "^1.0.1",
     "webext-dynamic-content-scripts": "^6.0.3-0",
     "webext-options-sync": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-transform-runtime": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/runtime": "^7.5.5",
-    "babel-eslint": "^10.0.2",
-    "babel-loader": "^8.0.6",
+    "@types/chrome": "^0.0.122",
+    "@types/css-font-loading-module": "^0.0.4",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^5.2.0",
@@ -56,6 +54,8 @@
     "prettier-package-json": "^2.1.0",
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^1.4.1",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
     "webpack": "^4.39.1",
     "webpack-chrome-extension-reloader": "^1.3.0",
     "webpack-cli": "^3.3.6",
@@ -76,7 +76,7 @@
       "prettier-package-json --write",
       "git add"
     ],
-    "*.js": [
+    "*.ts": [
       "eslint --fix",
       "git add"
     ]
