@@ -3,7 +3,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 
@@ -38,14 +38,7 @@ const options = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-            },
-          ],
-        }),
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
         exclude: /node_modules/,
       },
       {
@@ -58,25 +51,27 @@ const options = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/manifest.json',
-        transform: content =>
-          Buffer.from(
-            JSON.stringify({
-              description: process.env.npm_package_description,
-              version: process.env.npm_package_version,
-              ...JSON.parse(content.toString()),
-            })
-          ),
-      },
-      {
-        from: 'src/img',
-        to: 'img',
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/manifest.json',
+          transform: (content) =>
+            Buffer.from(
+              JSON.stringify({
+                description: process.env.npm_package_description,
+                version: process.env.npm_package_version,
+                ...JSON.parse(content.toString()),
+              })
+            ),
+        },
+        {
+          from: 'src/img',
+          to: 'img',
+        },
+      ],
+    }),
     new WriteFilePlugin(),
-    new ExtractTextPlugin('[name].css'),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
   ],
 };
 

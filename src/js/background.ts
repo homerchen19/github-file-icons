@@ -35,14 +35,14 @@ addDomainPermissionToggle();
 const toggleStorage = (key: StorageKey) => (tabs: chrome.tabs.Tab[]) => {
   const activeTab = tabs[0];
 
-  chrome.storage.sync.get(key, storage => {
+  chrome.storage.sync.get(key, (storage) => {
     chrome.storage.sync.set({ [key]: !storage[key] }, () =>
       chrome.tabs.reload(activeTab.id!)
     );
   });
 };
 
-chrome.contextMenus.onClicked.addListener(info => {
+chrome.contextMenus.onClicked.addListener((info) => {
   if (info.menuItemId === 'change-icon-color') {
     chrome.tabs.query(
       {

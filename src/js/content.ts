@@ -1,5 +1,5 @@
 import * as fileIcons from 'file-icons-js';
-import domLoaded from 'dom-loaded';
+import * as domLoaded from 'dom-loaded';
 import select from 'select-dom';
 import mobile from 'is-mobile';
 import { observe } from 'selector-observer';
@@ -44,7 +44,7 @@ const loadFonts = () => {
     { name: 'octicons', path: 'fonts/octicons.woff2' },
   ];
 
-  fonts.forEach(font => {
+  fonts.forEach((font) => {
     const fontFace = new FontFace(
       font.name,
       `url("${chrome.extension.getURL(font.path)}") format("woff2")`,
@@ -54,14 +54,16 @@ const loadFonts = () => {
       }
     );
 
-    fontFace.load().then(loadedFontFace => document.fonts.add(loadedFontFace));
+    fontFace
+      .load()
+      .then((loadedFontFace) => document.fonts.add(loadedFontFace));
   });
 };
 
 const getGitHubMobileFilename = (filenameDom: HTMLElement) =>
   Array.from(filenameDom.childNodes)
-    .filter(node => node.nodeType === node.TEXT_NODE)
-    .map(node => node.nodeValue!.trim())
+    .filter((node) => node.nodeType === node.TEXT_NODE)
+    .map((node) => node.nodeValue!.trim())
     .join('');
 
 const { filenameSelector, iconSelector, host } = getSelector(
@@ -147,7 +149,7 @@ const init = async () => {
 
 chrome.storage.sync.get(
   [StorageKey.ColorsDisabled, StorageKey.DarkMode],
-  result => {
+  (result) => {
     colorsDisabled =
       result.colorsDisabled === undefined
         ? colorsDisabled
