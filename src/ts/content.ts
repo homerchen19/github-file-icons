@@ -1,15 +1,16 @@
-import fileIcons from 'file-icons-js';
-import domLoaded from 'dom-loaded';
+import * as fileIcons from 'file-icons-js';
+import * as domLoaded from 'dom-loaded';
 import select from 'select-dom';
 import mobile from 'is-mobile';
 import { observe } from 'selector-observer';
 
+import { StorageKey } from './background';
 import '../css/icons.css';
 
 let colorsDisabled = false;
 let darkMode = false;
 
-const getSelector = hostname => {
+const getSelector = (hostname: string) => {
   switch (true) {
     case /.*github.*/.test(hostname):
       return {
@@ -43,7 +44,7 @@ const loadFonts = () => {
     { name: 'octicons', path: 'fonts/octicons.woff2' },
   ];
 
-  fonts.forEach(font => {
+  fonts.forEach((font) => {
     const fontFace = new FontFace(
       font.name,
       `url("${chrome.extension.getURL(font.path)}") format("woff2")`,
@@ -52,14 +53,17 @@ const loadFonts = () => {
         weight: 'normal',
       }
     );
-    fontFace.load().then(loadedFontFace => document.fonts.add(loadedFontFace));
+
+    fontFace
+      .load()
+      .then((loadedFontFace) => document.fonts.add(loadedFontFace));
   });
 };
 
-const getGitHubMobileFilename = filenameDom =>
+const getGitHubMobileFilename = (filenameDom: HTMLElement) =>
   Array.from(filenameDom.childNodes)
-    .filter(node => node.nodeType === node.TEXT_NODE)
-    .map(node => node.nodeValue.trim())
+    .filter((node) => node.nodeType === node.TEXT_NODE)
+    .map((node) => node.nodeValue!.trim())
     .join('');
 
 const { filenameSelector, iconSelector, host } = getSelector(
@@ -68,17 +72,24 @@ const { filenameSelector, iconSelector, host } = getSelector(
 const isMobile = mobile();
 const isGitHub = host === 'github';
 
-const replaceIcon = ({ iconDom, filenameDom }) => {
+const replaceIcon = ({
+  iconDom,
+  filenameDom,
+}: {
+  iconDom: HTMLElement | null;
+  filenameDom: HTMLElement;
+}) => {
   const filename =
     isGitHub && isMobile
       ? getGitHubMobileFilename(filenameDom)
       : filenameDom.innerText.trim();
 
-  const isDirectory =
-    iconDom.classList.contains('octicon-file-directory') ||
-    iconDom.classList.contains('fa-folder');
+  let isDirectory = false;
+  if (iconDom) {
+    isDirectory = iconDom.classList.contains('octicon-file-directory');
+  }
 
-  const className = colorsDisabled
+  const className: string | null = colorsDisabled
     ? fileIcons.getClass(filename)
     : fileIcons.getClassWithColor(filename);
 
@@ -94,7 +105,9 @@ const replaceIcon = ({ iconDom, filenameDom }) => {
       icon.style.marginRight = '3px';
     }
 
-    iconDom.parentNode.replaceChild(icon, iconDom);
+    if (iconDom) {
+      iconDom.parentNode!.replaceChild(icon, iconDom as HTMLElement);
+    }
   }
 };
 
@@ -119,9 +132,11 @@ const init = async () => {
     observe('.js-navigation-container > .js-navigation-item', {
       add(element) {
         const filenameDom = select('div[role="rowheader"] > span', element);
+
         if (!filenameDom) {
           return;
         }
+
         replaceIcon({
           iconDom: select('.octicon', element),
           filenameDom,
@@ -134,13 +149,16 @@ const init = async () => {
   }
 };
 
-chrome.storage.sync.get(['colorsDisabled', 'darkMode'], result => {
-  colorsDisabled =
-    result.colorsDisabled === undefined
-      ? colorsDisabled
-      : result.colorsDisabled;
+chrome.storage.sync.get(
+  [StorageKey.ColorsDisabled, StorageKey.DarkMode],
+  (result) => {
+    colorsDisabled =
+      result.colorsDisabled === undefined
+        ? colorsDisabled
+        : result.colorsDisabled;
 
-  darkMode = result.darkMode === undefined ? darkMode : result.darkMode;
+    darkMode = result.darkMode === undefined ? darkMode : result.darkMode;
 
-  init();
-});
+    init();
+  }
+);

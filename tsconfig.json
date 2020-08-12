@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "target": "es5",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "types": ["chrome", "css-font-loading-module"],
+    "strict": true,
+    "sourceMap": false
+  },
+  "include": ["src/ts/*.ts"],
+  "exclude": ["node_modules", "build"]
+}

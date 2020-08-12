@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "File Icon for GitHub and GitLab",
-  "author": "xxhomey19",
-  "homepage_url": "https://github.com/xxhomey19/github-file-icon",
+  "name": "File Icons for GitHub and GitLab",
+  "author": "homerchen19",
+  "homepage_url": "https://github.com/homerchen19/github-file-icons",
   "background": {
     "scripts": ["background.bundle.js"],
     "persistent": false
