@@ -105,7 +105,9 @@ const replaceIcon = ({
       icon.style.marginRight = '3px';
     }
 
-    iconDom!.parentNode!.replaceChild(icon, iconDom as HTMLElement);
+    if (iconDom) {
+      iconDom.parentNode!.replaceChild(icon, iconDom as HTMLElement);
+    }
   }
 };
 

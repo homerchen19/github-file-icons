@@ -9,6 +9,6 @@
     "strict": true,
     "sourceMap": false
   },
-  "include": ["src/js/*.ts"],
+  "include": ["src/ts/*.ts"],
   "exclude": ["node_modules", "build"]
 }
