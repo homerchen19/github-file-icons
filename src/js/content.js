@@ -119,9 +119,11 @@ const init = async () => {
     observe('.js-navigation-container > .js-navigation-item', {
       add(element) {
         const filenameDom = select('div[role="rowheader"] > span', element);
+
         if (!filenameDom) {
           return;
         }
+
         replaceIcon({
           iconDom: select('.octicon', element),
           filenameDom,
