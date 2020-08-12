@@ -1,4 +1,4 @@
-# GitHub File Icon
+# GitHub File Icons
 
 <img width="155" alt="screen shot 2018-08-07 at 11 52 14" src="https://user-images.githubusercontent.com/12113222/43749677-67bc7a86-9a38-11e8-9ed2-f5f762caacd4.png">
 
@@ -51,4 +51,4 @@
 
 ## License
 
-MIT © [xxhomey19](https://github.com/xxhomey19)
+MIT © [homerchen19](https://github.com/homerchen19)
