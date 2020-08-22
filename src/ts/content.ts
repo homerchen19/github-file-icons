@@ -10,6 +10,14 @@ import '../css/icons.css';
 let colorsDisabled = false;
 let darkMode = false;
 
+const fonts = [
+  { name: 'FontAwesome', path: 'fonts/fontawesome.woff2' },
+  { name: 'Mfizz', path: 'fonts/mfixx.woff2' },
+  { name: 'Devicons', path: 'fonts/devopicons.woff2' },
+  { name: 'file-icons', path: 'fonts/file-icons.woff2' },
+  { name: 'octicons', path: 'fonts/octicons.woff2' },
+];
+
 const getSelector = (hostname: string) => {
   switch (true) {
     case /.*github.*/.test(hostname):
@@ -36,14 +44,6 @@ const getSelector = (hostname: string) => {
 };
 
 const loadFonts = () => {
-  const fonts = [
-    { name: 'FontAwesome', path: 'fonts/fontawesome.woff2' },
-    { name: 'Mfizz', path: 'fonts/mfixx.woff2' },
-    { name: 'Devicons', path: 'fonts/devopicons.woff2' },
-    { name: 'file-icons', path: 'fonts/file-icons.woff2' },
-    { name: 'octicons', path: 'fonts/octicons.woff2' },
-  ];
-
   fonts.forEach((font) => {
     const fontFace = new FontFace(
       font.name,
@@ -138,7 +138,7 @@ const init = async () => {
         }
 
         replaceIcon({
-          iconDom: select('.octicon', element),
+          iconDom: select('.octicon-file', element),
           filenameDom,
         });
       },
