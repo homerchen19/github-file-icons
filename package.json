@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/homerchen19/github-file-icons/issues"
   },
-  "version": "1.1.1",
+  "version": "1.1.2",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --display-error-details --progress --colors",
     "lint": "eslint src/**/*.ts",
