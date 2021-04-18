@@ -4,7 +4,7 @@
     "sourceType": "module"
   },
   "parser": "@typescript-eslint/parser",
-  "extends": ["prettier/@typescript-eslint", "plugin:prettier/recommended"],
+  "extends": ["plugin:prettier/recommended"],
   "globals": {
     "chrome": true
   },
@@ -23,6 +23,5 @@
     ],
     "no-param-reassign": "off",
     "func-names": "off"
-  },
-  "plugins": ["prettier"]
+  }
 }
