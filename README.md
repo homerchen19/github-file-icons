@@ -14,11 +14,11 @@
 ## Install
 
 <a href="https://chrome.google.com/webstore/detail/github-file-icons/ficfmibkjjnpogdcfhfokmihanoldbfe">
-  <img border="0" src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_496x150.png" width="172">
+  <img border="0" src="https://storage.googleapis.com/chrome-gcs-uploader.appspot.com/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/HRs9MPufa1J1h5glNhut.png" width="172" >
 </a>
 <br/>
 <a href="https://addons.mozilla.org/en-US/firefox/addon/github-file-icons/">
-<img border="0" src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png" width="172" height="60">
+<img border="0" src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png" width="172">
 </a>
 
 ## Options
