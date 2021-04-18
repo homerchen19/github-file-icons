@@ -138,7 +138,7 @@ const init = async () => {
         }
 
         replaceIcon({
-          iconDom: select('.octicon-file', element),
+          iconDom: select('.octicon-file', element) as HTMLElement,
           filenameDom,
         });
       },

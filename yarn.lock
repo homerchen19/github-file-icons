@@ -108,10 +108,10 @@
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
 
-"@types/chrome@0.0.106":
-  version "0.0.106"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.106.tgz#bf1f75215ac06bae6f7c3a7c05d2826d67b85f3c"
-  integrity sha512-sCQa+QJL/Kl+6ngU4xD1VjTFIkQDizOHN94zbb7byK9D3U79x/KXjqXyS7lHoa2q9xw3bWePb+giLhBKOILRuA==
+"@types/chrome@0.0.128":
+  version "0.0.128"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.128.tgz#5dbd8b2539a367353fbe4386f119b510105f8b6a"
+  integrity sha512-eGc599TDtersMBW1cSnExHm0IHrXrO5xdk6Sa2Dq30ED+hR1rpT1ez0NNcCgvGO52nmktGfyvd3Uyquzv3LL4g==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
@@ -148,9 +148,10 @@
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@types/filewriter/-/filewriter-0.0.28.tgz#c054e8af4d9dd75db4e63abc76f885168714d4b3"
 
-"@types/firefox-webext-browser@^67.0.2":
-  version "67.0.2"
-  resolved "https://registry.yarnpkg.com/@types/firefox-webext-browser/-/firefox-webext-browser-67.0.2.tgz#04625d3294fbca54bccf42dae43f636c5b6452a2"
+"@types/firefox-webext-browser@^82.0.0":
+  version "82.0.0"
+  resolved "https://registry.yarnpkg.com/@types/firefox-webext-browser/-/firefox-webext-browser-82.0.0.tgz#4d0f5cfebd7321d2cbf0ccfb6032570f0138b958"
+  integrity sha512-zKHePkjMx42KIUUZCPcUiyu1tpfQXH9VR4iDYfns3HvmKVJzt/TAFT+DFVroos8BI9RH78YgF3Hi/wlC6R6cKA==
 
 "@types/glob@^7.1.1":
   version "7.1.1"
@@ -1233,11 +1234,14 @@ contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
 
-content-scripts-register-polyfill@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/content-scripts-register-polyfill/-/content-scripts-register-polyfill-1.0.0.tgz#21bc2df475ea48aa83737d24675a6a44e4a006a7"
+content-scripts-register-polyfill@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/content-scripts-register-polyfill/-/content-scripts-register-polyfill-2.1.0.tgz#82d92787ac1d0ea7bddddd5f10fa7e587d15c185"
+  integrity sha512-eEaBuN3eV9YwQ3pvrt61E+VimWOMvfwVri8Z0X+Dk9t5AkuLqTBQjAd649pfP4Rmy1xZy+SHtGAFXGxLeB2Ceg==
   dependencies:
-    "@types/firefox-webext-browser" "^67.0.2"
+    "@types/firefox-webext-browser" "^82.0.0"
+    webext-patterns "^1.0.0"
+    webext-polyfill-kinda "0.0.2"
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -1543,12 +1547,6 @@ doctrine@^3.0.0:
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-3.0.0.tgz#addebead72a6574db783639dc87a121773973961"
   dependencies:
     esutils "^2.0.2"
-
-dom-form-serializer@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/dom-form-serializer/-/dom-form-serializer-1.0.7.tgz#19a90f56b4d342040bf9fcc78e4f380396d3baa5"
-  dependencies:
-    matches-selector "^1.0.0"
 
 dom-loaded@^2.0.0:
   version "2.0.0"
@@ -2110,9 +2108,10 @@ file-entry-cache@^6.0.1:
   dependencies:
     flat-cache "^3.0.4"
 
-file-icons-js@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/file-icons-js/-/file-icons-js-1.0.3.tgz#d0765dc1d86aba4b2d7664a39e4ef7af9f12c5af"
+file-icons-js@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/file-icons-js/-/file-icons-js-1.1.0.tgz#da5e0679a58ab661abf9ec6c2a47c5f14f638ab6"
+  integrity sha512-EwR5RJoNIp5Wnzc+AF1oyBYZhOqPuPm0QHzfCaeh5KJpLB5lWIsxswiAwj3m8lIj7ddBzYBJDDnIr6IVrRCy8Q==
 
 file-loader@^6.2.0:
   version "6.2.0"
@@ -2843,10 +2842,10 @@ is-glob@^4.0.0, is-glob@^4.0.1, is-glob@~4.0.1:
   dependencies:
     is-extglob "^2.1.1"
 
-is-mobile@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/is-mobile/-/is-mobile-2.2.2.tgz#f6c9c5d50ee01254ce05e739bdd835f1ed4e9954"
-  integrity sha512-wW/SXnYJkTjs++tVK5b6kVITZpAZPtUrt9SF80vvxGiF/Oywal+COk1jlRkiVq15RFNEQKQY31TkV24/1T5cVg==
+is-mobile@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/is-mobile/-/is-mobile-3.0.0.tgz#683005f3a40adbc0ca5867e1d5e75d7bbf66d764"
+  integrity sha512-UruBjgykgDJ5zRpJ8Zgh9ZUe4jQaHD8klX9FlkOt0oPyu3FpwJpxHvKg4+lhJOWGxSrMKsRuPFk60xeltvyliQ==
 
 is-negative-zero@^2.0.1:
   version "2.0.1"
@@ -3272,10 +3271,6 @@ map-visit@^1.0.0:
   integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
   dependencies:
     object-visit "^1.0.0"
-
-matches-selector@^1.0.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/matches-selector/-/matches-selector-1.2.0.tgz#d1814e7e8f43e69d22ac33c9af727dc884ecf12a"
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -4447,10 +4442,12 @@ schema-utils@^3.0.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
-select-dom@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/select-dom/-/select-dom-6.0.2.tgz#3a7e0afbc55876e163e03bcb086368a71bb31ede"
-  integrity sha512-fnRexLCjOE1XtMiV0xGACx4GJFMs/eatOQM0LWL9lxWB8DJ/FeXO39ztqUh6dZCOdoFo/g6jGJIIqNWoMsNLPA==
+select-dom@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/select-dom/-/select-dom-7.1.1.tgz#9145f1c3218f27082d739eafd897ce5511f6ae0f"
+  integrity sha512-W4052AVb0TkSU8MgiNLiVio4WqCLpDSWPYz5RI6C5MoXfjo6b8p0v/Ld2iK9F/FO2FUqn6N0jFlBGyl2z5dzbA==
+  dependencies:
+    typed-query-selector "^2.4.1"
 
 selector-observer@^2.1.6:
   version "2.1.6"
@@ -4990,10 +4987,6 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-throttle-debounce@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.1.0.tgz#257e648f0a56bd9e54fe0f132c4ab8611df4e1d5"
-
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -5116,6 +5109,11 @@ type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
+
+typed-query-selector@^2.4.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/typed-query-selector/-/typed-query-selector-2.5.1.tgz#4e9bec6c6f2e246a74408d8dca36619653d0dc72"
+  integrity sha512-Yq3y5HUp4ZZpadk/HXthq+P0qtQ7buRBFyhI5Jnv+e31TAQ0gpg7F2i2t4Bbj5/wULbzn4DEDBYvhjQjyPKLQA==
 
 typedarray@^0.0.6:
   version "0.0.6"
@@ -5273,47 +5271,52 @@ watchpack@^1.7.4:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
 
-webext-additional-permissions@^1.0.0:
+webext-additional-permissions@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/webext-additional-permissions/-/webext-additional-permissions-2.0.1.tgz#713e5398e6421a8da33e3e282e2ebbfe0ab62ad2"
+  integrity sha512-K8OmXiE9QTPUVI6XKyMmV3FY8s+6DENxvRg40fzo64Mh2Kb3q+ZUPx73mnGeIiA5hfmstXdwGXULEdVD1IEYSw==
+  dependencies:
+    "@types/chrome" "0.0.128"
+
+webext-detect-page@^2.0.5, webext-detect-page@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/webext-detect-page/-/webext-detect-page-2.0.6.tgz#dbad250de3b8e82cf694e684741d00e5ac5587ef"
+  integrity sha512-IGpAHdsHz9mwpT8nHyzbdVz1ArUnsRf3PNGMprk3MgEtyN+jhcV4JqkOjNiKIb3k9sZ4WKY4lCxi5MtV1MuTYg==
+
+webext-domain-permission-toggle@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/webext-domain-permission-toggle/-/webext-domain-permission-toggle-2.1.0.tgz#e178ff6e9e1fb87a74aa0b989deb1e7dd0eed357"
+  integrity sha512-kRpTL0K783EYCh73sJnCzYyWeiwzFI0NVzJNgnYLdJ5pJv5TOZ240QVfzsumzuOz7gJENJ1S2gdPnMvUqPNC7g==
+  dependencies:
+    webext-additional-permissions "^2.0.1"
+    webext-detect-page "^2.0.6"
+    webext-patterns "^1.0.0"
+    webext-polyfill-kinda "^0.0.2"
+
+webext-dynamic-content-scripts@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/webext-dynamic-content-scripts/-/webext-dynamic-content-scripts-7.1.1.tgz#3e6c04b48d5b27882e2d2e07932c83413b6dc28a"
+  integrity sha512-TnFqRYgRFxlffmGOpcMgt3eWwkVgyTk+I0lrXY5xcl29idEeihsKeHypZWn6REwWEvhm4O8Mm8LzaCNxhQyBJg==
+  dependencies:
+    content-scripts-register-polyfill "^2.1.0"
+    webext-additional-permissions "^2.0.1"
+
+webext-options-sync@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/webext-options-sync/-/webext-options-sync-2.0.1.tgz#4e00b624113be913f5691f1490b0f9542f998016"
+  integrity sha512-y7px8AfTrAMcIRxYcGEu2UVAj18C0H0SYNiF9orD9+p3Q8/r6wbUH0B/OU4g7v6DmvhNtg5XEO1ZUEr+XfYqCA==
+  dependencies:
+    webext-detect-page "^2.0.5"
+
+webext-patterns@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/webext-additional-permissions/-/webext-additional-permissions-1.0.0.tgz#fe8977f702bcb7a3aa23d09efc87f308135b4fca"
-  integrity sha512-QHMAah++muVoK/d+aYM56BY2DdpMAFMvW/dG28/+SdYJxgUsShsm3fOuwCPIiAIgsC8lsM52hZNJ1ROeii1lKg==
-  dependencies:
-    "@types/chrome" "0.0.106"
+  resolved "https://registry.yarnpkg.com/webext-patterns/-/webext-patterns-1.0.0.tgz#d674798b7267ceaec1f6c3e6287017c7ba1aa1e5"
+  integrity sha512-7LU6UtRt9Nql2+EHJX75ohfXR5ZR09Z9GrXWxi0TdAGt19WVOClUiwXlFa4tvhgfEPFDoSx8svd7aie3A+RC5w==
 
-webext-detect-page@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/webext-detect-page/-/webext-detect-page-2.0.4.tgz#ecdb421ffced49de2d86a29f8cea61963e62caea"
-  integrity sha512-g6exdnB37cb6jWQaQddcnibCjIIoe00D6MUqbgTQ5FfOvvnyqhRg3+n28PToEo2GTcYroEQwcfFoUkAmDdUVYA==
-
-webext-domain-permission-toggle@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/webext-domain-permission-toggle/-/webext-domain-permission-toggle-1.0.1.tgz#e0b2a3acbc5edc523c5d19e86c87aff79e6b562e"
-  integrity sha512-vP3Io5KB+9YSlexDpSykcPKyu/U9pH07YGRIN1snwl92mvHy0aQlOmwYhAdfxLf4KKT7E1te1Bo0+ZvZJYFK2g==
-  dependencies:
-    webext-additional-permissions "^1.0.0"
-
-webext-dynamic-content-scripts@^6.0.4:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/webext-dynamic-content-scripts/-/webext-dynamic-content-scripts-6.0.4.tgz#06caa97d6cbefb3cca9af421580e002bfff30ee2"
-  integrity sha512-RO3ieZT14LVnUUYi3k/OYHtBWSxDlG6xvrSVSDm90xSBV2va/Iicq3SUTg3uiZW7ovfDQO4vjPMNL1ZCuKLS2Q==
-  dependencies:
-    "@types/chrome" "0.0.106"
-    content-scripts-register-polyfill "^1.0.0"
-    webext-additional-permissions "^1.0.0"
-    webext-permissions-events-polyfill "^1.0.1"
-
-webext-options-sync@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/webext-options-sync/-/webext-options-sync-1.2.3.tgz#75f33949bf133dc70a1e1d969d14608b5950bc23"
-  integrity sha512-182rV8Q2vXSxfUsQjoEmdfV7byy2a+kPjI2J0DkQuKjk77IjWRDt9zGOsW9PBYtCCWsz99xIIXHOcV4tR+TUtQ==
-  dependencies:
-    dom-form-serializer "^1.0.7"
-    throttle-debounce "^2.1.0"
-    webext-detect-page "^2.0.4"
-
-webext-permissions-events-polyfill@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/webext-permissions-events-polyfill/-/webext-permissions-events-polyfill-1.0.1.tgz#c5108d140b03efbd06b34c7211694b8cde928177"
+webext-polyfill-kinda@0.0.2, webext-polyfill-kinda@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/webext-polyfill-kinda/-/webext-polyfill-kinda-0.0.2.tgz#49e5235c6a386f94ed3ae5a8ca5b42a8c088774e"
+  integrity sha512-Kecc1rDvsQtZJgnIAsMOQBj0WAL6v9Em42AW5EHcoute7z50lUQ2tXUfTyiydOauaT8VYK0tHYZlMWo7mlBM8g==
 
 webextension-polyfill@^0.5.0:
   version "0.5.0"
