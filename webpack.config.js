@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
+const ExtensionReloader = require('webpack-extension-reloader');
 
 const fileExtensions = [
   'jpg',
@@ -33,7 +33,7 @@ const options = {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'ts-loader',
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
@@ -43,7 +43,7 @@ const options = {
       },
       {
         test: new RegExp(`.(${fileExtensions.join('|')})$`),
-        loader: 'file-loader?name=/fonts/[name].[ext]',
+        use: 'file-loader?name=/fonts/[name].[ext]',
       },
     ],
   },
@@ -79,7 +79,8 @@ if (process.env.NODE_ENV === 'development') {
   options.mode = 'development';
   options.devtool = 'cheap-module-source-map';
   options.plugins.push(
-    new ChromeExtensionReloader({
+    new ExtensionReloader({
+      manifest: 'src/manifest.json',
       port: 9090,
       reloadPage: true,
       entries: {
