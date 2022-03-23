@@ -186,3 +186,10 @@ chrome.storage.sync.get(
     init();
   }
 );
+
+chrome.runtime.onMessage.addListener(function (request) {
+  if (request.message === 'file-icon-extension-page-update') {
+    // reinitialize after page update
+    init();
+  }
+});
