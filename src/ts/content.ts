@@ -18,9 +18,27 @@ const fonts = [
   { name: 'octicons', path: 'fonts/octicons.woff2' },
 ];
 
+const isGithubFilesPage = () => {
+  if (!/.*github.*/.test(window.location.hostname)) return false;
+  const pathname = window.location.pathname;
+  const filesPageUrlPattern = new RegExp(/^\/.+\/.+\/pull\/\d+\/files$/);
+  return pathname.match(filesPageUrlPattern) ? true : false;
+};
+
 const getSelector = (hostname: string) => {
   switch (true) {
     case /.*github.*/.test(hostname):
+      // if it is a github pull request files page
+      if (isGithubFilesPage()) {
+        return {
+          filenameSelector:
+            'ul.ActionList>li[id^=file-tree-item-diff-][role=treeitem]>a>span:nth-child(2)',
+          iconSelector:
+            'ul.ActionList>li[id^=file-tree-item-diff-][role=treeitem]>a>span:first-child',
+          host: 'github',
+        };
+      }
+
       return {
         filenameSelector:
           'tr.js-navigation-item > td.content > span, .files-list > a.list-item, div.js-navigation-item > div[role="rowheader"] > span',
@@ -129,9 +147,15 @@ const init = async () => {
   await domLoaded;
 
   if (isGitHub) {
-    observe('.js-navigation-container > .js-navigation-item', {
+    const observeSelector = isGithubFilesPage()
+      ? 'ul.ActionList > li[id^=file-tree-item-diff-][role=treeitem]'
+      : '.js-navigation-container > .js-navigation-item';
+    observe(observeSelector, {
       add(element) {
-        const filenameDom = select('div[role="rowheader"] > span', element);
+        const fileSelector = isGithubFilesPage()
+          ? 'li[id^=file-tree-item-diff-][role=treeitem] > a > span:nth-child(2)'
+          : 'div[role="rowheader"] > span';
+        const filenameDom = select(fileSelector, element);
 
         if (!filenameDom) {
           return;
@@ -162,3 +186,10 @@ chrome.storage.sync.get(
     init();
   }
 );
+
+chrome.runtime.onMessage.addListener(function (request) {
+  if (request.message === 'file-icon-extension-page-update') {
+    // reinitialize after page update
+    init();
+  }
+});
