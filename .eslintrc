@@ -4,7 +4,16 @@
     "sourceType": "module"
   },
   "parser": "@typescript-eslint/parser",
-  "extends": ["plugin:prettier/recommended"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "globals": {
     "chrome": true
   },
@@ -14,13 +23,7 @@
     "jest": true
   },
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "es5",
-        "singleQuote": true
-      }
-    ],
+    "prettier/prettier": "error",
     "no-param-reassign": "off",
     "func-names": "off"
   }

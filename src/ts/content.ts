@@ -10,6 +10,12 @@ import '../css/icons.css';
 let colorsDisabled = false;
 let darkMode = false;
 
+const enum Host {
+  GitHub = 'github',
+  GitLab = 'gitlab',
+  Others = 'others',
+}
+
 const fonts = [
   { name: 'FontAwesome', path: 'fonts/fontawesome.woff2' },
   { name: 'Mfizz', path: 'fonts/mfixx.woff2' },
@@ -19,7 +25,10 @@ const fonts = [
 ];
 
 const isGithubFilesPage = () => {
-  if (!/.*github.*/.test(window.location.hostname)) return false;
+  if (!/.*github.*/.test(window.location.hostname)) {
+    return false;
+  }
+
   const pathname = window.location.pathname;
   const filesPageUrlPattern = new RegExp(/^\/.+\/.+\/pull\/\d+\/files$/);
   return pathname.match(filesPageUrlPattern) ? true : false;
@@ -35,7 +44,7 @@ const getSelector = (hostname: string) => {
             'ul.ActionList>li[id^=file-tree-item-diff-][role=treeitem]>a>span:nth-child(2)',
           iconSelector:
             'ul.ActionList>li[id^=file-tree-item-diff-][role=treeitem]>a>span:first-child',
-          host: 'github',
+          host: Host.GitHub,
         };
       }
 
@@ -44,22 +53,28 @@ const getSelector = (hostname: string) => {
           'tr.js-navigation-item > td.content > span, .files-list > a.list-item, div.js-navigation-item > div[role="rowheader"] > span',
         iconSelector:
           'tr.js-navigation-item > td.icon, .files-list > a.list-item, div.js-navigation-item > div[role="gridcell"]:first-child',
-        host: 'github',
+        host: Host.GitHub,
       };
     case /.*gitlab.*/.test(hostname):
       return {
         filenameSelector: 'tr.tree-item > td.tree-item-file-name > a > span',
         iconSelector: 'tr.tree-item > td.tree-item-file-name > i',
-        host: 'gitlab',
+        host: Host.GitLab,
       };
     default:
       return {
         filenameSelector: 'tr > td.name > a',
         iconSelector: 'tr > td.name > span',
-        host: 'others',
+        host: Host.Others,
       };
   }
 };
+
+const { filenameSelector, iconSelector, host } = getSelector(
+  window.location.hostname
+);
+const isMobile = mobile();
+const isGitHub = host === Host.GitHub;
 
 const loadFonts = () => {
   fonts.forEach((font) => {
@@ -83,12 +98,6 @@ const getGitHubMobileFilename = (filenameDom: HTMLElement) =>
     .filter((node) => node.nodeType === node.TEXT_NODE)
     .map((node) => node.nodeValue!.trim())
     .join('');
-
-const { filenameSelector, iconSelector, host } = getSelector(
-  window.location.hostname
-);
-const isMobile = mobile();
-const isGitHub = host === 'github';
 
 const replaceIcon = ({
   iconDom,
