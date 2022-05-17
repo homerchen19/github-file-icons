@@ -99,6 +99,10 @@ if (process.env.NODE_ENV === 'development') {
     }),
     new TerserPlugin()
   );
+  options.stats = {
+    colors: true,
+    errorDetails: true,
+  };
 }
 
 module.exports = options;
