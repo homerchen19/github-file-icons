@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm i
-      - run: npm run lint
-      - run: npm run zip
+      - run: npm i -g yarn
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn zip
