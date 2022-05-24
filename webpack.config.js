@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const ExtensionReloader = require('webpack-extension-reloader');
+const ExtReloader = require('webpack-ext-reloader');
 
 const fileExtensions = [
   'jpg',
@@ -79,7 +79,7 @@ if (process.env.NODE_ENV === 'development') {
   options.mode = 'development';
   options.devtool = 'cheap-module-source-map';
   options.plugins.push(
-    new ExtensionReloader({
+    new ExtReloader({
       manifest: 'src/manifest.json',
       port: 9090,
       reloadPage: true,
@@ -99,6 +99,10 @@ if (process.env.NODE_ENV === 'development') {
     }),
     new TerserPlugin()
   );
+  options.stats = {
+    colors: true,
+    errorDetails: true,
+  };
 }
 
 module.exports = options;
