@@ -44,7 +44,7 @@ jobs:
       - name: Build Extension
         run: |
           npm install
-          npm build
+          npm run build
           npm pack:safari
 
           cd safari
