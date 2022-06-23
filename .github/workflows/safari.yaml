@@ -45,7 +45,7 @@ jobs:
         run: |
           npm install
           npm run build
-          npm run pack:safari
+          #npm run pack:safari
 
       - name: Build Extension
         run: |
@@ -65,9 +65,9 @@ jobs:
       - name: Make Zip
         run: |
           cd 'safari/File Icons for GitHub and GitLab.xcodeproj/project.ipa'
-          zip -r package.zip .
+          zip -r 'File Icons for GitHub and GitLab.zip' 'File Icons for GitHub and GitLab.app'
 
       - uses: actions/upload-artifact@v3
         with:
           name: 'File Icons for GitHub and GitLab'
-          path: 'safari/File Icons for GitHub and GitLab.xcodeproj/project.ipa/package.zip'
+          path: 'safari/File Icons for GitHub and GitLab.xcodeproj/project.ipa/File Icons for GitHub and GitLab.zip'
