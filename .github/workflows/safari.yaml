@@ -41,19 +41,24 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
 
-      - name: Build Extension
+      - name: npm Prepare
         run: |
           npm install
           npm run build
           npm run pack:safari
 
+      - name: Build Extension
+        run: |
           cd safari
 
           xcodebuild -scheme 'File Icons for GitHub and GitLab (macOS)' clean build
           xcodebuild -scheme 'File Icons for GitHub and GitLab (macOS)' archive -archivePath 'File Icons for GitHub and GitLab.xcodeproj/project.xcarchive'
           xcodebuild -exportArchive -archivePath 'File Icons for GitHub and GitLab.xcodeproj/project.xcarchive'  -exportPath  'File Icons for GitHub and GitLab.xcodeproj/project.ipa' -exportOptionsPlist 'File Icons Extension/Info.plist'
 
-          # make it executable
+      - name: Make Executable
+        run: |
+          cd safari
+
           sudo chmod +x 'File Icons for GitHub and GitLab.xcodeproj/project.ipa/File Icons for GitHub and GitLab.app'
           sudo chmod +x 'File Icons for GitHub and GitLab.xcodeproj/project.ipa/File Icons for GitHub and GitLab.app/Contents/MacOS/File Icons for GitHub and GitLab'
 
