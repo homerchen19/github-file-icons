@@ -64,10 +64,10 @@ jobs:
 
       - name: Make Zip
         run: |
-          cd 'safari'
-          zip -r package.zip 'File Icons for GitHub and GitLab.xcodeproj/project.ipa/*'
+          cd 'safari/File Icons for GitHub and GitLab.xcodeproj/project.ipa'
+          zip -r package.zip .
 
       - uses: actions/upload-artifact@v3
         with:
           name: 'File Icons for GitHub and GitLab'
-          path: 'safari/package.zip'
+          path: 'safari/File Icons for GitHub and GitLab.xcodeproj/project.ipa/package.zip'
