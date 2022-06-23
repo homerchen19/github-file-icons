@@ -62,7 +62,12 @@ jobs:
           sudo chmod +x 'File Icons for GitHub and GitLab.xcodeproj/project.ipa/File Icons for GitHub and GitLab.app'
           sudo chmod +x 'File Icons for GitHub and GitLab.xcodeproj/project.ipa/File Icons for GitHub and GitLab.app/Contents/MacOS/File Icons for GitHub and GitLab'
 
+      - name: Make Zip
+        run: |
+          cd safari
+          zip -r package.zip 'File Icons for GitHub and GitLab.xcodeproj/project.ipa/'
+
       - uses: actions/upload-artifact@v3
         with:
           name: 'File Icons for GitHub and GitLab'
-          path: 'safari/File Icons for GitHub and GitLab.xcodeproj/project.ipa'
+          path: 'safari/package.zip'
