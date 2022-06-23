@@ -50,8 +50,8 @@ jobs:
           cd safari
 
           xcodebuild -scheme 'File Icons for GitHub and GitLab (macOS)' clean build
-          xcodebuild -scheme 'File Icons for GitHub and GitLab (macOS)' clean archive -archivePath 'File Icons for GitHub and GitLab.xcodeproj/project.xcarchive'
-          xcodebuild -exportArchive -archivePath 'File Icons for GitHub and GitLab.xcodeproj/project.xcarchive'  -exportPath  'File Icons for GitHub and GitLab.xcodeproj/project.ipa' -exportOptionsPlist 'File Icons Extension/Info.plist' -exportProvisioningProfile "Christopher Pickering"
+          xcodebuild -scheme 'File Icons for GitHub and GitLab (macOS)' archive -archivePath 'File Icons for GitHub and GitLab.xcodeproj/project.xcarchive'
+          xcodebuild -exportArchive -archivePath 'File Icons for GitHub and GitLab.xcodeproj/project.xcarchive'  -exportPath  'File Icons for GitHub and GitLab.xcodeproj/project.ipa' -exportOptionsPlist 'File Icons Extension/Info.plist'
 
       - uses: actions/upload-artifact@v3
         with:
