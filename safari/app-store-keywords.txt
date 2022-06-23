@@ -1,0 +1,1 @@
+github,gitlab,icons,ui,gitea,interface,fileicons

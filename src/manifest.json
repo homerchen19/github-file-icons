@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
   "name": "File Icons for GitHub and GitLab",
+  "description": "A simple browser tool changes file's icon on GitHub, GitLab, gitea and gogs.",
   "author": "homerchen19",
   "homepage_url": "https://github.com/homerchen19/github-file-icons",
   "background": {
