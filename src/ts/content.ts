@@ -1,11 +1,19 @@
-import * as fileIcons from 'file-icons-js';
 import * as domLoaded from 'dom-loaded';
 import select from 'select-dom';
 import mobile from 'is-mobile';
 import { observe } from 'selector-observer';
+import {
+  getClass,
+  getClassWithColor,
+  getClassWithDarkColor,
+} from '../file-icons/file-icons';
 
 import { StorageKey } from './background';
 import '../css/icons.css';
+
+import '../file-icons/css/fonts.css';
+import '../file-icons/css/colors.css';
+import '../file-icons/css/icons.css';
 
 let colorsDisabled = false;
 let darkMode = false;
@@ -21,7 +29,7 @@ const fonts = [
   { name: 'Mfizz', path: 'fonts/mfixx.woff2' },
   { name: 'Devicons', path: 'fonts/devopicons.woff2' },
   { name: 'file-icons', path: 'fonts/file-icons.woff2' },
-  { name: 'octicons', path: 'fonts/octicons.woff2' },
+  { name: 'Octicons Regular', path: 'fonts/octicons.woff2' },
 ];
 
 const isGithubFilesPage = () => {
@@ -96,7 +104,7 @@ const loadFonts = () => {
 const getGitHubMobileFilename = (filenameDom: HTMLElement) =>
   Array.from(filenameDom.childNodes)
     .filter((node) => node.nodeType === node.TEXT_NODE)
-    .map((node) => node.nodeValue!.trim())
+    .map((node) => node.nodeValue?.trim() || '')
     .join('');
 
 const replaceIcon = ({
@@ -116,24 +124,32 @@ const replaceIcon = ({
     isDirectory = iconDom.classList.contains('octicon-file-directory');
   }
 
-  const className: string | null = colorsDisabled
-    ? fileIcons.getClass(filename)
-    : fileIcons.getClassWithColor(filename);
+  const getClassName = () => {
+    if (colorsDisabled) {
+      return getClass(filename);
+    }
 
-  const darkClassName = darkMode ? 'dark' : '';
+    if (darkMode) {
+      return getClassWithDarkColor(filename);
+    }
+
+    return getClassWithColor(filename);
+  };
+
+  const className = getClassName();
 
   if (className && !isDirectory) {
     const icon = document.createElement('span');
 
     if (isGitHub) {
-      icon.className = `icon octicon-file ${className} ${darkClassName}`;
+      icon.className = `icon octicon-file ${className}`;
     } else {
-      icon.className = `${className} ${darkClassName}`;
+      icon.className = `${className}`;
       icon.style.marginRight = '3px';
     }
 
-    if (iconDom) {
-      iconDom.parentNode!.replaceChild(icon, iconDom as HTMLElement);
+    if (iconDom?.parentNode) {
+      iconDom.parentNode.replaceChild(icon, iconDom as HTMLElement);
     }
   }
 };

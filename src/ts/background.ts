@@ -36,9 +36,11 @@ const toggleStorage = (key: StorageKey) => (tabs: chrome.tabs.Tab[]) => {
   const activeTab = tabs[0];
 
   chrome.storage.sync.get(key, (storage) => {
-    chrome.storage.sync.set({ [key]: !storage[key] }, () =>
-      chrome.tabs.reload(activeTab.id!)
-    );
+    chrome.storage.sync.set({ [key]: !storage[key] }, () => {
+      if (activeTab.id !== undefined) {
+        chrome.tabs.reload(activeTab.id);
+      }
+    });
   });
 };
 
