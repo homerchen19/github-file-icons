@@ -2,11 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>LSMinimumSystemVersion</key>
-	<string>10.14</string>
-	<key>SFSafariWebExtensionConverterVersion</key>
-	<string>13.3.1</string>
+  <key>method</key>
+  <string>developer-id</string>
+  <key>signingStyle</key>
+  <string>automatic</string>
 </dict>
 </plist>
