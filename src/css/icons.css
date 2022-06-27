@@ -1,3 +1,7 @@
+@import '../file-icons/css/icons.css';
+@import '../file-icons/css/colors.css';
+@import '../file-icons/css/fonts.css';
+
 .database-icon::before {
   left: 2px;
 }

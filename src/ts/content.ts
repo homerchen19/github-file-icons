@@ -11,10 +11,6 @@ import {
 import { StorageKey } from './background';
 import '../css/icons.css';
 
-import '../file-icons/css/fonts.css';
-import '../file-icons/css/colors.css';
-import '../file-icons/css/icons.css';
-
 let colorsDisabled = false;
 let darkMode = false;
 
