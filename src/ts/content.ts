@@ -13,6 +13,7 @@ import '../css/icons.css';
 
 let colorsDisabled = false;
 let darkMode = false;
+let siteDarkMode = false;
 
 const enum Host {
   GitHub = 'github',
@@ -125,7 +126,7 @@ const replaceIcon = ({
       return getClass(filename);
     }
 
-    if (darkMode) {
+    if (siteDarkMode) {
       return getClassWithDarkColor(filename);
     }
 
@@ -134,13 +135,15 @@ const replaceIcon = ({
 
   const className = getClassName();
 
+  const darkClassName = darkMode ? 'dark' : '';
+
   if (className && !isDirectory) {
     const icon = document.createElement('span');
 
     if (isGitHub) {
-      icon.className = `icon octicon-file ${className}`;
+      icon.className = `icon octicon-file ${className} ${darkClassName}`;
     } else {
-      icon.className = `${className}`;
+      icon.className = `${className} ${darkClassName}`;
       icon.style.marginRight = '3px';
     }
 
@@ -168,6 +171,10 @@ const init = async () => {
   await domLoaded;
 
   if (isGitHub) {
+    siteDarkMode =
+      document.querySelector('html')?.getAttribute('data-color-mode') ===
+      'dark';
+
     const observeSelector = isGithubFilesPage()
       ? 'ul.ActionList > li[id^=file-tree-item-diff-][role=treeitem]'
       : '.js-navigation-container > .js-navigation-item';
