@@ -1,0 +1,140 @@
+/*============================================================================*
+	MIXINS
+	Moved from `colours.less` to avoid flooding stylesheet with documentation.
+/*============================================================================*/
+/**
+ * Brighten a colour if it would be too dim to see with a dark-coloured theme.
+ *
+ * @colour: CSS colour value
+ * @amount: Percentile value controlling the increase
+ *          to the colour's luminosity and saturation.
+ *
+ * HACK: Saturation will be increased slightly to account for the "washed out"
+ *       look when brightening a colour will high luminosity. This will destroy
+ *       achromatic values, turning shades of grey into into a pale cyan.
+ *       Use `.brighten-grey-if-needed` to brighten monochromatic colours.
+ */
+/**
+ * Brighten a greyscale colour if it's too close to the theme's background colour.
+ *
+ * @colour: An acromatic CSS colour value
+ * @amount: Percentile value determining how far to increase the shade's brightness.
+ *
+ * NOTE: This mixin is identical to `.brighten-if-needed`, except that saturation
+ *       won't be modified. This should theoretically be handled by the current
+ *       mixin, except Less's syntax for branching sucks and I hate this language
+ *       enough already without being forced to spoonfeed it.
+ */
+/**
+ * Darken a colour if it would be too bright to see with a light-coloured theme.
+ *
+ * @colour: CSS colour value
+ * @amount: Percentile value controlling the decrease in luminosity.
+ *
+ * NOTE: There's no accompanying `.darken-grey-if-needed`, because
+ *       the colour's saturation is not modified when darkening.
+ */
+/**
+ * Utility class to provide JavaScript with a reliable brightness indicator.
+ * Not a Less mixin, but the ruleset doesn't belong in `colours.less` either.
+ */
+.theme-colour-check {
+  background: #303030;
+}
+/*============================================================================*
+	PALETTE	
+	Base16 colours from https://github.com/chriskempson/base16
+/*============================================================================*/
+/*============================================================================*
+	CSS CLASSES
+/*============================================================================*/
+.light-red:before {
+  color: #c97071;
+}
+.medium-red:before {
+  color: #ac4142;
+}
+.dark-red:before {
+  color: #be2f31;
+}
+.light-green:before {
+  color: #b2c38b;
+}
+.medium-green:before {
+  color: #90a959;
+}
+.dark-green:before {
+  color: #66783e;
+}
+.light-yellow:before {
+  color: #fae0bc;
+}
+.medium-yellow:before {
+  color: #f4bf75;
+}
+.dark-yellow:before {
+  color: #ee9e2e;
+}
+.light-blue:before {
+  color: #9dc0ce;
+}
+.medium-blue:before {
+  color: #6a9fb5;
+}
+.dark-blue:before {
+  color: #46788d;
+}
+.light-maroon:before {
+  color: #be7953;
+}
+.medium-maroon:before {
+  color: #8f5536;
+}
+.dark-maroon:before {
+  color: #7c4426;
+}
+.light-purple:before {
+  color: #c7a4c0;
+}
+.medium-purple:before {
+  color: #aa759f;
+}
+.dark-purple:before {
+  color: #825078;
+}
+.light-orange:before {
+  color: #e1ad83;
+}
+.medium-orange:before {
+  color: #d28445;
+}
+.dark-orange:before {
+  color: #a35f27;
+}
+.light-cyan:before {
+  color: #a7d0c9;
+}
+.medium-cyan:before {
+  color: #75b5aa;
+}
+.dark-cyan:before {
+  color: #4d9085;
+}
+.light-pink:before {
+  color: #ff4ddb;
+}
+.medium-pink:before {
+  color: #ff00cc;
+}
+.dark-pink:before {
+  color: #cc00a3;
+}
+.light-grey:before {
+  color: #a5a5a5;
+}
+.medium-grey:before {
+  color: #7f7f7f;
+}
+.dark-grey:before {
+  color: #7f7f7f;
+}
