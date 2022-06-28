@@ -15,7 +15,6 @@
   "scripts": {
     "pre-commit": "lint-staged",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
-    "pack:safari": "xcodebuild -project 'safari/File Icons for GitHub and GitLab.xcodeproj' -scheme 'File Icons for GitHub and GitLab (macOS)'",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "start": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
