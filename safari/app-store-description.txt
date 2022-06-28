@@ -1,0 +1,8 @@
+File Icons for GitHub and GitLab is a Safari extension which gives different filetypes different icons to GitHub, GitLab, gitea and gogs.
+
+- Right click on any space on the page or the extension's icon to open the menu.
+- Change icon's color between colorful and monochrome.
+- Make icons brighter and more readable on GitHub dark theme.
+- Enable on Custom Domains
+
+Inspired by https://github.com/file-icons/atom
