@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const webpack = require('webpack');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -24,6 +25,9 @@ const options = {
   entry: {
     content: path.join(__dirname, 'src', 'ts', 'content.ts'),
     background: path.join(__dirname, 'src', 'ts', 'background.ts'),
+  },
+  resolve: {
+    extensions: ['.js', '.ts'],
   },
   output: {
     path: path.join(__dirname, 'build'),
