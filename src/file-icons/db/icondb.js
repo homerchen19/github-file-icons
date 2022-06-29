@@ -1803,7 +1803,7 @@ module.exports = [
 ["tag-icon",["medium-yellow","medium-yellow"],/^\.?VERSION$/i],
 ["tag-icon",["medium-orange","medium-orange"],/\.pid$/i],
 ["tag-icon",["medium-maroon","medium-maroon"],/\.tld$/i],
-["tag-icon",["medium-green","medium-green"],/(?:\.|^)sha(?:256|sum)?$|(?:\.|^)(?:check|ck|crc(?:32)?|md5|rmd160|sha(?:224|256|384|512|1|2|3)?)?(?:sums?)$/i,,false,,/\.text\.checksums$/i],
+["tag-icon",["medium-green","medium-green"],/(?:\.|^)sha(?:256|sum)?$|(?:\.|^)(?:check|ck|crc(?:32)?|md5|rmd160|sha(?:224|256|384|512|1|2|3)?)?(?:sums?|\w)$/i,,false,,/\.text\.checksums$/i],
 ["tcl-icon",["dark-orange","dark-orange"],/\.tcl$/i,,false,/tclsh|wish/,/\.tcl$/i,/^Tcl$/i],
 ["tcl-icon",["medium-orange","medium-orange"],/\.adp$/i],
 ["tcl-icon",["medium-red","medium-red"],/\.tm$/i],
