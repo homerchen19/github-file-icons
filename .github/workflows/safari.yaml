@@ -1,0 +1,53 @@
+name: master
+on:
+  release:
+    types: [published]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+        # set fetch depth to 0 to get full history.. used to make a build number
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm i -g yarn
+      - run: yarn install
+      - run: yarn build
+      - run: rm .gitignore
+      - run: ls
+
+      - name: Install jq
+        run: brew install jq
+
+      - name: Update Build Number
+        run: |
+          # change to the safari folder
+          cd safari
+
+          # set the build number based on commit count
+          git=$(sh /etc/profile; which git)
+          number_of_commits=$("$git" rev-list HEAD --count)
+
+          # set the build version
+          xcrun agvtool new-version -all $number_of_commits
+
+          # get the latest release number
+          # LAST_VERSION=$(curl --silent "https://api.github.com/repos/homerchen19/github-file-icons/releases/latest" | jq -r .tag_name)
+          LAST_VERSION=${{ github.event.release.tag_name }}
+
+          echo $LAST_VERSION;
+
+          # set marketing version. cannot use agvtool as it only update plist, but marketing version is in the proj file.
+          sed -i '' -e "s/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = $LAST_VERSION;/" File\ Icons\ for\ GitHub\ and\ GitLab.xcodeproj/project.pbxproj
+
+      - name: Deploy Build
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: build
