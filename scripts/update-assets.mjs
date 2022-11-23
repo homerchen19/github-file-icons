@@ -123,7 +123,7 @@ const downloadDb = async () => {
   console.log('Finished downloading icondb');
 
   const dbFile = await readFile(icondb.path, 'utf8');
-  const newDbFile = dbFile.replace(/\(\?<?=(.+?)(?<!\\)\)/, '$1');
+  const newDbFile = dbFile.replace(/\(\?<?=(.+?)(?<!\\)\)/g, '($1)');
   await writeFile(icondb.path, newDbFile);
   console.log('Finished modifying icondb');
 };
