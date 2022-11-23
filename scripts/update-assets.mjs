@@ -3,6 +3,7 @@ import { existsSync, createWriteStream, promises as fsPromises } from 'fs';
 import rimraf from 'rimraf';
 import childProcess from 'child_process';
 import { promisify } from 'util';
+import { readFile, writeFile } from 'fs/promises';
 
 const exec = promisify(childProcess.exec);
 
@@ -120,6 +121,11 @@ const downloadDb = async () => {
 
   await downloadFile(icondb);
   console.log('Finished downloading icondb');
+
+  const dbFile = await readFile(icondb.path, 'utf8');
+  const newDbFile = dbFile.replace(/\(\?<?=(.+?)(?<!\\)\)/g, '($1)');
+  await writeFile(icondb.path, newDbFile);
+  console.log('Finished modifying icondb');
 };
 
 /**

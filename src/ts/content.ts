@@ -165,6 +165,24 @@ const update = () => {
   }
 };
 
+const replaceGithubFileIcons = (
+  triggerSelector: string,
+  fileSelector: string,
+  iconSelector = '.octicon-file'
+) => {
+  observe(triggerSelector, {
+    add(element) {
+      const filenameDom = select(fileSelector, element);
+      if (filenameDom) {
+        const iconDom = select(iconSelector, element);
+        if (iconDom) {
+          replaceIcon({ iconDom, filenameDom });
+        }
+      }
+    },
+  });
+};
+
 const init = async () => {
   loadFonts();
 
@@ -175,26 +193,28 @@ const init = async () => {
       document.querySelector('html')?.getAttribute('data-color-mode') ===
       'dark';
 
-    const observeSelector = isGithubFilesPage()
-      ? 'ul.ActionList > li[id^=file-tree-item-diff-][role=treeitem]'
-      : '.js-navigation-container > .js-navigation-item';
-    observe(observeSelector, {
-      add(element) {
-        const fileSelector = isGithubFilesPage()
-          ? 'li[id^=file-tree-item-diff-][role=treeitem] > a > span:nth-child(2)'
-          : 'div[role="rowheader"] > span';
-        const filenameDom = select(fileSelector, element);
+    if (isGithubFilesPage()) {
+      replaceGithubFileIcons(
+        'ul.ActionList > li[id^=file-tree-item-diff-][role=treeitem]',
+        'a > span:nth-child(2)'
+      );
+    } else {
+      replaceGithubFileIcons(
+        '.js-navigation-container > .js-navigation-item',
+        'div[role="rowheader"] > span'
+      );
 
-        if (!filenameDom) {
-          return;
-        }
+      replaceGithubFileIcons(
+        'ul.ActionList > li.ActionList-item:not(.ActionList-item--hasSubitem)[role=treeitem]',
+        'a > span:nth-child(2)'
+      );
 
-        replaceIcon({
-          iconDom: select('.octicon-file', element) as HTMLElement,
-          filenameDom,
-        });
-      },
-    });
+      replaceGithubFileIcons(
+        '.react-directory-filename-column',
+        '.react-directory-truncate',
+        'svg:not(.icon-directory)'
+      );
+    }
   } else {
     update();
     document.addEventListener('pjax:end', update);
