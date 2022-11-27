@@ -943,6 +943,13 @@
   top: 3px;
   font-size: 17px;
 }
+.adobe-cc-icon:before {
+  font-family: file-icons;
+  font-size: 15px;
+  content: "\eb5e";
+  top: 3px;
+  font-size: 16px;
+}
 .ae-icon:before {
   font-family: file-icons;
   font-size: 15px;
