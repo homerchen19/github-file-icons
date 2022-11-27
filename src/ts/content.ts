@@ -135,6 +135,10 @@ const replaceIcon = ({
 
   const className = getClassName();
 
+  if (String(className).includes('icon-file-text')) {
+    return;
+  }
+
   const darkClassName = darkMode ? 'dark' : '';
 
   if (className && !isDirectory) {
