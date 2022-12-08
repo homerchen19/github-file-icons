@@ -209,8 +209,8 @@ const init = async () => {
       );
 
       replaceGithubFileIcons(
-        'ul.ActionList > li.ActionList-item:not(.ActionList-item--hasSubitem)[role=treeitem]',
-        'a > span:nth-child(2)'
+        '.PRIVATE_TreeView-item-content',
+        'span.PRIVATE_TreeView-item-content-text'
       );
 
       replaceGithubFileIcons(
