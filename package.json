@@ -1,6 +1,6 @@
 {
   "name": "github-file-icons",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A Chrome Extension which gives different filetypes different icons to GitHub, GitLab, gitea and gogs.",
   "license": "MIT",
   "author": "homerchen19",
