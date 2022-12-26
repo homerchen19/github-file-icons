@@ -1,5 +1,8 @@
-name: master
+name: yarn build
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - master

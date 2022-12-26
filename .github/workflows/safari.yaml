@@ -1,4 +1,4 @@
-name: master
+name: safari build
 on:
   release:
     types: [published]
