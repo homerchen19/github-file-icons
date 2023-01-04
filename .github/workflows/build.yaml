@@ -1,6 +1,9 @@
-name: pull-request
+name: yarn build
 on:
   pull_request:
+    branches:
+      - master
+  push:
     branches:
       - master
   workflow_dispatch: {}
@@ -17,3 +20,4 @@ jobs:
       - run: yarn install
       - run: yarn lint
       - run: yarn zip
+      # Add publishing steps
