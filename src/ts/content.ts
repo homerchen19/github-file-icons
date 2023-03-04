@@ -55,9 +55,9 @@ const getSelector = (hostname: string) => {
 
       return {
         filenameSelector:
-          'tr.js-navigation-item > td.content > span, .files-list > a.list-item, div.js-navigation-item > div[role="rowheader"] > span',
+          'tr.js-navigation-item > td.content > span, .files-list > a.list-item, div.js-navigation-item > div[role="rowheader"] > span, div.PRIVATE_TreeView-item-container > div.PRIVATE_TreeView-item-content > span.PRIVATE_TreeView-item-content-text > span',
         iconSelector:
-          'tr.js-navigation-item > td.icon, .files-list > a.list-item, div.js-navigation-item > div[role="gridcell"]:first-child',
+          'tr.js-navigation-item > td.icon, .files-list > a.list-item, div.js-navigation-item > div[role="gridcell"]:first-child, div.PRIVATE_TreeView-item-container > div.PRIVATE_TreeView-item-content > div.PRIVATE_TreeView-item-visual',
         host: Host.GitHub,
       };
     case /.*gitlab.*/.test(hostname):
