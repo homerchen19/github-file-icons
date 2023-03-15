@@ -29,10 +29,16 @@ const fonts = [
   { name: 'Octicons Regular', path: 'fonts/octicons.woff2' },
 ];
 
+const isGithubPage = () => /.*github.*/.test(window.location.hostname);
+
+const isGithubTreeViewPage = () => {
+  if (!isGithubPage()) return false;
+
+  return !!document.querySelector('#repos-file-tree');
+};
+
 const isGithubFilesPage = () => {
-  if (!/.*github.*/.test(window.location.hostname)) {
-    return false;
-  }
+  if (!isGithubPage()) return false;
 
   const pathname = window.location.pathname;
   const filesPageUrlPattern = new RegExp(/^\/.+\/.+\/pull\/\d+\/files$/);
@@ -49,6 +55,16 @@ const getSelector = (hostname: string) => {
             'ul.ActionList>li[id^=file-tree-item-diff-][role=treeitem]>a>span:nth-child(2)',
           iconSelector:
             'ul.ActionList>li[id^=file-tree-item-diff-][role=treeitem]>a>span:first-child',
+          host: Host.GitHub,
+        };
+      }
+
+      if (isGithubTreeViewPage()) {
+        return {
+          filenameSelector:
+            'div.PRIVATE_TreeView-item-content > span.PRIVATE_TreeView-item-content-text > span',
+          iconSelector:
+            'div.PRIVATE_TreeView-item-content > div.PRIVATE_TreeView-item-visual',
           host: Host.GitHub,
         };
       }
