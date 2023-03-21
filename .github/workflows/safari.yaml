@@ -39,6 +39,9 @@ jobs:
           # get the latest release number
           # LAST_VERSION=$(curl --silent "https://api.github.com/repos/homerchen19/github-file-icons/releases/latest" | jq -r .tag_name)
           LAST_VERSION=${{ github.event.release.tag_name }}
+          
+          # remove the "v" from the version num. xcode uploads do not work with non numberic versions.
+          LAST_VERSION=${LAST_VERSION/v/}
 
           echo $LAST_VERSION;
 
