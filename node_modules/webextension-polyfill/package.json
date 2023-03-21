@@ -1,0 +1,71 @@
+{
+  "name": "webextension-polyfill",
+  "version": "0.8.0",
+  "description": "A lightweight polyfill library for Promise-based WebExtension APIs in Chrome.",
+  "main": "dist/browser-polyfill.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mozilla/webextension-polyfill.git"
+  },
+  "author": "Mozilla",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/mozilla/webextension-polyfill/issues"
+  },
+  "homepage": "https://github.com/mozilla/webextension-polyfill",
+  "devDependencies": {
+    "@babel/core": "7.13.15",
+    "@babel/preset-env": "7.13.15",
+    "@babel/register": "7.13.14",
+    "babel-eslint": "10.1.0",
+    "babel-preset-minify": "0.5.1",
+    "browserify": "17.0.0",
+    "chai": "4.3.4",
+    "chromedriver": "89.0.0",
+    "codecov": "3.8.1",
+    "cross-env": "7.0.3",
+    "eslint": "7.24.0",
+    "finalhandler": "1.1.2",
+    "geckodriver": "1.22.3",
+    "global-replaceify": "1.0.0",
+    "grunt": "1.3.0",
+    "grunt-babel": "8.0.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-replace": "2.0.1",
+    "gruntify-eslint": "5.0.0",
+    "istanbul-lib-instrument": "4.0.3",
+    "jsdom": "9.12.0",
+    "mocha": "8.3.2",
+    "nyc": "15.1.0",
+    "selenium-webdriver": "4.0.0-alpha.8",
+    "serve-static": "1.14.1",
+    "shelljs": "0.8.4",
+    "sinon": "10.0.0",
+    "tap-nirvana": "1.1.0",
+    "tape": "5.2.2",
+    "tape-async": "2.3.0",
+    "tmp": "0.2.1"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ],
+    "instrument": false
+  },
+  "scripts": {
+    "build": "grunt",
+    "prepublish": "npm run build && npm run test",
+    "publish-coverage": "codecov",
+    "test": "mocha",
+    "test-coverage": "cross-env COVERAGE=y nyc mocha",
+    "test-minified": "cross-env TEST_MINIFIED_POLYFILL=1 mocha",
+    "test-integration": "tape test/integration/test-*",
+    "test-integration:chrome": "cross-env TEST_BROWSER_TYPE=chrome npm run test-integration | tap-nirvana",
+    "test-integration:firefox": "cross-env TEST_BROWSER_TYPE=firefox npm run test-integration | tap-nirvana"
+  }
+}

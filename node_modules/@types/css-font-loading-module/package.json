@@ -1,0 +1,25 @@
+{
+    "name": "@types/css-font-loading-module",
+    "version": "0.0.7",
+    "description": "TypeScript definitions for CSS Font Loading Module Level 3",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/css-font-loading-module",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "slikts",
+            "url": "https://github.com/slikts",
+            "githubUsername": "slikts"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/css-font-loading-module"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "cc29607ad24cc0882af89e2f9d0dedf503ab5af184625598962bab83f41ac85b",
+    "typeScriptVersion": "3.7"
+}

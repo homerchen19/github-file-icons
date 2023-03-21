@@ -1,0 +1,49 @@
+{
+	"name": "dom-loaded",
+	"version": "3.0.0",
+	"description": "Check when the DOM has loaded like `DOMContentLoaded`",
+	"license": "MIT",
+	"repository": "sindresorhus/dom-loaded",
+	"funding": "https://github.com/sponsors/sindresorhus",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "https://sindresorhus.com"
+	},
+	"type": "module",
+	"exports": "./index.js",
+	"engines": {
+		"node": ">=12"
+	},
+	"scripts": {
+		"// TODO: Enable when JSOM support ESM - test": "xo && ava && tsd",
+		"test": "xo && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"browser",
+		"dom",
+		"document",
+		"ready",
+		"complete",
+		"check",
+		"wait",
+		"domcontentloaded",
+		"readystate"
+	],
+	"devDependencies": {
+		"ava": "^3.15.0",
+		"jsdom": "^16.5.3",
+		"tsd": "^0.14.0",
+		"xo": "^0.39.1"
+	},
+	"xo": {
+		"envs": [
+			"node",
+			"browser"
+		]
+	}
+}

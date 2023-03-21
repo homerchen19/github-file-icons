@@ -1,0 +1,63 @@
+{
+  "extends": [
+    ":separateMajorReleases",
+    ":ignoreUnstable",
+    ":combinePatchMinorReleases",
+    ":prImmediately",
+    "group:monorepos",
+    "group:recommended",
+    ":ignoreModulesAndTests",
+    ":updateNotScheduled",
+    ":autodetectPinVersions",
+    ":prConcurrentLimit20",
+    "workarounds:all"
+  ],
+  "timezone": "America/Los_Angeles",
+  "schedule": [
+    "after 5pm every weekday",
+    "every weekend",
+    "before 9am every weekday"
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": ":arrow_up:",
+  "semanticCommitScope": null,
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "📁 Dependency Dashboard",
+  "dependencyDashboardLabels": ["type: dependencies", "type: maintenance"],
+  "labels": ["type: dependencies"],
+  "ignoreDeps": ["husky"],
+  "stabilityDays": 3,
+  "lockFileMaintenance": { "enabled": true, "automerge": true },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "addLabels": ["type: maintenance"]
+    },
+    {
+      "matchUpdateTypes": ["lockFileMaintenance", "pin"],
+      "semanticCommitType": ":pushpin:"
+    },
+    {
+      "matchUpdateTypes": ["rollback"],
+      "semanticCommitType": ":arrow_down:"
+    },
+    {
+      "matchUpdateTypes": ["digest", "bump"],
+      "semanticCommitType": ":bookmark:"
+    },
+    {
+      "matchDepTypes": ["devDependencies", "dev-dependencies"],
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    },
+    {
+      "matchPackagePatterns": ["^@types/", "^types-"],
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    }
+  ]
+}

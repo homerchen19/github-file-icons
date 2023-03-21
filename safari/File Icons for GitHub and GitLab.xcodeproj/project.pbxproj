@@ -1,0 +1,1019 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BE79A792864CA1F000ECD2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE79A782864CA1F000ECD2D /* AppDelegate.swift */; };
+		1BE79A7B2864CA1F000ECD2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE79A7A2864CA1F000ECD2D /* SceneDelegate.swift */; };
+		1BE79A7E2864CA1F000ECD2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A7C2864CA1F000ECD2D /* LaunchScreen.storyboard */; };
+		1BE79A812864CA1F000ECD2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A7F2864CA1F000ECD2D /* Main.storyboard */; };
+		1BE79A8A2864CA1F000ECD2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE79A892864CA1F000ECD2D /* AppDelegate.swift */; };
+		1BE79A8D2864CA1F000ECD2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A8B2864CA1F000ECD2D /* Main.storyboard */; };
+		1BE79A952864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1BE79A942864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1BE79A9F2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1BE79A9E2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1BE79AA52864CA1F000ECD2D /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A682864CA1D000ECD2D /* Main.html */; };
+		1BE79AA62864CA1F000ECD2D /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A682864CA1D000ECD2D /* Main.html */; };
+		1BE79AA72864CA1F000ECD2D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6A2864CA1D000ECD2D /* Icon.png */; };
+		1BE79AA82864CA1F000ECD2D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6A2864CA1D000ECD2D /* Icon.png */; };
+		1BE79AA92864CA1F000ECD2D /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6B2864CA1D000ECD2D /* Style.css */; };
+		1BE79AAA2864CA1F000ECD2D /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6B2864CA1D000ECD2D /* Style.css */; };
+		1BE79AAB2864CA1F000ECD2D /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6C2864CA1D000ECD2D /* Script.js */; };
+		1BE79AAC2864CA1F000ECD2D /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6C2864CA1D000ECD2D /* Script.js */; };
+		1BE79AAD2864CA1F000ECD2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE79A6D2864CA1D000ECD2D /* ViewController.swift */; };
+		1BE79AAE2864CA1F000ECD2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE79A6D2864CA1D000ECD2D /* ViewController.swift */; };
+		1BE79AAF2864CA1F000ECD2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6E2864CA1F000ECD2D /* Assets.xcassets */; };
+		1BE79AB02864CA1F000ECD2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79A6E2864CA1F000ECD2D /* Assets.xcassets */; };
+		1BE79AB12864CA1F000ECD2D /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE79A702864CA1F000ECD2D /* SafariWebExtensionHandler.swift */; };
+		1BE79AB22864CA1F000ECD2D /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE79A702864CA1F000ECD2D /* SafariWebExtensionHandler.swift */; };
+		1BE79ACF2864CA1F000ECD2D /* content.css in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC42864CA1F000ECD2D /* content.css */; };
+		1BE79AD02864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC52864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 */; };
+		1BE79AD12864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC62864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 */; };
+		1BE79AD22864CA1F000ECD2D /* background.bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC72864CA1F000ECD2D /* background.bundle.js */; };
+		1BE79AD32864CA1F000ECD2D /* img in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC82864CA1F000ECD2D /* img */; };
+		1BE79AD42864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC92864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 */; };
+		1BE79AD52864CA1F000ECD2D /* 875ec0710428365cb677.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACA2864CA1F000ECD2D /* 875ec0710428365cb677.woff2 */; };
+		1BE79AD62864CA1F000ECD2D /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACB2864CA1F000ECD2D /* manifest.json */; };
+		1BE79AD72864CA1F000ECD2D /* content.bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACC2864CA1F000ECD2D /* content.bundle.js */; };
+		1BE79AD82864CA1F000ECD2D /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACD2864CA1F000ECD2D /* fonts */; };
+		1BE79AD92864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACE2864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 */; };
+		1BE79ADA2864CA1F000ECD2D /* content.css in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC42864CA1F000ECD2D /* content.css */; };
+		1BE79ADB2864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC52864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 */; };
+		1BE79ADC2864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC62864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 */; };
+		1BE79ADD2864CA1F000ECD2D /* background.bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC72864CA1F000ECD2D /* background.bundle.js */; };
+		1BE79ADE2864CA1F000ECD2D /* img in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC82864CA1F000ECD2D /* img */; };
+		1BE79ADF2864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79AC92864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 */; };
+		1BE79AE02864CA1F000ECD2D /* 875ec0710428365cb677.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACA2864CA1F000ECD2D /* 875ec0710428365cb677.woff2 */; };
+		1BE79AE12864CA1F000ECD2D /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACB2864CA1F000ECD2D /* manifest.json */; };
+		1BE79AE22864CA1F000ECD2D /* content.bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACC2864CA1F000ECD2D /* content.bundle.js */; };
+		1BE79AE32864CA1F000ECD2D /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACD2864CA1F000ECD2D /* fonts */; };
+		1BE79AE42864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1BE79ACE2864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1BE79A962864CA1F000ECD2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BE79A622864CA1D000ECD2D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BE79A932864CA1F000ECD2D;
+			remoteInfo = "File Icons for GitHub and GitLab Extension (iOS)";
+		};
+		1BE79AA02864CA1F000ECD2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BE79A622864CA1D000ECD2D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BE79A9D2864CA1F000ECD2D;
+			remoteInfo = "File Icons for GitHub and GitLab Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1BE79AB82864CA1F000ECD2D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1BE79A952864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79ABF2864CA1F000ECD2D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1BE79A9F2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1BE79A692864CA1D000ECD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		1BE79A6A2864CA1D000ECD2D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		1BE79A6B2864CA1D000ECD2D /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		1BE79A6C2864CA1D000ECD2D /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		1BE79A6D2864CA1D000ECD2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1BE79A6E2864CA1F000ECD2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1BE79A702864CA1F000ECD2D /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		1BE79A752864CA1F000ECD2D /* File Icons for GitHub and GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "File Icons for GitHub and GitLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BE79A782864CA1F000ECD2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1BE79A7A2864CA1F000ECD2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1BE79A7D2864CA1F000ECD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1BE79A802864CA1F000ECD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1BE79A822864CA1F000ECD2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BE79A872864CA1F000ECD2D /* File Icons for GitHub and GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "File Icons for GitHub and GitLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BE79A892864CA1F000ECD2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1BE79A8C2864CA1F000ECD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1BE79A8E2864CA1F000ECD2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BE79A8F2864CA1F000ECD2D /* File Icons for GitHub and GitLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "File Icons for GitHub and GitLab.entitlements"; sourceTree = "<group>"; };
+		1BE79A942864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "File Icons for GitHub and GitLab Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BE79A992864CA1F000ECD2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BE79A9E2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "File Icons for GitHub and GitLab Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BE79AA32864CA1F000ECD2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BE79AA42864CA1F000ECD2D /* File Icons for GitHub and GitLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "File Icons for GitHub and GitLab.entitlements"; sourceTree = "<group>"; };
+		1BE79AC42864CA1F000ECD2D /* content.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = content.css; path = ../../build/content.css; sourceTree = "<group>"; };
+		1BE79AC52864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 */ = {isa = PBXFileReference; lastKnownFileType = text; name = f93d1c63ebe748594152.woff2; path = ../../build/f93d1c63ebe748594152.woff2; sourceTree = "<group>"; };
+		1BE79AC62864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 */ = {isa = PBXFileReference; lastKnownFileType = text; name = 945297900cc4baf17d7e.woff2; path = ../../build/945297900cc4baf17d7e.woff2; sourceTree = "<group>"; };
+		1BE79AC72864CA1F000ECD2D /* background.bundle.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.bundle.js; path = ../../build/background.bundle.js; sourceTree = "<group>"; };
+		1BE79AC82864CA1F000ECD2D /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = ../../build/img; sourceTree = "<group>"; };
+		1BE79AC92864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 */ = {isa = PBXFileReference; lastKnownFileType = text; name = d3562ee1f7ff810a9dd5.woff2; path = ../../build/d3562ee1f7ff810a9dd5.woff2; sourceTree = "<group>"; };
+		1BE79ACA2864CA1F000ECD2D /* 875ec0710428365cb677.woff2 */ = {isa = PBXFileReference; lastKnownFileType = text; name = 875ec0710428365cb677.woff2; path = ../../build/875ec0710428365cb677.woff2; sourceTree = "<group>"; };
+		1BE79ACB2864CA1F000ECD2D /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../build/manifest.json; sourceTree = "<group>"; };
+		1BE79ACC2864CA1F000ECD2D /* content.bundle.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.bundle.js; path = ../../build/content.bundle.js; sourceTree = "<group>"; };
+		1BE79ACD2864CA1F000ECD2D /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../build/fonts; sourceTree = "<group>"; };
+		1BE79ACE2864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 */ = {isa = PBXFileReference; lastKnownFileType = text; name = 8376e28d2473085a7c7e.woff2; path = ../../build/8376e28d2473085a7c7e.woff2; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BE79A722864CA1F000ECD2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A842864CA1F000ECD2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A912864CA1F000ECD2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A9B2864CA1F000ECD2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BE79A612864CA1D000ECD2D = {
+			isa = PBXGroup;
+			children = (
+				1BE79A662864CA1D000ECD2D /* Shared (App) */,
+				1BE79A6F2864CA1F000ECD2D /* Shared (Extension) */,
+				1BE79A772864CA1F000ECD2D /* iOS (App) */,
+				1BE79A882864CA1F000ECD2D /* macOS (App) */,
+				1BE79A982864CA1F000ECD2D /* iOS (Extension) */,
+				1BE79AA22864CA1F000ECD2D /* macOS (Extension) */,
+				1BE79A762864CA1F000ECD2D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BE79A662864CA1D000ECD2D /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79A6D2864CA1D000ECD2D /* ViewController.swift */,
+				1BE79A6E2864CA1F000ECD2D /* Assets.xcassets */,
+				1BE79A672864CA1D000ECD2D /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		1BE79A672864CA1D000ECD2D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79A682864CA1D000ECD2D /* Main.html */,
+				1BE79A6A2864CA1D000ECD2D /* Icon.png */,
+				1BE79A6B2864CA1D000ECD2D /* Style.css */,
+				1BE79A6C2864CA1D000ECD2D /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1BE79A6F2864CA1F000ECD2D /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79AC32864CA1F000ECD2D /* Resources */,
+				1BE79A702864CA1F000ECD2D /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		1BE79A762864CA1F000ECD2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79A752864CA1F000ECD2D /* File Icons for GitHub and GitLab.app */,
+				1BE79A872864CA1F000ECD2D /* File Icons for GitHub and GitLab.app */,
+				1BE79A942864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */,
+				1BE79A9E2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BE79A772864CA1F000ECD2D /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79A782864CA1F000ECD2D /* AppDelegate.swift */,
+				1BE79A7A2864CA1F000ECD2D /* SceneDelegate.swift */,
+				1BE79A7C2864CA1F000ECD2D /* LaunchScreen.storyboard */,
+				1BE79A7F2864CA1F000ECD2D /* Main.storyboard */,
+				1BE79A822864CA1F000ECD2D /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		1BE79A882864CA1F000ECD2D /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79A892864CA1F000ECD2D /* AppDelegate.swift */,
+				1BE79A8B2864CA1F000ECD2D /* Main.storyboard */,
+				1BE79A8E2864CA1F000ECD2D /* Info.plist */,
+				1BE79A8F2864CA1F000ECD2D /* File Icons for GitHub and GitLab.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		1BE79A982864CA1F000ECD2D /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79A992864CA1F000ECD2D /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		1BE79AA22864CA1F000ECD2D /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79AA32864CA1F000ECD2D /* Info.plist */,
+				1BE79AA42864CA1F000ECD2D /* File Icons for GitHub and GitLab.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		1BE79AC32864CA1F000ECD2D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1BE79AC42864CA1F000ECD2D /* content.css */,
+				1BE79AC52864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 */,
+				1BE79AC62864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 */,
+				1BE79AC72864CA1F000ECD2D /* background.bundle.js */,
+				1BE79AC82864CA1F000ECD2D /* img */,
+				1BE79AC92864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 */,
+				1BE79ACA2864CA1F000ECD2D /* 875ec0710428365cb677.woff2 */,
+				1BE79ACB2864CA1F000ECD2D /* manifest.json */,
+				1BE79ACC2864CA1F000ECD2D /* content.bundle.js */,
+				1BE79ACD2864CA1F000ECD2D /* fonts */,
+				1BE79ACE2864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BE79A742864CA1F000ECD2D /* File Icons for GitHub and GitLab (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BE79AB92864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab (iOS)" */;
+			buildPhases = (
+				1BE79A712864CA1F000ECD2D /* Sources */,
+				1BE79A722864CA1F000ECD2D /* Frameworks */,
+				1BE79A732864CA1F000ECD2D /* Resources */,
+				1BE79AB82864CA1F000ECD2D /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BE79A972864CA1F000ECD2D /* PBXTargetDependency */,
+			);
+			name = "File Icons for GitHub and GitLab (iOS)";
+			productName = "File Icons for GitHub and GitLab (iOS)";
+			productReference = 1BE79A752864CA1F000ECD2D /* File Icons for GitHub and GitLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BE79A862864CA1F000ECD2D /* File Icons for GitHub and GitLab (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BE79AC02864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab (macOS)" */;
+			buildPhases = (
+				1BE79A832864CA1F000ECD2D /* Sources */,
+				1BE79A842864CA1F000ECD2D /* Frameworks */,
+				1BE79A852864CA1F000ECD2D /* Resources */,
+				1BE79ABF2864CA1F000ECD2D /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BE79AA12864CA1F000ECD2D /* PBXTargetDependency */,
+			);
+			name = "File Icons for GitHub and GitLab (macOS)";
+			productName = "File Icons for GitHub and GitLab (macOS)";
+			productReference = 1BE79A872864CA1F000ECD2D /* File Icons for GitHub and GitLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BE79A932864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BE79AB52864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab Extension (iOS)" */;
+			buildPhases = (
+				1BE79A902864CA1F000ECD2D /* Sources */,
+				1BE79A912864CA1F000ECD2D /* Frameworks */,
+				1BE79A922864CA1F000ECD2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "File Icons for GitHub and GitLab Extension (iOS)";
+			productName = "File Icons for GitHub and GitLab Extension (iOS)";
+			productReference = 1BE79A942864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		1BE79A9D2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BE79ABC2864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab Extension (macOS)" */;
+			buildPhases = (
+				1BE79A9A2864CA1F000ECD2D /* Sources */,
+				1BE79A9B2864CA1F000ECD2D /* Frameworks */,
+				1BE79A9C2864CA1F000ECD2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "File Icons for GitHub and GitLab Extension (macOS)";
+			productName = "File Icons for GitHub and GitLab Extension (macOS)";
+			productReference = 1BE79A9E2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BE79A622864CA1D000ECD2D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					1BE79A742864CA1F000ECD2D = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					1BE79A862864CA1F000ECD2D = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					1BE79A932864CA1F000ECD2D = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					1BE79A9D2864CA1F000ECD2D = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 1BE79A652864CA1D000ECD2D /* Build configuration list for PBXProject "File Icons for GitHub and GitLab" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BE79A612864CA1D000ECD2D;
+			productRefGroup = 1BE79A762864CA1F000ECD2D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BE79A742864CA1F000ECD2D /* File Icons for GitHub and GitLab (iOS) */,
+				1BE79A862864CA1F000ECD2D /* File Icons for GitHub and GitLab (macOS) */,
+				1BE79A932864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension (iOS) */,
+				1BE79A9D2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BE79A732864CA1F000ECD2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AA72864CA1F000ECD2D /* Icon.png in Resources */,
+				1BE79A7E2864CA1F000ECD2D /* LaunchScreen.storyboard in Resources */,
+				1BE79AA52864CA1F000ECD2D /* Main.html in Resources */,
+				1BE79AAB2864CA1F000ECD2D /* Script.js in Resources */,
+				1BE79AAF2864CA1F000ECD2D /* Assets.xcassets in Resources */,
+				1BE79A812864CA1F000ECD2D /* Main.storyboard in Resources */,
+				1BE79AA92864CA1F000ECD2D /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A852864CA1F000ECD2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AA82864CA1F000ECD2D /* Icon.png in Resources */,
+				1BE79AAA2864CA1F000ECD2D /* Style.css in Resources */,
+				1BE79A8D2864CA1F000ECD2D /* Main.storyboard in Resources */,
+				1BE79AAC2864CA1F000ECD2D /* Script.js in Resources */,
+				1BE79AB02864CA1F000ECD2D /* Assets.xcassets in Resources */,
+				1BE79AA62864CA1F000ECD2D /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A922864CA1F000ECD2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AE22864CA1F000ECD2D /* content.bundle.js in Resources */,
+				1BE79AE32864CA1F000ECD2D /* fonts in Resources */,
+				1BE79ADF2864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 in Resources */,
+				1BE79ADE2864CA1F000ECD2D /* img in Resources */,
+				1BE79ADC2864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 in Resources */,
+				1BE79ADB2864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 in Resources */,
+				1BE79AE42864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 in Resources */,
+				1BE79AE12864CA1F000ECD2D /* manifest.json in Resources */,
+				1BE79AE02864CA1F000ECD2D /* 875ec0710428365cb677.woff2 in Resources */,
+				1BE79ADA2864CA1F000ECD2D /* content.css in Resources */,
+				1BE79ADD2864CA1F000ECD2D /* background.bundle.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A9C2864CA1F000ECD2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AD72864CA1F000ECD2D /* content.bundle.js in Resources */,
+				1BE79AD82864CA1F000ECD2D /* fonts in Resources */,
+				1BE79AD42864CA1F000ECD2D /* d3562ee1f7ff810a9dd5.woff2 in Resources */,
+				1BE79AD32864CA1F000ECD2D /* img in Resources */,
+				1BE79AD12864CA1F000ECD2D /* 945297900cc4baf17d7e.woff2 in Resources */,
+				1BE79AD02864CA1F000ECD2D /* f93d1c63ebe748594152.woff2 in Resources */,
+				1BE79AD92864CA1F000ECD2D /* 8376e28d2473085a7c7e.woff2 in Resources */,
+				1BE79AD62864CA1F000ECD2D /* manifest.json in Resources */,
+				1BE79AD52864CA1F000ECD2D /* 875ec0710428365cb677.woff2 in Resources */,
+				1BE79ACF2864CA1F000ECD2D /* content.css in Resources */,
+				1BE79AD22864CA1F000ECD2D /* background.bundle.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BE79A712864CA1F000ECD2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AAD2864CA1F000ECD2D /* ViewController.swift in Sources */,
+				1BE79A792864CA1F000ECD2D /* AppDelegate.swift in Sources */,
+				1BE79A7B2864CA1F000ECD2D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A832864CA1F000ECD2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AAE2864CA1F000ECD2D /* ViewController.swift in Sources */,
+				1BE79A8A2864CA1F000ECD2D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A902864CA1F000ECD2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AB12864CA1F000ECD2D /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BE79A9A2864CA1F000ECD2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE79AB22864CA1F000ECD2D /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BE79A972864CA1F000ECD2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BE79A932864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension (iOS) */;
+			targetProxy = 1BE79A962864CA1F000ECD2D /* PBXContainerItemProxy */;
+		};
+		1BE79AA12864CA1F000ECD2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BE79A9D2864CA1F000ECD2D /* File Icons for GitHub and GitLab Extension (macOS) */;
+			targetProxy = 1BE79AA02864CA1F000ECD2D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1BE79A682864CA1D000ECD2D /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BE79A692864CA1D000ECD2D /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		1BE79A7C2864CA1F000ECD2D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BE79A7D2864CA1F000ECD2D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1BE79A7F2864CA1F000ECD2D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BE79A802864CA1F000ECD2D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1BE79A8B2864CA1F000ECD2D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BE79A8C2864CA1F000ECD2D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BE79AB32864CA1F000ECD2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1BE79AB42864CA1F000ECD2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		1BE79AB62864CA1F000ECD2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab.Extension";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		1BE79AB72864CA1F000ECD2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab.Extension";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		1BE79ABA2864CA1F000ECD2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		1BE79ABB2864CA1F000ECD2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		1BE79ABD2864CA1F000ECD2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/File Icons for GitHub and GitLab.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab.Extension";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		1BE79ABE2864CA1F000ECD2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/File Icons for GitHub and GitLab.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab.Extension";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		1BE79AC12864CA1F000ECD2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/File Icons for GitHub and GitLab.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		1BE79AC22864CA1F000ECD2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/File Icons for GitHub and GitLab.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 123;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QDQF927NNA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "File Icons for GitHub and GitLab";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = v1.5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.File-Icons-for-GitHub-and-GitLab";
+				PRODUCT_NAME = "File Icons for GitHub and GitLab";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BE79A652864CA1D000ECD2D /* Build configuration list for PBXProject "File Icons for GitHub and GitLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BE79AB32864CA1F000ECD2D /* Debug */,
+				1BE79AB42864CA1F000ECD2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BE79AB52864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BE79AB62864CA1F000ECD2D /* Debug */,
+				1BE79AB72864CA1F000ECD2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BE79AB92864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BE79ABA2864CA1F000ECD2D /* Debug */,
+				1BE79ABB2864CA1F000ECD2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BE79ABC2864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BE79ABD2864CA1F000ECD2D /* Debug */,
+				1BE79ABE2864CA1F000ECD2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BE79AC02864CA1F000ECD2D /* Build configuration list for PBXNativeTarget "File Icons for GitHub and GitLab (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BE79AC12864CA1F000ECD2D /* Debug */,
+				1BE79AC22864CA1F000ECD2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BE79A622864CA1D000ECD2D /* Project object */;
+}

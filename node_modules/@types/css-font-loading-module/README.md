@@ -1,0 +1,16 @@
+# Installation
+> `npm install --save @types/css-font-loading-module`
+
+# Summary
+This package contains type definitions for CSS Font Loading Module Level 3 (https://drafts.csswg.org/css-font-loading/).
+
+# Details
+Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/css-font-loading-module.
+
+### Additional Details
+ * Last updated: Mon, 08 Nov 2021 20:01:30 GMT
+ * Dependencies: none
+ * Global values: none
+
+# Credits
+These definitions were written by [slikts](https://github.com/slikts).
