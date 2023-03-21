@@ -6,15 +6,24 @@ The Safari extension is built using a github action into the build branch whenev
 The extension can be manually loaded here:
 
 1. Clone. `git clone --depth 1 https://github.com/homerchen19/github-file-icons.git`
-2. Install and build. `npm install; npm run build`
 
-## Manual Build/Release
+### Using Github Build
+
+- Checkout the `build` branch
+
+### Manual Build/Release
+
+- Install and build. `npm install; npm run build`
+- Open `/safari` in Xcode.
+- Open the four targets and increment the project version number and update the Marketing Version to the github release number
+
+## Xcode Build
 
 - Open `/safari` in Xcode.
 - In top bar, change "File Icons for GitHub and GitLab (iOS)" to "... (macOS)"
 - Open the four targets and increment the project version number and update the Marketing Version to the github release number
-- Click `Project` > `Build` from the menu bar
-- Click `Project` > `Archive` from the menu bar
+- Click `Product` > `Build` from the menu bar
+- Click `Product` > `Archive` from the menu bar
 
 ## Upload Archive
 
