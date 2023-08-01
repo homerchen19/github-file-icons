@@ -556,6 +556,11 @@ astral-regex@^2.0.0:
   resolved "https://registry.npmjs.org/astral-regex/-/astral-regex-2.0.0.tgz"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
+atom-file-icons@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/atom-file-icons/-/atom-file-icons-1.0.3.tgz#20d1696847ad2c16cdb0e6f95bacccff3087019f"
+  integrity sha512-qUWaK3A3Qqv3yC7sjYJfr9cyFDWyPsQXFXfRfeup20MtlxHGcI+VrZwqDJgc8+bF2h0Tzb3w0rG5HtoPwfFSvw==
+
 author-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/author-regex/-/author-regex-1.0.0.tgz"

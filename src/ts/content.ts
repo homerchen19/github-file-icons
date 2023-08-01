@@ -2,11 +2,7 @@ import * as domLoaded from 'dom-loaded';
 import select from 'select-dom';
 import mobile from 'is-mobile';
 import { observe } from 'selector-observer';
-import {
-  getClass,
-  getClassWithColor,
-  getClassWithDarkColor,
-} from '../file-icons/file-icons';
+import { getIconClass, type ColorMode } from 'atom-file-icons';
 
 import { StorageKey } from './background';
 import '../css/icons.css';
@@ -137,21 +133,24 @@ const replaceIcon = ({
     isDirectory = iconDom.classList.contains('octicon-file-directory');
   }
 
-  const getClassName = () => {
+  const getIconColorMode = (): ColorMode => {
     if (colorsDisabled) {
-      return getClass(filename);
+      return 'mono';
     }
 
     if (siteDarkMode) {
-      return getClassWithDarkColor(filename);
+      return 'dark';
     }
 
-    return getClassWithColor(filename);
+    return 'light';
   };
 
-  const className = getClassName();
+  const className = getIconClass(filename, {
+    colorMode: getIconColorMode(),
+    skipFallback: true,
+  });
 
-  if (String(className).includes('icon-file-text')) {
+  if (!className) {
     return;
   }
 

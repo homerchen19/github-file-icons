@@ -18,10 +18,10 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
     "start": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
-    "update-assets": "node scripts/update-assets.mjs",
     "zip": "npm run build && zip -r build/File_Icon_For_GitHub_And_GitLab_$npm_package_version.zip build"
   },
   "dependencies": {
+    "atom-file-icons": "^1.0.3",
     "dom-loaded": "^3.0.0",
     "is-mobile": "^3.0.0",
     "select-dom": "^7.1.1",
