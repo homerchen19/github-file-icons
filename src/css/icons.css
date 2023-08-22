@@ -1,6 +1,4 @@
-@import '../file-icons/css/icons.css';
-@import '../file-icons/css/colors.css';
-@import '../file-icons/css/fonts.css';
+@import '../../node_modules/atom-file-icons/dist/index.css';
 
 .database-icon::before {
   left: 2px;
