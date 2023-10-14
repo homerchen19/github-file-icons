@@ -15,3 +15,9 @@
   content: '\f1c1';
   font-size: 16px;
 }
+
+.icon-file-text::before {
+  font-family: FontAwesome;
+  content: '\f15c';
+  font-size: 16px;
+}
