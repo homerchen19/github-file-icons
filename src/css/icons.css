@@ -8,3 +8,10 @@
   filter: brightness(125%) contrast(150%) drop-shadow(0 0 0 #fff)
     drop-shadow(1px 1px 1px #444);
 }
+
+/* FIXME broken icons */
+.icon-file-pdf::before {
+  font-family: FontAwesome;
+  content: '\f1c1';
+  font-size: 16px;
+}
