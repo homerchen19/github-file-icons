@@ -239,7 +239,7 @@ const init = async () => {
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach(async (n) => {
           if (n.nodeName === 'UL') {
-            while ((n.textContent as string).includes('Loading')) {
+            while ((n.textContent as string).includes('Loading...')) {
               await new Promise((resolve) => setTimeout(resolve, 100));
             }
             await new Promise((resolve) => setTimeout(resolve, 0));
