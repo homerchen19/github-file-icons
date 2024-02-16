@@ -234,6 +234,31 @@ const init = async () => {
         'svg:not(.icon-directory)'
       );
     }
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach(async (n) => {
+          if (n.nodeName === 'UL') {
+            while ((n.textContent as string).includes('Loading')) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+            }
+            await new Promise((resolve) => setTimeout(resolve, 0));
+            replaceGithubFileIcons(
+              '.PRIVATE_TreeView-item-content',
+              'span.PRIVATE_TreeView-item-content-text'
+            );
+          }
+        });
+      });
+    });
+
+    observer.observe(
+      document.querySelector('.react-tree-show-tree-items') as Node,
+      {
+        childList: true,
+        subtree: true,
+      }
+    );
   } else {
     update();
     document.addEventListener('pjax:end', update);
