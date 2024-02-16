@@ -128,9 +128,8 @@ const replaceIcon = ({
       ? getGitHubMobileFilename(filenameDom)
       : filenameDom.innerText.trim();
 
-  let isDirectory = false;
-  if (iconDom) {
-    isDirectory = iconDom.classList.contains('octicon-file-directory');
+  if (iconDom && iconDom.classList.contains('octicon-file-directory')) {
+    return;
   }
 
   const getIconColorMode = (): ColorMode => {
@@ -156,7 +155,7 @@ const replaceIcon = ({
 
   const darkClassName = darkMode ? 'dark' : '';
 
-  if (className && !isDirectory) {
+  if (className) {
     const icon = document.createElement('span');
 
     if (isGitHub) {
@@ -191,15 +190,32 @@ const replaceGithubFileIcons = (
 ) => {
   observe(triggerSelector, {
     add(element) {
-      const filenameDom = select(fileSelector, element);
-      if (filenameDom) {
-        new Promise((resolve) => setTimeout(resolve, 10)).then(() => {
-          const iconDom = select(iconSelector, element);
-          if (iconDom) {
-            replaceIcon({ iconDom, filenameDom });
-          }
-        });
-      }
+      queueMicrotask(async () => {
+        while (
+          document
+            .getElementById('repos-file-tree')
+            ?.textContent?.includes('Loading...')
+        ) {
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+
+        if (element.lastChild?.nodeName !== 'RELOAD') {
+          element.appendChild(document.createElement('reload'));
+        } else {
+          new Promise((resolve) => setTimeout(resolve, 10)).then(async () => {
+            const filenameDom = select(fileSelector, element);
+            if (filenameDom) {
+              const iconDom = select(iconSelector, element);
+              if (iconDom) {
+                replaceIcon({ iconDom, filenameDom });
+              }
+            }
+            if (element.lastChild?.nodeName === 'RELOAD') {
+              element.removeChild(element.lastChild as Node);
+            }
+          });
+        }
+      });
     },
   });
 };
