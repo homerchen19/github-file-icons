@@ -1,7 +1,7 @@
 {
   "name": "github-file-icons",
   "version": "1.5.2",
-  "description": "A Chrome Extension which gives different filetypes different icons to GitHub, GitLab, gitea and gogs.",
+  "description": "A browser extension which gives different filetypes different icons to GitHub, GitLab, gitea and gogs.",
   "license": "MIT",
   "author": "homerchen19",
   "homepage": "https://github.com/homerchen19/github-file-icons#readme",
@@ -15,11 +15,12 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
     "lint": "eslint src/**/*.ts",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn run lint --fix",
     "pre-commit": "lint-staged",
     "prepare": "husky",
     "start": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
-    "zip": "npm run build && zip -r build/File_Icon_For_GitHub_And_GitLab_$npm_package_version.zip build"
+    "zip": "yarn run build && zip -r build/File_Icon_For_GitHub_And_GitLab_$npm_package_version.zip build",
+    "zip:firefox": "yarn run build && web-ext build -s build/"
   },
   "dependencies": {
     "atom-file-icons": "^1.0.3",
@@ -50,11 +51,11 @@
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^3.2.5",
     "prettier-package-json": "^2.8.0",
-    "rimraf": "^3.0.2",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
+    "web-ext": "^7.11.0",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "webpack-ext-reloader": "^1.1.9",

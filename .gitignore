@@ -62,3 +62,6 @@ build
 
 # .DS_Store
 .DS_Store
+
+# web-ext
+web-ext-artifacts
