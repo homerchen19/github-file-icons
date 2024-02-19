@@ -1,4 +1,4 @@
-import * as domLoaded from 'dom-loaded';
+import domLoaded from 'dom-loaded';
 import select from 'select-dom';
 import mobile from 'is-mobile';
 import { observe } from 'selector-observer';
@@ -126,11 +126,10 @@ const replaceIcon = ({
   const filename =
     isGitHub && isMobile
       ? getGitHubMobileFilename(filenameDom)
-      : filenameDom.innerText.trim();
+      : filenameDom.textContent?.trim() ?? '';
 
-  let isDirectory = false;
-  if (iconDom) {
-    isDirectory = iconDom.classList.contains('octicon-file-directory');
+  if (iconDom && iconDom.classList.contains('octicon-file-directory')) {
+    return;
   }
 
   const getIconColorMode = (): ColorMode => {
@@ -156,7 +155,7 @@ const replaceIcon = ({
 
   const darkClassName = darkMode ? 'dark' : '';
 
-  if (className && !isDirectory) {
+  if (className) {
     const icon = document.createElement('span');
 
     if (isGitHub) {
@@ -224,7 +223,7 @@ const init = async () => {
       );
 
       replaceGithubFileIcons(
-        '.PRIVATE_TreeView-item-content',
+        '.PRIVATE_TreeView-item-content:has(span.PRIVATE_TreeView-item-content-text > span:not([class]))',
         'span.PRIVATE_TreeView-item-content-text'
       );
 
