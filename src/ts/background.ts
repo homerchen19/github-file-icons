@@ -51,7 +51,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
         active: true,
         currentWindow: true,
       },
-      toggleStorage(StorageKey.ColorsDisabled)
+      toggleStorage(StorageKey.ColorsDisabled),
     );
   } else if (info.menuItemId === 'toggle-dark-mode') {
     chrome.tabs.query(
@@ -59,7 +59,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
         active: true,
         currentWindow: true,
       },
-      toggleStorage(StorageKey.DarkMode)
+      toggleStorage(StorageKey.DarkMode),
     );
   }
 });
