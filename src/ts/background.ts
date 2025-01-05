@@ -9,7 +9,7 @@ export const enum StorageKey {
 chrome.contextMenus.create({
   id: 'change-icon-color',
   title: 'Change icon colors',
-  contexts: ['page', 'page_action', 'browser_action'],
+  contexts: ['browser_action'],
   documentUrlPatterns: [
     'https://github.com/*',
     'https://gitlab.com/*',
@@ -21,7 +21,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.create({
   id: 'toggle-dark-mode',
   title: 'Toggle dark mode',
-  contexts: ['page', 'page_action', 'browser_action'],
+  contexts: ['browser_action'],
   documentUrlPatterns: [
     'https://github.com/*',
     'https://gitlab.com/*',
