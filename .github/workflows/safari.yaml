@@ -14,9 +14,13 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
-      - run: npm i -g yarn
-      - run: yarn install
+          node-version: 20
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
       - run: yarn build
       - run: rm .gitignore
       - run: ls
@@ -39,7 +43,7 @@ jobs:
           # get the latest release number
           # LAST_VERSION=$(curl --silent "https://api.github.com/repos/homerchen19/github-file-icons/releases/latest" | jq -r .tag_name)
           LAST_VERSION=${{ github.event.release.tag_name }}
-          
+
           # remove the "v" from the version num. xcode uploads do not work with non numberic versions.
           LAST_VERSION=${LAST_VERSION/v/}
 

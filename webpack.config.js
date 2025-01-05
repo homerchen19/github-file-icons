@@ -47,7 +47,10 @@ const options = {
       },
       {
         test: new RegExp(`.(${fileExtensions.join('|')})$`),
-        use: 'file-loader?name=/fonts/[name].[ext]',
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
       },
     ],
   },
