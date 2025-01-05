@@ -1,36 +1,26 @@
 import 'webext-dynamic-content-scripts';
-import addDomainPermissionToggle from 'webext-domain-permission-toggle';
+import addDomainPermissionToggle from 'webext-permission-toggle';
 
 export const enum StorageKey {
   ColorsDisabled = 'colorsDisabled',
   DarkMode = 'darkMode',
 }
 
-chrome.contextMenus.create({
-  id: 'change-icon-color',
-  title: 'Change icon colors',
-  contexts: ['browser_action'],
-  documentUrlPatterns: [
-    'https://github.com/*',
-    'https://gitlab.com/*',
-    'https://*.gogs.io/*',
-    'https://*.gitea.io/*',
-  ],
-});
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: 'change-icon-color',
+    title: 'Change icon colors',
+    contexts: ['action'],
+  });
 
-chrome.contextMenus.create({
-  id: 'toggle-dark-mode',
-  title: 'Toggle dark mode',
-  contexts: ['browser_action'],
-  documentUrlPatterns: [
-    'https://github.com/*',
-    'https://gitlab.com/*',
-    'https://*.gogs.io/*',
-    'https://*.gitea.io/*',
-  ],
-});
+  chrome.contextMenus.create({
+    id: 'toggle-dark-mode',
+    title: 'Toggle dark mode',
+    contexts: ['action'],
+  });
 
-addDomainPermissionToggle();
+  addDomainPermissionToggle();
+});
 
 const toggleStorage = (key: StorageKey) => (tabs: chrome.tabs.Tab[]) => {
   const activeTab = tabs[0];

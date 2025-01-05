@@ -1,12 +1,11 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "File Icons for GitHub and GitLab",
   "description": "A simple browser tool changes file's icon on GitHub, GitLab, gitea and gogs.",
   "author": "homerchen19",
   "homepage_url": "https://github.com/homerchen19/github-file-icons",
   "background": {
-    "scripts": ["background.bundle.js"],
-    "persistent": false
+    "service_worker": "background.bundle.js"
   },
   "content_scripts": [
     {
@@ -26,19 +25,28 @@
     "64": "img/icon-64.png",
     "128": "img/icon-128.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "img/icon-64.png"
   },
-  "content_security_policy": "script-src 'self'; object-src 'self'",
-  "web_accessible_resources": ["*.woff2"],
   "permissions": [
     "contextMenus",
     "storage",
-    "activeTab",
+    "activeTab"
+  ],
+  "host_permissions": [
     "https://github.com/*",
     "https://gitlab.com/*",
     "https://*.gogs.io/*",
     "https://*.gitea.io/*"
   ],
-  "optional_permissions": ["http://*/*", "https://*/*"]
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.woff2"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

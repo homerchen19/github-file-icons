@@ -24,16 +24,16 @@
   },
   "dependencies": {
     "atom-file-icons": "^1.0.3",
-    "dom-loaded": "^3.0.0",
-    "is-mobile": "^3.0.0",
+    "dom-loaded": "^3.1.0",
+    "is-mobile": "^5.0.0",
     "select-dom": "^7.1.1",
     "selector-observer": "^2.1.6",
-    "webext-domain-permission-toggle": "^3.0.0",
-    "webext-dynamic-content-scripts": "^8.1.0",
-    "webext-options-sync": "^3.1.0"
+    "webext-dynamic-content-scripts": "^10.0.4",
+    "webext-options-sync": "^4.3.0",
+    "webext-permission-toggle": "^5.1.0"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.260",
+    "@types/chrome": "^0.0.289",
     "@types/css-font-loading-module": "^0.0.13",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
@@ -51,14 +51,13 @@
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^3.2.5",
     "prettier-package-json": "^2.8.0",
-    "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "web-ext": "^7.11.0",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-ext-reloader": "^1.1.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-ext-reloader": "^1.1.13",
     "write-file-webpack-plugin": "^4.5.1"
   },
   "keywords": [
@@ -73,5 +72,6 @@
     "*.ts": [
       "eslint --fix"
     ]
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }

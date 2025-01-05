@@ -97,7 +97,7 @@ const loadFonts = () => {
   fonts.forEach((font) => {
     const fontFace = new FontFace(
       font.name,
-      `url("${chrome.extension.getURL(font.path)}") format("woff2")`,
+      `url("${chrome.runtime.getURL(font.path)}") format("woff2")`,
       {
         style: 'normal',
         weight: 'normal',
