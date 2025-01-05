@@ -65,6 +65,7 @@ export function parseU32(sourceString: string): number {
 }
 
 export function parse64I(sourceString: string): LongNumber {
+  // $FlowIgnore
   let long: Long;
   if (isHexLiteral(sourceString)) {
     long = Long.fromString(sourceString, false, 16);
@@ -76,7 +77,7 @@ export function parse64I(sourceString: string): LongNumber {
 
   return {
     high: long.high,
-    low: long.low
+    low: long.low,
   };
 }
 

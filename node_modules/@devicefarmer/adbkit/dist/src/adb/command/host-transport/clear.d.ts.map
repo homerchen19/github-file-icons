@@ -1,0 +1,1 @@
+{"version":3,"file":"clear.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/clear.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,OAAO,CAAC,OAAO,CAAC;IACxD,OAAO,CAAC,GAAG,EAAE,MAAM,GAAG,QAAQ,CAAC,OAAO,CAAC;CA4BxC"}

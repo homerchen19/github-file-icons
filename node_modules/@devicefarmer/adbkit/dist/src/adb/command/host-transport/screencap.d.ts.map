@@ -1,0 +1,1 @@
+{"version":3,"file":"screencap.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/screencap.ts"],"names":[],"mappings":";AAGA,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAChC,OAAO,EAAE,MAAM,EAAE,MAAM,QAAQ,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,gBAAiB,SAAQ,OAAO,CAAC,MAAM,CAAC;IAC3D,OAAO,IAAI,QAAQ,CAAC,MAAM,CAAC;CAuB5B"}

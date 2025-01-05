@@ -12,6 +12,10 @@
 /** @type {WeakMap<Compiler, Set<LibraryType>>} */
 const enabledTypes = new WeakMap();
 
+/**
+ * @param {Compiler} compiler the compiler instance
+ * @returns {Set<LibraryType>} enabled types
+ */
 const getEnabledTypes = compiler => {
 	let set = enabledTypes.get(compiler);
 	if (set === undefined) {
@@ -50,8 +54,9 @@ class EnableLibraryPlugin {
 					"EnableLibraryPlugin need to be used to enable this type of library. " +
 					'This usually happens through the "output.enabledLibraryTypes" option. ' +
 					'If you are using a function as entry which sets "library", you need to add all potential library types to "output.enabledLibraryTypes". ' +
-					"These types are enabled: " +
-					Array.from(getEnabledTypes(compiler)).join(", ")
+					`These types are enabled: ${Array.from(
+						getEnabledTypes(compiler)
+					).join(", ")}`
 			);
 		}
 	}
@@ -74,12 +79,13 @@ class EnableLibraryPlugin {
 				const ExportPropertyTemplatePlugin = require("./ExportPropertyLibraryPlugin");
 				new ExportPropertyTemplatePlugin({
 					type,
-					nsObjectUsed: type !== "module"
+					nsObjectUsed: !["module", "modern-module"].includes(type),
+					runtimeExportsUsed: type !== "modern-module"
 				}).apply(compiler);
 			};
 			switch (type) {
 				case "var": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -90,7 +96,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "assign-properties": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -102,7 +108,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "assign": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -113,7 +119,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "this": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -124,7 +130,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "window": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -135,7 +141,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "self": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -146,7 +152,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "global": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -157,7 +163,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "commonjs": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -168,7 +174,7 @@ class EnableLibraryPlugin {
 					break;
 				}
 				case "commonjs-static": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -180,7 +186,7 @@ class EnableLibraryPlugin {
 				}
 				case "commonjs2":
 				case "commonjs-module": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const AssignLibraryPlugin = require("./AssignLibraryPlugin");
 					new AssignLibraryPlugin({
 						type,
@@ -202,6 +208,23 @@ class EnableLibraryPlugin {
 				}
 				case "umd":
 				case "umd2": {
+					if (compiler.options.output.iife === false) {
+						compiler.options.output.iife = true;
+
+						class WarnFalseIifeUmdPlugin {
+							apply(compiler) {
+								compiler.hooks.thisCompilation.tap(
+									"WarnFalseIifeUmdPlugin",
+									compilation => {
+										const FalseIIFEUmdWarning = require("../FalseIIFEUmdWarning");
+										compilation.warnings.push(new FalseIIFEUmdWarning());
+									}
+								);
+							}
+						}
+
+						new WarnFalseIifeUmdPlugin().apply(compiler);
+					}
 					enableExportProperty();
 					const UmdLibraryPlugin = require("./UmdLibraryPlugin");
 					new UmdLibraryPlugin({
@@ -230,6 +253,14 @@ class EnableLibraryPlugin {
 					enableExportProperty();
 					const ModuleLibraryPlugin = require("./ModuleLibraryPlugin");
 					new ModuleLibraryPlugin({
+						type
+					}).apply(compiler);
+					break;
+				}
+				case "modern-module": {
+					enableExportProperty();
+					const ModernModuleLibraryPlugin = require("./ModernModuleLibraryPlugin");
+					new ModernModuleLibraryPlugin({
 						type
 					}).apply(compiler);
 					break;

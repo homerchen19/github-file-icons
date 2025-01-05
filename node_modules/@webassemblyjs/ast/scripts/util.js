@@ -1,14 +1,14 @@
 function iterateProps(obj, iterator) {
-  Object.keys(obj).forEach(key => iterator({ ...obj[key], name: key }));
+  Object.keys(obj).forEach((key) => iterator({ ...obj[key], name: key }));
 }
 
 function mapProps(obj) {
-  return Object.keys(obj).map(key => ({ ...obj[key], name: key }));
+  return Object.keys(obj).map((key) => ({ ...obj[key], name: key }));
 }
 
 function filterProps(obj, filter) {
   const ret = {};
-  Object.keys(obj).forEach(key => {
+  Object.keys(obj).forEach((key) => {
     if (filter(obj[key])) {
       ret[key] = obj[key];
     }
@@ -27,12 +27,12 @@ function typeSignature(meta) {
   }
 }
 
-const unique = items => Array.from(new Set(items));
+const unique = (items) => Array.from(new Set(items));
 
 module.exports = {
   iterateProps,
   mapProps,
   filterProps,
   typeSignature,
-  unique
+  unique,
 };

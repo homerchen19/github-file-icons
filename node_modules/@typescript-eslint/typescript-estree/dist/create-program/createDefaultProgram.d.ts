@@ -1,12 +1,12 @@
-import { Extra } from '../parser-options';
-import { ASTAndProgram } from './shared';
+import type { ParseSettings } from '../parseSettings';
+import type { ASTAndDefiniteProgram } from './shared';
 /**
- * @param code The code of the file being linted
- * @param extra The config object
- * @param extra.tsconfigRootDir The root directory for relative tsconfig paths
- * @param extra.projects Provided tsconfig paths
+ * @param parseSettings Internal settings for parsing the file
  * @returns If found, returns the source file corresponding to the code and the containing program
+ * @deprecated
+ * This is a legacy option that comes with severe performance penalties.
+ * Please do not use it.
  */
-declare function createDefaultProgram(code: string, extra: Extra): ASTAndProgram | undefined;
+declare function createDefaultProgram(parseSettings: ParseSettings): ASTAndDefiniteProgram | undefined;
 export { createDefaultProgram };
 //# sourceMappingURL=createDefaultProgram.d.ts.map

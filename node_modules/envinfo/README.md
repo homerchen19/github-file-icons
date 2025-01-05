@@ -1,11 +1,11 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/tabrindle/envinfo/master/logo.png" align="center"  width="700px"/>
-  <h3 align="center">envinfo generates a report of the common details needed when troubleshooting software issues, such as your operating system, binary versions, browsers, installed languages, and more</h3> 
+  <h3 align="center">envinfo generates a report of the common details needed when troubleshooting software issues, such as your operating system, binary versions, browsers, installed languages, and more</h3>
   <hr/>
 </p>
 
-[![CircleCI](https://circleci.com/gh/tabrindle/envinfo/tree/master.svg?style=svg)](https://circleci.com/gh/tabrindle/envinfo/tree/master) [![Build Status](https://travis-ci.org/tabrindle/envinfo.svg?branch=master)](https://travis-ci.org/tabrindle/envinfo) [![npm version](https://badge.fury.io/js/envinfo.svg)](https://badge.fury.io/js/envinfo) [![npm downloads per month](https://img.shields.io/npm/dm/envinfo.svg?maxAge=86400)](https://www.npmjs.com/package/envinfo) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors)
+[![npm version](https://badge.fury.io/js/envinfo.svg)](https://badge.fury.io/js/envinfo) [![npm downloads per month](https://img.shields.io/npm/dm/envinfo.svg?maxAge=86400)](https://www.npmjs.com/package/envinfo) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
 ## The problem
 
@@ -54,6 +54,8 @@ npm install envinfo || yarn add envinfo
     Node: 8.16.0 - ~/.nvm/versions/node/v8.16.0/bin/node
     Yarn: 1.15.2 - ~/.yarn/bin/yarn
     npm: 6.9.0 - ~/.nvm/versions/node/v8.16.0/bin/npm
+    pnpm: 8.7.6 - /usr/local/bin/pnpm
+    bun: 1.0.2 - /usr/local/bin/bun
     Watchman: 4.9.0 - /usr/local/bin/watchman
   Managers:
     Cargo: 1.31.0 - ~/.cargo/bin/cargo
@@ -242,7 +244,7 @@ envinfo is live in:
 
 -   [React Native](https://github.com/facebook/react-native) (`react-native info`)
 -   [Create React App](https://github.com/facebook/create-react-app) (`create-react-app --info`)
--   [Expo CLI](https://github.com/expo/expo-cli) (`expo diagnostics`)
+-   [Expo Environment Info](https://github.com/expo/expo-cli/tree/main/packages/expo-env-info) (`npx expo-env-info`)
 -   [Webpack](https://github.com/webpack/webpack-cli) (`webpack-cli info`)
 -   [Solidarity](https://github.com/infinitered/solidarity) (`solidarity report`)
 -   [Gatsby](https://github.com/gatsbyjs/gatsby) (`gatsby info`)
@@ -256,7 +258,6 @@ envinfo is used in the ISSUE_TEMPLATE of:
 ## Alternatives
 
 -   type `command -v` until you smash your computer
--   [specs](https://github.com/mcandre/specs) - an excellent ruby gem that runs `command -v` for you on :all-the-things: Great for raw info.
 -   [screenfetch](https://github.com/KittyKatt/screenFetch) - fetch system and terminal information, and display a pretty ascii logo
 -   [Solidarity](https://github.com/infinitered/solidarity) - a project based environment checker
 -   write your own
@@ -279,7 +280,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- prettier-ignore -->
 | [<img src="https://avatars1.githubusercontent.com/u/2925048?v=4" width="100px;"/><br /><sub><b>Trevor Brindle</b></sub>](http://trevorbrindle.com)<br />[💬](#question-tabrindle "Answering Questions") [📝](#blog-tabrindle "Blogposts") [🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Atabrindle "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=tabrindle "Code") [📖](https://github.com/tabrindle/envinfo/commits?author=tabrindle "Documentation") [💡](#example-tabrindle "Examples") [🤔](#ideas-tabrindle "Ideas, Planning, & Feedback") [👀](#review-tabrindle "Reviewed Pull Requests") [📢](#talk-tabrindle "Talks") [⚠️](https://github.com/tabrindle/envinfo/commits?author=tabrindle "Tests") | [<img src="https://avatars0.githubusercontent.com/u/997157?v=4" width="100px;"/><br /><sub><b>Gant Laborde</b></sub>](http://gantlaborde.com/)<br />[📝](#blog-GantMan "Blogposts") [🐛](https://github.com/tabrindle/envinfo/issues?q=author%3AGantMan "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=GantMan "Code") [🤔](#ideas-GantMan "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/599352?v=4" width="100px;"/><br /><sub><b>Anton Fisher</b></sub>](http://antonfisher.com)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Aantonfisher "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=antonfisher "Code") | [<img src="https://avatars1.githubusercontent.com/u/960133?v=4" width="100px;"/><br /><sub><b>Ahmad Awais ⚡️</b></sub>](https://AhmadAwais.com/)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Aahmadawais "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=ahmadawais "Code") | [<img src="https://avatars2.githubusercontent.com/u/9251453?v=4" width="100px;"/><br /><sub><b>Hasan</b></sub>](https://github.com/LEQADA)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3ALEQADA "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=LEQADA "Code") | [<img src="https://avatars3.githubusercontent.com/u/1232725?v=4" width="100px;"/><br /><sub><b>Ernesto Ramírez</b></sub>](http://twitter.com/_ErnestoR)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3AErnestoR "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=ErnestoR "Code") | [<img src="https://avatars1.githubusercontent.com/u/3759816?v=4" width="100px;"/><br /><sub><b>Jiawen Geng</b></sub>](https://www.gengjiawen.com)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Agengjiawen "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=gengjiawen "Code") [🤔](#ideas-gengjiawen "Ideas, Planning, & Feedback") [⚠️](https://github.com/tabrindle/envinfo/commits?author=gengjiawen "Tests") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars3.githubusercontent.com/u/12520493?v=4" width="100px;"/><br /><sub><b>Zac Anger</b></sub>](https://zacanger.com)<br />[💻](https://github.com/tabrindle/envinfo/commits?author=zacanger "Code") [🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Azacanger "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/497214?v=4" width="100px;"/><br /><sub><b>Ville Immonen</b></sub>](https://twitter.com/VilleImmonen)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Afson "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=fson "Code") | [<img src="https://avatars2.githubusercontent.com/u/27246?v=4" width="100px;"/><br /><sub><b>Olmo Maldonado</b></sub>](http://ibolmo.com)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Aibolmo "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=ibolmo "Code") |
+| [<img src="https://avatars3.githubusercontent.com/u/12520493?v=4" width="100px;"/><br /><sub><b>Zac Anger</b></sub>](https://zacanger.com)<br />[💻](https://github.com/tabrindle/envinfo/commits?author=zacanger "Code") [🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Azacanger "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/497214?v=4" width="100px;"/><br /><sub><b>Ville Immonen</b></sub>](https://twitter.com/VilleImmonen)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Afson "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=fson "Code") | [<img src="https://avatars2.githubusercontent.com/u/27246?v=4" width="100px;"/><br /><sub><b>Olmo Maldonado</b></sub>](http://ibolmo.com)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Aibolmo "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=ibolmo "Code") | [<img src="https://avatars.githubusercontent.com/u/15812317?v=4" width="100px;"/><br /><sub><b>Rishabh Chawla</b></sub>](https://rishabhchawla.co)<br />[🐛](https://github.com/tabrindle/envinfo/issues?q=author%3Arishabh3112 "Bug reports") [💻](https://github.com/tabrindle/envinfo/commits?author=rishabh3112 "Code") | [<img src="https://avatars.githubusercontent.com/u/174297?v=4" width="100px;"/><br /><sub><b>Carl Taylor</b></sub>](https://github.com/Nthalk)<br />[💻](https://github.com/tabrindle/envinfo/commits?author=Nthalk "Code") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

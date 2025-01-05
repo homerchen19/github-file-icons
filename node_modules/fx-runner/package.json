@@ -1,0 +1,38 @@
+{
+  "name": "fx-runner",
+  "version": "1.4.0",
+  "description": "A node cli to control Firefox",
+  "main": "index.js",
+  "bin": {
+    "fx-runner": "./bin/fx-runner"
+  },
+  "scripts": {
+    "test": "node ./test/run.js"
+  },
+  "keywords": [
+    "firefox",
+    "mozilla",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mozilla/node-fx-runner"
+  },
+  "author": "Mozilla Add-ons Team",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "commander": "2.9.0",
+    "shell-quote": "1.7.3",
+    "spawn-sync": "1.0.15",
+    "when": "3.7.7",
+    "which": "1.2.4",
+    "winreg": "0.0.12"
+  },
+  "devDependencies": {
+    "async": "3.2.4",
+    "chai": "4.3.6",
+    "dive": "0.5.0",
+    "mocha": "10.0.0",
+    "sandboxed-module": "2.0.4"
+  }
+}

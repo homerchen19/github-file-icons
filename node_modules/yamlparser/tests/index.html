@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>YAML Parser</title>
+    <script type="text/javascript" src="../src/yamlparser.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var test1 = YAML.eval("---\n- one\n- two");
+            var test2 = YAML.eval("---\none: two");
+        
+            YAML.fromURL("example.yml", function(data) {
+                var errors = YAML.getErrors();
+                if(errors.length == 0)
+                    document.getElementById("out").innerHTML = "Done! Took " + YAML.getProcessingTime() + " miliseconds.";
+                else {
+                    document.getElementById("out").innerHTML = errors.join("<br>");
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+	<pre id="out"></pre>
+</body>
+</html>

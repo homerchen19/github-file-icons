@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -36,11 +38,23 @@ var _helperWasmBytecode = _interopRequireDefault(require("@webassemblyjs/helper-
 
 var _index = require("../index");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function assertNotIdentifierNode(n) {
   if (n.type === "Identifier") {
@@ -49,13 +63,13 @@ function assertNotIdentifierNode(n) {
 }
 
 function encodeVersion(v) {
-  var bytes = _helperWasmBytecode.default.moduleVersion;
+  var bytes = _helperWasmBytecode["default"].moduleVersion;
   bytes[0] = v;
   return bytes;
 }
 
 function encodeHeader() {
-  return _helperWasmBytecode.default.magicModuleHeader;
+  return _helperWasmBytecode["default"].magicModuleHeader;
 }
 
 function encodeU32(v) {
@@ -84,27 +98,27 @@ function encodeI64(v) {
 
 function encodeVec(elements) {
   var size = encodeU32(elements.length);
-  return _toConsumableArray(size).concat(_toConsumableArray(elements));
+  return [].concat(_toConsumableArray(size), _toConsumableArray(elements));
 }
 
 function encodeValtype(v) {
-  var byte = _helperWasmBytecode.default.valtypesByString[v];
+  var _byte = _helperWasmBytecode["default"].valtypesByString[v];
 
-  if (typeof byte === "undefined") {
+  if (typeof _byte === "undefined") {
     throw new Error("Unknown valtype: " + v);
   }
 
-  return parseInt(byte, 10);
+  return parseInt(_byte, 10);
 }
 
 function encodeMutability(v) {
-  var byte = _helperWasmBytecode.default.globalTypesByString[v];
+  var _byte2 = _helperWasmBytecode["default"].globalTypesByString[v];
 
-  if (typeof byte === "undefined") {
+  if (typeof _byte2 === "undefined") {
     throw new Error("Unknown mutability: " + v);
   }
 
-  return parseInt(byte, 10);
+  return parseInt(_byte2, 10);
 }
 
 function encodeUTF8Vec(str) {
@@ -180,7 +194,7 @@ function encodeModuleImport(n) {
 
 function encodeSectionMetadata(n) {
   var out = [];
-  var sectionId = _helperWasmBytecode.default.sections[n.section];
+  var sectionId = _helperWasmBytecode["default"].sections[n.section];
 
   if (typeof sectionId === "undefined") {
     throw new Error("Unknown section: " + n.section);
@@ -224,7 +238,7 @@ function encodeCallIndirectInstruction(n) {
 function encodeModuleExport(n) {
   var out = [];
   assertNotIdentifierNode(n.descr.id);
-  var exportTypeByteString = _helperWasmBytecode.default.exportTypesByName[n.descr.exportType];
+  var exportTypeByteString = _helperWasmBytecode["default"].exportTypesByName[n.descr.exportType];
 
   if (typeof exportTypeByteString === "undefined") {
     throw new Error("Unknown export of type: " + n.descr.exportType);
@@ -257,14 +271,15 @@ function encodeInstr(n) {
     instructionName = "".concat(n.object, ".").concat(String(n.id));
   }
 
-  var byteString = _helperWasmBytecode.default.symbolsByName[instructionName];
+  var byteString = _helperWasmBytecode["default"].symbolsByName[instructionName];
 
   if (typeof byteString === "undefined") {
     throw new Error("encodeInstr: unknown instruction " + JSON.stringify(instructionName));
   }
 
-  var byte = parseInt(byteString, 10);
-  out.push(byte);
+  var _byte3 = parseInt(byteString, 10);
+
+  out.push(_byte3);
 
   if (n.args) {
     n.args.forEach(function (arg) {
@@ -350,7 +365,7 @@ function encodeElem(n) {
   out.push.apply(out, _toConsumableArray(encodeExpr(n.offset))); // $FlowIgnore
 
   var funcs = n.funcs.reduce(function (acc, x) {
-    return _toConsumableArray(acc).concat(_toConsumableArray(encodeU32(x.value)));
+    return [].concat(_toConsumableArray(acc), _toConsumableArray(encodeU32(x.value)));
   }, []);
   out.push.apply(out, _toConsumableArray(encodeVec(funcs)));
   return out;

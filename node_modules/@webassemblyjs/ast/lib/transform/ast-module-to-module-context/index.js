@@ -95,9 +95,7 @@ function moduleContextFromModuleAST(m) {
  */
 
 
-var ModuleContext =
-/*#__PURE__*/
-function () {
+var ModuleContext = /*#__PURE__*/function () {
   function ModuleContext() {
     _classCallCheck(this, ModuleContext);
 
@@ -110,7 +108,7 @@ function () {
 
     this.locals = [];
     this.labels = [];
-    this.return = [];
+    this["return"] = [];
     this.debugName = "unknown";
     this.start = null;
   }
@@ -142,7 +140,7 @@ function () {
     value: function newContext(debugName, expectedResult) {
       this.locals = [];
       this.labels = [expectedResult];
-      this.return = expectedResult;
+      this["return"] = expectedResult;
       this.debugName = debugName;
     }
     /**
@@ -151,15 +149,16 @@ function () {
 
   }, {
     key: "addFunction",
-    value: function addFunction(func
-    /*: Func*/
-    ) {
-      // eslint-disable-next-line prefer-const
+    value: function addFunction(func) {
+      /* eslint-disable */
+      // $FlowIgnore
       var _ref = func.signature || {},
           _ref$params = _ref.params,
           args = _ref$params === void 0 ? [] : _ref$params,
           _ref$results = _ref.results,
           result = _ref$results === void 0 ? [] : _ref$results;
+      /* eslint-enable */
+
 
       args = args.map(function (arg) {
         return arg.valtype;
@@ -170,6 +169,7 @@ function () {
       });
 
       if (typeof func.name !== "undefined") {
+        // $FlowIgnore
         this.funcsOffsetByIdentifier[func.name.value] = this.funcs.length - 1;
       }
     }
@@ -323,13 +323,12 @@ function () {
         throw new Error('typeof name === "string"' + " error: " + (undefined || "unknown"));
       }
 
+      // $FlowIgnore
       return this.globalsOffsetByIdentifier[name];
     }
   }, {
     key: "defineGlobal",
-    value: function defineGlobal(global
-    /*: Global*/
-    ) {
+    value: function defineGlobal(global) {
       var type = global.globalType.valtype;
       var mutability = global.globalType.mutability;
       this.globals.push({
@@ -338,6 +337,7 @@ function () {
       });
 
       if (typeof global.name !== "undefined") {
+        // $FlowIgnore
         this.globalsOffsetByIdentifier[global.name.value] = this.globals.length - 1;
       }
     }

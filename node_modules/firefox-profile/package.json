@@ -1,0 +1,102 @@
+{
+  "name": "firefox-profile",
+  "version": "4.3.2",
+  "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
+  "main": "lib/firefox_profile",
+  "types": "lib/firefox_profile.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt travis",
+    "blanket": {
+      "pattern": [
+        "/lib/firefox_profile"
+      ]
+    }
+  },
+  "bin": {
+    "firefox-profile": "./lib/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/saadtazi/firefox-profile-js.git"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "firefox",
+    "firefox profile",
+    "nodejs"
+  ],
+  "author": "Saad Tazi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saadtazi/firefox-profile-js/issues"
+  },
+  "contributors": [
+    {
+      "name": "testingbot",
+      "url": "http://www.testingbot.com"
+    },
+    {
+      "name": "David Sturley",
+      "url": "https://github.com/circusbred"
+    },
+    {
+      "name": "Jordan Santell",
+      "url": "http://jsantell.com"
+    },
+    {
+      "name": "Piotr Kuczynski",
+      "url": "https://github.com/pkuczynski"
+    },
+    {
+      "name": "halo2376",
+      "url": "https://github.com/halo2376"
+    },
+    {
+      "name": "XrXr",
+      "url": "https://github.com/XrXr"
+    },
+    {
+      "name": "Christoph Dorn",
+      "url": "http://www.christophdorn.com/"
+    },
+    {
+      "name": "Holger Benl",
+      "url": "https://github.com/hbenl"
+    },
+    {
+      "name": "Federico",
+      "url": "https://github.com/fregante"
+    },
+    {
+      "name": "Luca Greco",
+      "url": "https://github.com/rpl"
+    }
+  ],
+  "devDependencies": {
+    "blanket": "~1.2.x",
+    "chai": "~1.9.x",
+    "chai-as-promised": "~4.2.x",
+    "chai-fs": "~0.1.x",
+    "grunt": "^1.0.4",
+    "grunt-apidox": "~0.1.4",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-mocha-cov": "^0.4.0",
+    "mocha": "^8.1.3",
+    "mocha-lcov-reporter": "1.3.0",
+    "request": "^2.88.0",
+    "sinon": "~1.12.x",
+    "sinon-chai": "~2.7.x",
+    "wd": "^1.11.4"
+  },
+  "dependencies": {
+    "adm-zip": "~0.5.x",
+    "fs-extra": "~9.0.1",
+    "ini": "~2.0.0",
+    "minimist": "^1.2.5",
+    "xml2js": "^0.5.0"
+  }
+}

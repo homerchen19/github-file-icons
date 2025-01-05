@@ -3,11 +3,9 @@ Gracefully restore the CLI cursor on exit.
 
 @example
 ```
-import restoreCursor = require('restore-cursor');
+import restoreCursor from 'restore-cursor';
 
 restoreCursor();
 ```
 */
-declare function restoreCursor(): void;
-
-export = restoreCursor;
+export default function restoreCursor(): void;

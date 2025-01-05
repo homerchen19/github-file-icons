@@ -1,0 +1,1 @@
+{"version":3,"file":"log.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/log.ts"],"names":[],"mappings":";AACA,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,EAAE,MAAM,EAAE,MAAM,QAAQ,CAAC;AAChC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,UAAW,SAAQ,OAAO,CAAC,MAAM,CAAC;IACrD,OAAO,CAAC,IAAI,EAAE,MAAM,GAAG,QAAQ,CAAC,MAAM,CAAC;CAaxC"}

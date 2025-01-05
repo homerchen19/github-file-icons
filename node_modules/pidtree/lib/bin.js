@@ -2,6 +2,17 @@
 
 var spawn = require('child_process').spawn;
 
+function stripStderr(stderr) {
+  if (!stderr) return;
+  stderr = stderr.trim();
+  // Strip bogus screen size error.
+  // See https://github.com/microsoft/vscode/issues/98590
+  var regex = /your \d+x\d+ screen size is bogus\. expect trouble/gi;
+  stderr = stderr.replace(regex, '');
+
+  return stderr.trim();
+}
+
 /**
  * Spawn a binary and read its stdout.
  * @param  {String} cmd The name of the binary to spawn.
@@ -38,6 +49,7 @@ function run(cmd, args, options, done) {
     if (executed) return;
     executed = true;
 
+    stderr = stripStderr(stderr);
     if (stderr) {
       return done(new Error(stderr));
     }

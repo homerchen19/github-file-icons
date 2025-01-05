@@ -1,8 +1,6 @@
-# emoji-regex [![Build status](https://travis-ci.org/mathiasbynens/emoji-regex.svg?branch=master)](https://travis-ci.org/mathiasbynens/emoji-regex)
+# emoji-regex [![Build status](https://github.com/mathiasbynens/emoji-regex/actions/workflows/main.yml/badge.svg)](https://github.com/mathiasbynens/emoji-regex/actions/workflows/main.yml) [![emoji-regex on npm](https://img.shields.io/npm/v/emoji-regex)](https://www.npmjs.com/package/emoji-regex)
 
-_emoji-regex_ offers a regular expression to match all emoji symbols (including textual representations of emoji) as per the Unicode Standard.
-
-This repository contains a script that generates this regular expression based on [the data from Unicode v12](https://github.com/mathiasbynens/unicode-12.0.0). Because of this, the regular expression can easily be updated whenever new emoji are added to the Unicode standard.
+_emoji-regex_ offers a regular expression to match all emoji symbols and sequences (including textual representations of emoji) as per the Unicode Standard. It’s based on [_emoji-test-regex-pattern_](https://github.com/mathiasbynens/emoji-test-regex-pattern), which generates (at build time) the regular expression pattern based on the Unicode Standard. As a result, _emoji-regex_ can easily be updated whenever new emoji are added to Unicode.
 
 ## Installation
 
@@ -29,8 +27,7 @@ const text = `
 `;
 
 const regex = emojiRegex();
-let match;
-while (match = regex.exec(text)) {
+for (const match of text.matchAll(regex)) {
   const emoji = match[0];
   console.log(`Matched sequence ${ emoji } — code points: ${ [...emoji].length }`);
 }
@@ -49,18 +46,53 @@ Matched sequence 👩🏿 — code points: 2
 Matched sequence 👩🏿 — code points: 2
 ```
 
-To match emoji in their textual representation as well (i.e. emoji that are not `Emoji_Presentation` symbols and that aren’t forced to render as emoji by a variation selector), `require` the other regex:
+## For maintainers
 
-```js
-const emojiRegex = require('emoji-regex/text.js');
-```
+### How to update emoji-regex after new Unicode Standard releases
 
-Additionally, in environments which support ES2015 Unicode escapes, you may `require` ES2015-style versions of the regexes:
+1. [Update _emoji-test-regex-pattern_ as described in its repository](https://github.com/mathiasbynens/emoji-test-regex-pattern#how-to-update-emoji-test-regex-pattern-after-new-uts51-releases).
 
-```js
-const emojiRegex = require('emoji-regex/es2015/index.js');
-const emojiRegexText = require('emoji-regex/es2015/text.js');
-```
+1. Bump the _emoji-test-regex-pattern_ dependency to the latest version.
+
+1. Update the Unicode data dependency in `package.json` by running the following commands:
+
+     ```sh
+     # Example: updating from Unicode v13 to Unicode v14.
+     npm uninstall @unicode/unicode-13.0.0
+     npm install @unicode/unicode-14.0.0 --save-dev
+     ````
+
+ 1. Generate the new output:
+
+     ```sh
+     npm run build
+     ```
+
+ 1. Verify that tests still pass:
+
+     ```sh
+     npm test
+     ```
+
+### How to publish a new release
+
+1. On the `main` branch, bump the emoji-regex version number in `package.json`:
+
+    ```sh
+    npm version patch -m 'Release v%s'
+    ```
+
+    Instead of `patch`, use `minor` or `major` [as needed](https://semver.org/).
+
+    Note that this produces a Git commit + tag.
+
+1. Push the release commit and tag:
+
+    ```sh
+    git push && git push --tags
+    ```
+
+    Our CI then automatically publishes the new release to npm.
 
 ## Author
 

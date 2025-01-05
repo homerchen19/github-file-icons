@@ -5,7 +5,7 @@ declare function mergeWithCustomize<Configuration extends object>(options: ICust
 declare function customizeArray(rules: {
     [s: string]: CustomizeRule | CustomizeRuleString;
 }): (a: any, b: any, key: Key) => any;
-declare type Rules = {
+type Rules = {
     [s: string]: CustomizeRule | CustomizeRuleString | Rules;
 };
 declare function mergeWithRules(rules: Rules): (firstConfiguration: object | object[], ...configurations: object[]) => object;

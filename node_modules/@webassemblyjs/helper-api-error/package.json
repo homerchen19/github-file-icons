@@ -1,6 +1,6 @@
 {
   "name": "@webassemblyjs/helper-api-error",
-  "version": "1.11.1",
+  "version": "1.13.2",
   "description": "Common API errors",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -14,5 +14,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "3f07e2db2031afe0ce686630418c542938c1674b"
+  "gitHead": "897aeb784f042a46a00626f1d1cca96159aa5db3"
 }

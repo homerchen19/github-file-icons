@@ -25,7 +25,7 @@ var controlInstructions = {
   br: sign([u32], []),
   br_if: sign([u32], []),
   br_table: sign(vector(u32), []),
-  return: sign([], []),
+  "return": sign([], []),
   call: sign([u32], []),
   call_indirect: sign([u32], [])
 };

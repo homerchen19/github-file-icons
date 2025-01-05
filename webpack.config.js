@@ -47,7 +47,10 @@ const options = {
       },
       {
         test: new RegExp(`.(${fileExtensions.join('|')})$`),
-        use: 'file-loader?name=/fonts/[name].[ext]',
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
       },
     ],
   },
@@ -65,7 +68,7 @@ const options = {
                 description: process.env.npm_package_description,
                 version: process.env.npm_package_version,
                 ...JSON.parse(content.toString()),
-              })
+              }),
             ),
         },
         {
@@ -91,7 +94,7 @@ if (process.env.NODE_ENV === 'development') {
         contentScript: 'content',
         background: 'background',
       },
-    })
+    }),
   );
 } else if (process.env.NODE_ENV === 'production') {
   options.mode = 'production';
@@ -101,7 +104,7 @@ if (process.env.NODE_ENV === 'development') {
       minimize: true,
       debug: false,
     }),
-    new TerserPlugin()
+    new TerserPlugin(),
   );
   options.stats = {
     colors: true,

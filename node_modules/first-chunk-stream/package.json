@@ -1,0 +1,41 @@
+{
+	"name": "first-chunk-stream",
+	"version": "3.0.0",
+	"description": "Transform the first chunk in a stream",
+	"license": "MIT",
+	"repository": "sindresorhus/first-chunk-stream",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && nyc ava && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"buffer",
+		"stream",
+		"streams",
+		"transform",
+		"first",
+		"chunk",
+		"size",
+		"min",
+		"minimum"
+	],
+	"devDependencies": {
+		"@types/node": "^12.0.0",
+		"ava": "^1.4.1",
+		"nyc": "^14.0.0",
+		"streamtest": "^1.2.1",
+		"tsd": "^0.7.3",
+		"xo": "^0.24.0"
+	}
+}

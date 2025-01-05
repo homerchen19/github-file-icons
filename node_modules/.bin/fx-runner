@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var VERSION = require("../package.json").version;
+var program = require("commander");
+var run = require("../lib/run");
+
+program
+  .version(VERSION)
+  .option("-b, --binary <path>", "Path of Firefox binary to use.")
+  .option("--binary-args <CMDARGS>", "Pass additional arguments into Firefox.")
+  .option("-p, --profile <path>", "Path or name of Firefox profile to use.")
+  .option("-v, --verbose", "More verbose logging to stdout.")
+  .option("--new-instance", "Use a new instance")
+  .option("--no-remote", "Do not allow remote calls")
+  .option("--foreground", "Bring Firefox to the foreground")
+  .option("-l, --listen <port>", "Start the debugger server on a specific port.")
+
+program
+  .command("start")
+  .description("Start Firefox")
+  .action(function() {
+    console.log(Object.keys(program))
+    run({
+      binary: program.binary || process.env.JPM_FIREFOX_BINARY || "firefox",
+      profile: program.profile,
+      "new-instance": !!program.newInstance ? true : false,
+      "foreground": !!program.foreground ? true : false,
+      "no-remote": !program.remote ? true : false,
+      "binary-args": program.binaryArgs || "",
+      "listen": program.listen || 6000
+    })
+    .then(function(results) {
+      var firefox = results.process;
+      if (program.verbose) {
+        firefox.stdout.pipe(process.stdout)
+      }
+    }, console.exception);
+  });
+
+program.parse(process.argv);

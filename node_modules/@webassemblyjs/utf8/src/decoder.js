@@ -16,71 +16,52 @@ function code(min, n) {
 
 export function decode(bytes) {
   return _decode(bytes)
-    .map(x => String.fromCharCode(x))
+    .map((x) => String.fromCharCode(x))
     .join("");
 }
 
 function _decode(bytes) {
-  if (bytes.length === 0) {
-    return [];
-  }
-
-  /**
-   * 1 byte
-   */
-  {
-    const [b1, ...bs] = bytes;
-
+  const result = [];
+  while (bytes.length > 0) {
+    const b1 = bytes[0];
     if (b1 < 0x80) {
-      return [code(0x0, b1), ..._decode(bs)];
+      result.push(code(0x0, b1));
+      bytes = bytes.slice(1);
+      continue;
     }
 
     if (b1 < 0xc0) {
       throw new Error("invalid UTF-8 encoding");
     }
-  }
 
-  /**
-   * 2 bytes
-   */
-  {
-    const [b1, b2, ...bs] = bytes;
-
+    const b2 = bytes[1];
     if (b1 < 0xe0) {
-      return [code(0x80, ((b1 & 0x1f) << 6) + con(b2)), ..._decode(bs)];
+      result.push(code(0x80, ((b1 & 0x1f) << 6) + con(b2)));
+      bytes = bytes.slice(2);
+      continue;
     }
-  }
 
-  /**
-   * 3 bytes
-   */
-  {
-    const [b1, b2, b3, ...bs] = bytes;
-
+    const b3 = bytes[2];
     if (b1 < 0xf0) {
-      return [
-        code(0x800, ((b1 & 0x0f) << 12) + (con(b2) << 6) + con(b3)),
-        ..._decode(bs)
-      ];
+      result.push(code(0x800, ((b1 & 0x0f) << 12) + (con(b2) << 6) + con(b3)));
+      bytes = bytes.slice(3);
+      continue;
     }
-  }
 
-  /**
-   * 4 bytes
-   */
-  {
-    const [b1, b2, b3, b4, ...bs] = bytes;
-
+    const b4 = bytes[3];
     if (b1 < 0xf8) {
-      return [
+      result.push(
         code(
           0x10000,
           ((((b1 & 0x07) << 18) + con(b2)) << 12) + (con(b3) << 6) + con(b4)
-        ),
-        ..._decode(bs)
-      ];
+        )
+      );
+      bytes = bytes.slice(4);
+      continue;
     }
+
+    throw new Error("invalid UTF-8 encoding");
   }
 
-  throw new Error("invalid UTF-8 encoding");
+  return result;
 }

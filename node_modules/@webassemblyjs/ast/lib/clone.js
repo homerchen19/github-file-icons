@@ -6,5 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.cloneNode = cloneNode;
 
 function cloneNode(n) {
+  // $FlowIgnore
   return Object.assign({}, n);
 }

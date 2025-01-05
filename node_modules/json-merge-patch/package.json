@@ -1,0 +1,42 @@
+{
+  "name": "json-merge-patch",
+  "version": "1.0.2",
+  "description": "Implementation of JSON Merge Patch (RFC 7396)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^7.1.2"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test mocha -b --reporter spec --recursive test",
+    "lint": "eslint ./lib ./index.js",
+    "coverage": "istanbul cover _mocha -- -R spec --recursive test",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec  --recursive test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierreinglebert/json-merge-patch.git"
+  },
+  "keywords": [
+    "JSON",
+    "Merge",
+    "Patch",
+    "rfc",
+    "7396"
+  ],
+  "author": "Pierre Inglebert <pierre.inglebert@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pierreinglebert/json-merge-patch/issues"
+  },
+  "homepage": "https://github.com/pierreinglebert/json-merge-patch",
+  "dependencies": {
+    "fast-deep-equal": "^3.1.3"
+  }
+}

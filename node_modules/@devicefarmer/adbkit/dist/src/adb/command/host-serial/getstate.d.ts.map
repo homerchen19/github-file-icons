@@ -1,0 +1,1 @@
+{"version":3,"file":"getstate.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-serial/getstate.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,eAAgB,SAAQ,OAAO,CAAC,MAAM,CAAC;IAC1D,OAAO,CAAC,MAAM,EAAE,MAAM,GAAG,QAAQ,CAAC,MAAM,CAAC;CAa1C"}

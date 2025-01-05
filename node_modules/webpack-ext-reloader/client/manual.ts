@@ -5,7 +5,7 @@ import {
   DEFAULT_CONTENT_SCRIPT_ENTRY,
   DEFAULT_EXTENSION_PAGE_ENTRY,
   DEFAULT_PORT,
-} from "../src/constants/options.constants";
+} from '../src/constants/options.constants';
 
 export default () => `
 Usage:

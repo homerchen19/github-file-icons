@@ -9,10 +9,12 @@
  */
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _long = _interopRequireDefault(require("@xtuc/long"));
 
@@ -20,9 +22,11 @@ var bits = _interopRequireWildcard(require("./bits"));
 
 var bufs = _interopRequireWildcard(require("./bufs"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /*
  * Module variables
@@ -218,10 +222,12 @@ function decodeIntBuffer(encodedBuffer, index) {
 }
 
 function encodeInt32(num) {
-  var buf = bufs.alloc(4);
-  buf.writeInt32LE(num, 0);
+  var buf = new Uint8Array(4);
+  buf[0] = num & 0xff;
+  buf[1] = num >> 8 & 0xff;
+  buf[2] = num >> 16 & 0xff;
+  buf[3] = num >> 24 & 0xff;
   var result = encodeIntBuffer(buf);
-  bufs.free(buf);
   return result;
 }
 
@@ -250,9 +256,16 @@ function encodeInt64(num) {
 }
 
 function decodeInt64(encodedBuffer, index) {
-  var result = decodeIntBuffer(encodedBuffer, index);
+  var result = decodeIntBuffer(encodedBuffer, index); // sign-extend if necessary
 
-  var value = _long.default.fromBytesLE(result.value, false);
+  var length = result.value.length;
+
+  if (result.value[length - 1] >> 7) {
+    result.value = bufs.resize(result.value, 8);
+    result.value.fill(255, length);
+  }
+
+  var value = _long["default"].fromBytesLE(result.value, false);
 
   bufs.free(result.value);
   return {
@@ -271,10 +284,12 @@ function decodeUIntBuffer(encodedBuffer, index) {
 }
 
 function encodeUInt32(num) {
-  var buf = bufs.alloc(4);
-  buf.writeUInt32LE(num, 0);
+  var buf = new Uint8Array(4);
+  buf[0] = num & 0xff;
+  buf[1] = num >> 8 & 0xff;
+  buf[2] = num >> 16 & 0xff;
+  buf[3] = num >> 24 & 0xff;
   var result = encodeUIntBuffer(buf);
-  bufs.free(buf);
   return result;
 }
 
@@ -305,7 +320,7 @@ function encodeUInt64(num) {
 function decodeUInt64(encodedBuffer, index) {
   var result = decodeUIntBuffer(encodedBuffer, index);
 
-  var value = _long.default.fromBytesLE(result.value, true);
+  var value = _long["default"].fromBytesLE(result.value, true);
 
   bufs.free(result.value);
   return {
@@ -329,4 +344,4 @@ var _default = {
   encodeUInt64: encodeUInt64,
   encodeUIntBuffer: encodeUIntBuffer
 };
-exports.default = _default;
+exports["default"] = _default;

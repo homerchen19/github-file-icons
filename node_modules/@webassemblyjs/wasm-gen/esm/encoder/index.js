@@ -1,4 +1,14 @@
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 import * as leb from "@webassemblyjs/leb128";
 import * as ieee754 from "@webassemblyjs/ieee754";
@@ -43,25 +53,25 @@ export function encodeI64(v) {
 }
 export function encodeVec(elements) {
   var size = encodeU32(elements.length);
-  return _toConsumableArray(size).concat(_toConsumableArray(elements));
+  return [].concat(_toConsumableArray(size), _toConsumableArray(elements));
 }
 export function encodeValtype(v) {
-  var byte = constants.valtypesByString[v];
+  var _byte = constants.valtypesByString[v];
 
-  if (typeof byte === "undefined") {
+  if (typeof _byte === "undefined") {
     throw new Error("Unknown valtype: " + v);
   }
 
-  return parseInt(byte, 10);
+  return parseInt(_byte, 10);
 }
 export function encodeMutability(v) {
-  var byte = constants.globalTypesByString[v];
+  var _byte2 = constants.globalTypesByString[v];
 
-  if (typeof byte === "undefined") {
+  if (typeof _byte2 === "undefined") {
     throw new Error("Unknown mutability: " + v);
   }
 
-  return parseInt(byte, 10);
+  return parseInt(_byte2, 10);
 }
 export function encodeUTF8Vec(str) {
   return encodeVec(utf8.encode(str));
@@ -211,8 +221,9 @@ export function encodeInstr(n) {
     throw new Error("encodeInstr: unknown instruction " + JSON.stringify(instructionName));
   }
 
-  var byte = parseInt(byteString, 10);
-  out.push(byte);
+  var _byte3 = parseInt(byteString, 10);
+
+  out.push(_byte3);
 
   if (n.args) {
     n.args.forEach(function (arg) {
@@ -294,7 +305,7 @@ export function encodeElem(n) {
   out.push.apply(out, _toConsumableArray(encodeExpr(n.offset))); // $FlowIgnore
 
   var funcs = n.funcs.reduce(function (acc, x) {
-    return _toConsumableArray(acc).concat(_toConsumableArray(encodeU32(x.value)));
+    return [].concat(_toConsumableArray(acc), _toConsumableArray(encodeU32(x.value)));
   }, []);
   out.push.apply(out, _toConsumableArray(encodeVec(funcs)));
   return out;

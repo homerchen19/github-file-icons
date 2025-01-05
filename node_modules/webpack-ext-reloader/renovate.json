@@ -2,7 +2,6 @@
   "extends": [
     ":separateMajorReleases",
     ":ignoreUnstable",
-    ":combinePatchMinorReleases",
     ":prImmediately",
     "group:monorepos",
     "group:recommended",
@@ -58,6 +57,17 @@
       "major": {
         "automerge": false
       }
+    },
+    {
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
     }
   ]
 }

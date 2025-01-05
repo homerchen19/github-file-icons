@@ -13,14 +13,14 @@ class HotModuleReplacementRuntimeModule extends RuntimeModule {
 	constructor() {
 		super("hot module replacement", RuntimeModule.STAGE_BASIC);
 	}
+
 	/**
-	 * @returns {string} runtime code
+	 * @returns {string | null} runtime code
 	 */
 	generate() {
 		return Template.getFunctionContent(
 			require("./HotModuleReplacement.runtime.js")
 		)
-			.replace(/\$getFullHash\$/g, RuntimeGlobals.getFullHash)
 			.replace(
 				/\$interceptModuleExecution\$/g,
 				RuntimeGlobals.interceptModuleExecution

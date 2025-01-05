@@ -88,7 +88,7 @@ const getSelector = (hostname: string) => {
 };
 
 const { filenameSelector, iconSelector, host } = getSelector(
-  window.location.hostname
+  window.location.hostname,
 );
 const isMobile = mobile();
 const isGitHub = host === Host.GitHub;
@@ -97,11 +97,11 @@ const loadFonts = () => {
   fonts.forEach((font) => {
     const fontFace = new FontFace(
       font.name,
-      `url("${chrome.extension.getURL(font.path)}") format("woff2")`,
+      `url("${chrome.runtime.getURL(font.path)}") format("woff2")`,
       {
         style: 'normal',
         weight: 'normal',
-      }
+      },
     );
 
     fontFace
@@ -186,7 +186,7 @@ const update = () => {
 const replaceGithubFileIcons = (
   triggerSelector: string,
   fileSelector: string,
-  iconSelector = '.octicon-file'
+  iconSelector = '.octicon-file',
 ) => {
   observe(triggerSelector, {
     add(element) {
@@ -214,23 +214,23 @@ const init = async () => {
     if (isGithubFilesPage()) {
       replaceGithubFileIcons(
         'ul.ActionList > li[id^=file-tree-item-diff-][role=treeitem]',
-        'a > span:nth-child(2)'
+        'a > span:nth-child(2)',
       );
     } else {
       replaceGithubFileIcons(
         '.js-navigation-container > .js-navigation-item',
-        'div[role="rowheader"] > span'
+        'div[role="rowheader"] > span',
       );
 
       replaceGithubFileIcons(
         '.PRIVATE_TreeView-item-content:has(span.PRIVATE_TreeView-item-content-text > span:not([class]))',
-        'span.PRIVATE_TreeView-item-content-text'
+        'span.PRIVATE_TreeView-item-content-text',
       );
 
       replaceGithubFileIcons(
         '.react-directory-filename-column',
         '.react-directory-truncate',
-        'svg:not(.icon-directory)'
+        'svg:not(.icon-directory)',
       );
     }
   } else {
@@ -250,7 +250,7 @@ chrome.storage.sync.get(
     darkMode = result.darkMode === undefined ? darkMode : result.darkMode;
 
     init();
-  }
+  },
 );
 
 chrome.runtime.onMessage.addListener(function (request) {

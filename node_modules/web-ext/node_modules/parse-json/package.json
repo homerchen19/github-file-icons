@@ -1,0 +1,47 @@
+{
+	"name": "parse-json",
+	"version": "6.0.2",
+	"description": "Parse JSON with more helpful errors",
+	"license": "MIT",
+	"repository": "sindresorhus/parse-json",
+	"funding": "https://github.com/sponsors/sindresorhus",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "https://sindresorhus.com"
+	},
+	"type": "module",
+	"exports": "./index.js",
+	"engines": {
+		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+	},
+	"scripts": {
+		"test": "xo && nyc ava"
+	},
+	"files": [
+		"index.js",
+		"vendor"
+	],
+	"keywords": [
+		"parse",
+		"json",
+		"graceful",
+		"error",
+		"message",
+		"humanize",
+		"friendly",
+		"helpful",
+		"string"
+	],
+	"dependencies": {
+		"@babel/code-frame": "^7.16.0",
+		"error-ex": "^1.3.2",
+		"json-parse-even-better-errors": "^2.3.1",
+		"lines-and-columns": "^2.0.2"
+	},
+	"devDependencies": {
+		"ava": "^3.15.0",
+		"nyc": "^15.1.0",
+		"xo": "^0.46.4"
+	}
+}

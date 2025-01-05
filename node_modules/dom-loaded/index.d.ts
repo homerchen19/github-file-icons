@@ -15,15 +15,28 @@ declare const domLoaded: Promise<void> & {
 	/**
 	Synchronously check if the DOM has already finished loading.
 
+	@example
 	```
 	import domLoaded from 'dom-loaded';
 
 	if (domLoaded.hasLoaded) {
-		console.log('The DOM has already finished loading.')
+		console.log('The DOM has already finished loading.');
 	}
 	```
 	*/
 	readonly hasLoaded: boolean;
+
+	/**
+	An `AbortSignal` that triggers when the DOM finishes loading or immediately if it has already loaded.
+
+	@example
+	```
+	import domLoaded from 'dom-loaded';
+
+	showLoader({signal: domLoaded.signal});
+	```
+	*/
+	readonly signal: AbortSignal;
 };
 
 export default domLoaded;

@@ -1,0 +1,1 @@
+{"version":3,"file":"entry.d.ts","sourceRoot":"","sources":["../../../../src/adb/sync/entry.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,SAAS,CAAC;AAE5B,cAAM,KAAM,SAAQ,KAAK;IACJ,IAAI,EAAE,MAAM;gBAAZ,IAAI,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,EAAE,KAAK,EAAE,MAAM;IAInE,QAAQ,IAAI,MAAM;CAG1B;AAED,SAAS,KAAK,CAAC"}

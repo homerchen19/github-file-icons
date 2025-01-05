@@ -1,0 +1,1 @@
+{"version":3,"file":"transport.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host/transport.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,oBAAqB,SAAQ,OAAO,CAAC,OAAO,CAAC;IAChE,OAAO,CAAC,MAAM,EAAE,MAAM,GAAG,QAAQ,CAAC,OAAO,CAAC;CAa3C"}

@@ -58,19 +58,20 @@ export function parseU32(sourceString) {
   return value;
 }
 export function parse64I(sourceString) {
-  var long;
+  // $FlowIgnore
+  var _long;
 
   if (isHexLiteral(sourceString)) {
-    long = Long.fromString(sourceString, false, 16);
+    _long = Long.fromString(sourceString, false, 16);
   } else if (isDecimalExponentLiteral(sourceString)) {
     throw new Error("This number literal format is yet to be implemented.");
   } else {
-    long = Long.fromString(sourceString);
+    _long = Long.fromString(sourceString);
   }
 
   return {
-    high: long.high,
-    low: long.low
+    high: _long.high,
+    low: _long.low
   };
 }
 var NAN_WORD = /^\+?-?nan/;

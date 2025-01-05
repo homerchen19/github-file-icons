@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -17,11 +19,23 @@ var _leb = require("@webassemblyjs/leb128");
 
 var _helperWasmBytecode = _interopRequireDefault(require("@webassemblyjs/helper-wasm-bytecode"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function toHex(n) {
   return "0x" + Number(n).toString(16);
@@ -228,21 +242,21 @@ function decode(ab, opts) {
 
   function readU32() {
     var bytes = readBytes(_leb.MAX_NUMBER_OF_BYTE_U32);
-    var buffer = Buffer.from(bytes);
+    var buffer = new Uint8Array(bytes);
     return (0, _leb.decodeUInt32)(buffer);
   }
 
   function readVaruint32() {
     // where 32 bits = max 4 bytes
     var bytes = readBytes(4);
-    var buffer = Buffer.from(bytes);
+    var buffer = new Uint8Array(bytes);
     return (0, _leb.decodeUInt32)(buffer);
   }
 
   function readVaruint7() {
     // where 7 bits = max 1 bytes
     var bytes = readBytes(1);
-    var buffer = Buffer.from(bytes);
+    var buffer = new Uint8Array(bytes);
     return (0, _leb.decodeUInt32)(buffer);
   }
   /**
@@ -252,7 +266,7 @@ function decode(ab, opts) {
 
   function read32() {
     var bytes = readBytes(_leb.MAX_NUMBER_OF_BYTE_U32);
-    var buffer = Buffer.from(bytes);
+    var buffer = new Uint8Array(bytes);
     return (0, _leb.decodeInt32)(buffer);
   }
   /**
@@ -262,13 +276,13 @@ function decode(ab, opts) {
 
   function read64() {
     var bytes = readBytes(_leb.MAX_NUMBER_OF_BYTE_U64);
-    var buffer = Buffer.from(bytes);
+    var buffer = new Uint8Array(bytes);
     return (0, _leb.decodeInt64)(buffer);
   }
 
   function readU64() {
     var bytes = readBytes(_leb.MAX_NUMBER_OF_BYTE_U64);
-    var buffer = Buffer.from(bytes);
+    var buffer = new Uint8Array(bytes);
     return (0, _leb.decodeUInt64)(buffer);
   }
 
@@ -283,7 +297,7 @@ function decode(ab, opts) {
 
     var header = readBytes(4);
 
-    if (byteArrayEq(_helperWasmBytecode.default.magicModuleHeader, header) === false) {
+    if (byteArrayEq(_helperWasmBytecode["default"].magicModuleHeader, header) === false) {
       throw new _helperApiError.CompileError("magic header not detected");
     }
 
@@ -298,7 +312,7 @@ function decode(ab, opts) {
 
     var version = readBytes(4);
 
-    if (byteArrayEq(_helperWasmBytecode.default.moduleVersion, version) === false) {
+    if (byteArrayEq(_helperWasmBytecode["default"].moduleVersion, version) === false) {
       throw new _helperApiError.CompileError("unknown binary version");
     }
 
@@ -319,10 +333,11 @@ function decode(ab, opts) {
     var elements = [];
 
     for (var i = 0; i < length; i++) {
-      var byte = readByte();
+      var _byte = readByte();
+
       eatBytes(1);
-      var value = cast(byte);
-      dump([byte], value);
+      var value = cast(_byte);
+      dump([_byte], value);
 
       if (typeof value === "undefined") {
         throw new _helperApiError.CompileError("Internal failure: parseVec could not cast the value");
@@ -347,10 +362,16 @@ function decode(ab, opts) {
       var type = readByte();
       eatBytes(1);
 
-      if (type == _helperWasmBytecode.default.types.func) {
+      if (type == _helperWasmBytecode["default"].types.func) {
         dump([type], "func");
         var paramValtypes = parseVec(function (b) {
-          return _helperWasmBytecode.default.valtypes[b];
+          var valtype = _helperWasmBytecode["default"].valtypes[b];
+
+          if (valtype === undefined) {
+            throw new Error("unexpected value type ".concat(b));
+          }
+
+          return valtype;
         });
         var params = paramValtypes.map(function (v) {
           return t.funcParam(
@@ -358,7 +379,7 @@ function decode(ab, opts) {
           v);
         });
         var result = parseVec(function (b) {
-          return _helperWasmBytecode.default.valtypes[b];
+          return _helperWasmBytecode["default"].valtypes[b];
         });
         typeInstructionNodes.push(function () {
           var endLoc = getPosition();
@@ -406,7 +427,7 @@ function decode(ab, opts) {
 
       var descrTypeByte = readByte();
       eatBytes(1);
-      var descrType = _helperWasmBytecode.default.importTypes[descrTypeByte];
+      var descrType = _helperWasmBytecode["default"].importTypes[descrTypeByte];
       dump([descrTypeByte], "import kind");
 
       if (typeof descrType === "undefined") {
@@ -439,7 +460,7 @@ function decode(ab, opts) {
         state.globalsInModule.push(globalNode);
       } else if (descrType === "table") {
         importDescr = parseTableType(i);
-      } else if (descrType === "mem") {
+      } else if (descrType === "memory") {
         var memoryNode = parseMemoryType(0);
         state.memoriesInModule.push(memoryNode);
         importDescr = memoryNode;
@@ -511,7 +532,7 @@ function decode(ab, opts) {
       var id = void 0,
           signature = void 0;
 
-      if (_helperWasmBytecode.default.exportTypes[typeIndex] === "Func") {
+      if (_helperWasmBytecode["default"].exportTypes[typeIndex] === "Func") {
         var func = state.functionsInModule[index];
 
         if (typeof func === "undefined") {
@@ -520,7 +541,7 @@ function decode(ab, opts) {
 
         id = t.numberLiteralFromRaw(index, String(index));
         signature = func.signature;
-      } else if (_helperWasmBytecode.default.exportTypes[typeIndex] === "Table") {
+      } else if (_helperWasmBytecode["default"].exportTypes[typeIndex] === "Table") {
         var table = state.tablesInModule[index];
 
         if (typeof table === "undefined") {
@@ -529,7 +550,7 @@ function decode(ab, opts) {
 
         id = t.numberLiteralFromRaw(index, String(index));
         signature = null;
-      } else if (_helperWasmBytecode.default.exportTypes[typeIndex] === "Mem") {
+      } else if (_helperWasmBytecode["default"].exportTypes[typeIndex] === "Memory") {
         var memNode = state.memoriesInModule[index];
 
         if (typeof memNode === "undefined") {
@@ -538,7 +559,7 @@ function decode(ab, opts) {
 
         id = t.numberLiteralFromRaw(index, String(index));
         signature = null;
-      } else if (_helperWasmBytecode.default.exportTypes[typeIndex] === "Global") {
+      } else if (_helperWasmBytecode["default"].exportTypes[typeIndex] === "Global") {
         var global = state.globalsInModule[index];
 
         if (typeof global === "undefined") {
@@ -555,7 +576,7 @@ function decode(ab, opts) {
       var endLoc = getPosition();
       state.elementsInExportSection.push({
         name: name.value,
-        type: _helperWasmBytecode.default.exportTypes[typeIndex],
+        type: _helperWasmBytecode["default"].exportTypes[typeIndex],
         signature: signature,
         id: id,
         index: index,
@@ -579,10 +600,7 @@ function decode(ab, opts) {
       var bodySizeU32 = readU32();
       eatBytes(bodySizeU32.nextIndex);
       dump([bodySizeU32.value], "function body size");
-      var code = [];
-      /**
-       * Parse locals
-       */
+      var code = []; // Parse locals
 
       var funcLocalNumU32 = readU32();
       var funcLocalNum = funcLocalNumU32.value;
@@ -599,7 +617,7 @@ function decode(ab, opts) {
         dump([localCount], "num local");
         var valtypeByte = readByte();
         eatBytes(1);
-        var type = _helperWasmBytecode.default.valtypes[valtypeByte];
+        var type = _helperWasmBytecode["default"].valtypes[valtypeByte];
         var args = [];
 
         for (var _i2 = 0; _i2 < localCount; _i2++) {
@@ -644,12 +662,23 @@ function decode(ab, opts) {
       if (instructionByte === 0xfe) {
         instructionByte = 0xfe00 + readByte();
         eatBytes(1);
+      } // Table instructions
+      // https://webassembly.github.io/spec/core/binary/instructions.html#table-instructions
+
+
+      if (instructionByte === 0xfc) {
+        instructionByte = 0xfc00 + readByte();
+        eatBytes(1);
       }
 
-      var instruction = _helperWasmBytecode.default.symbolsByByte[instructionByte];
+      var instruction = _helperWasmBytecode["default"].symbolsByByte[instructionByte];
 
       if (typeof instruction === "undefined") {
         throw new _helperApiError.CompileError("Unexpected instruction: " + toHex(instructionByte));
+      }
+
+      if (instruction === "illegal") {
+        throw new Error("tried to decode an illegal bytecode: ".concat(toHex(instructionByte)));
       }
 
       if (typeof instruction.object === "string") {
@@ -673,19 +702,12 @@ function decode(ab, opts) {
       }
 
       var args = [];
+      var namedArgs = void 0;
 
       if (instruction.name === "loop") {
         var _startLoc7 = getPosition();
 
-        var blocktypeByte = readByte();
-        eatBytes(1);
-        var blocktype = _helperWasmBytecode.default.blockTypes[blocktypeByte];
-        dump([blocktypeByte], "blocktype");
-
-        if (typeof blocktype === "undefined") {
-          throw new _helperApiError.CompileError("Unexpected blocktype: " + toHex(blocktypeByte));
-        }
-
+        var blocktype = parseBlockType();
         var instr = [];
         parseInstructionBlock(instr); // preserve anonymous
 
@@ -701,15 +723,7 @@ function decode(ab, opts) {
       } else if (instruction.name === "if") {
         var _startLoc8 = getPosition();
 
-        var _blocktypeByte = readByte();
-
-        eatBytes(1);
-        var _blocktype = _helperWasmBytecode.default.blockTypes[_blocktypeByte];
-        dump([_blocktypeByte], "blocktype");
-
-        if (typeof _blocktype === "undefined") {
-          throw new _helperApiError.CompileError("Unexpected blocktype: " + toHex(_blocktypeByte));
-        }
+        var _blocktype = parseBlockType();
 
         var testIndex = t.withRaw(t.identifier(getUniqueName("if")), "");
         var ifBody = [];
@@ -740,15 +754,7 @@ function decode(ab, opts) {
       } else if (instruction.name === "block") {
         var _startLoc9 = getPosition();
 
-        var _blocktypeByte2 = readByte();
-
-        eatBytes(1);
-        var _blocktype2 = _helperWasmBytecode.default.blockTypes[_blocktypeByte2];
-        dump([_blocktypeByte2], "blocktype");
-
-        if (typeof _blocktype2 === "undefined") {
-          throw new _helperApiError.CompileError("Unexpected blocktype: " + toHex(_blocktypeByte2));
-        }
+        var _blocktype2 = parseBlockType();
 
         var _instr2 = [];
         parseInstructionBlock(_instr2); // preserve anonymous
@@ -842,6 +848,8 @@ function decode(ab, opts) {
           var _offset2 = offsetu32.value;
           eatBytes(offsetu32.nextIndex);
           dump([_offset2], "offset");
+          if (namedArgs === undefined) namedArgs = {};
+          namedArgs.offset = t.numberLiteralFromRaw(_offset2);
         }
       } else if (instructionByte >= 0x41 && instructionByte <= 0x44) {
         /**
@@ -941,14 +949,14 @@ function decode(ab, opts) {
         if (typeof instruction.object === "string") {
           var _node3 = function () {
             var endLoc = getPosition();
-            return t.withLoc(t.objectInstruction(instruction.name, instruction.object, args), endLoc, _startLoc6);
+            return t.withLoc(t.objectInstruction(instruction.name, instruction.object, args, namedArgs), endLoc, _startLoc6);
           }();
 
           code.push(_node3);
         } else {
           var _node4 = function () {
             var endLoc = getPosition();
-            return t.withLoc(t.instruction(instruction.name, args), endLoc, _startLoc6);
+            return t.withLoc(t.instruction(instruction.name, args, namedArgs), endLoc, _startLoc6);
           }();
 
           code.push(_node4);
@@ -967,15 +975,15 @@ function decode(ab, opts) {
 
     if (limitType === 0x01 || limitType === 0x03 // shared limits
     ) {
-        var u32min = readU32();
-        min = parseInt(u32min.value);
-        eatBytes(u32min.nextIndex);
-        dump([min], "min");
-        var u32max = readU32();
-        max = parseInt(u32max.value);
-        eatBytes(u32max.nextIndex);
-        dump([max], "max");
-      }
+      var u32min = readU32();
+      min = parseInt(u32min.value);
+      eatBytes(u32min.nextIndex);
+      dump([min], "min");
+      var u32max = readU32();
+      max = parseInt(u32max.value);
+      eatBytes(u32max.nextIndex);
+      dump([max], "max");
+    }
 
     if (limitType === 0x00) {
       var _u32min = readU32();
@@ -994,10 +1002,10 @@ function decode(ab, opts) {
     var elementTypeByte = readByte();
     eatBytes(1);
     dump([elementTypeByte], "element type");
-    var elementType = _helperWasmBytecode.default.tableTypes[elementTypeByte];
+    var elementType = _helperWasmBytecode["default"].tableTypes[elementTypeByte];
 
     if (typeof elementType === "undefined") {
-      throw new _helperApiError.CompileError("Unknown element type in table: " + toHex(elementType));
+      throw new _helperApiError.CompileError("Unknown element type in table: " + toHex(elementTypeByte));
     }
 
     var limits = parseLimits();
@@ -1008,7 +1016,7 @@ function decode(ab, opts) {
   function parseGlobalType() {
     var valtypeByte = readByte();
     eatBytes(1);
-    var type = _helperWasmBytecode.default.valtypes[valtypeByte];
+    var type = _helperWasmBytecode["default"].valtypes[valtypeByte];
     dump([valtypeByte], type);
 
     if (typeof type === "undefined") {
@@ -1017,7 +1025,7 @@ function decode(ab, opts) {
 
     var globalTypeByte = readByte();
     eatBytes(1);
-    var globalType = _helperWasmBytecode.default.globalTypes[globalTypeByte];
+    var globalType = _helperWasmBytecode["default"].globalTypes[globalTypeByte];
     dump([globalTypeByte], "global type (".concat(globalType, ")"));
 
     if (typeof globalType === "undefined") {
@@ -1203,39 +1211,176 @@ function decode(ab, opts) {
       var _startLoc12 = getPosition();
 
       var tableindexu32 = readU32();
-      var tableindex = tableindexu32.value;
+      var bitfield = tableindexu32.value;
       eatBytes(tableindexu32.nextIndex);
-      dump([tableindex], "table index");
-      /**
-       * Parse instructions
-       */
+      dump([bitfield], "bitfield");
 
-      var instr = [];
-      parseInstructionBlock(instr);
-      /**
-       * Parse ( vector function index ) *
-       */
+      if (bitfield === 0) {
+        // Parse instructions
+        var instr = [];
+        parseInstructionBlock(instr); // Parse ( vector function index ) *
 
-      var indicesu32 = readU32();
-      var indices = indicesu32.value;
-      eatBytes(indicesu32.nextIndex);
-      dump([indices], "num indices");
-      var indexValues = [];
+        var indicesu32 = readU32();
+        var indices = indicesu32.value;
+        eatBytes(indicesu32.nextIndex);
+        dump([indices], "num indices");
+        var indexValues = [];
 
-      for (var _i5 = 0; _i5 < indices; _i5++) {
-        var indexu32 = readU32();
-        var index = indexu32.value;
-        eatBytes(indexu32.nextIndex);
-        dump([index], "index");
-        indexValues.push(t.indexLiteral(index));
+        for (var _i5 = 0; _i5 < indices; _i5++) {
+          var indexu32 = readU32();
+          var index = indexu32.value;
+          eatBytes(indexu32.nextIndex);
+          dump([index], "index");
+          indexValues.push(t.indexLiteral(index));
+        }
+
+        var elemNode = function () {
+          var endLoc = getPosition();
+          return t.withLoc(t.elem(t.indexLiteral(bitfield), instr, indexValues), endLoc, _startLoc12);
+        }();
+
+        elems.push(elemNode);
+      } else if (bitfield === 1) {
+        var elemKind = readByte();
+        eatBytes(1);
+
+        if (elemKind !== 0) {
+          throw new Error("unexpected Elem kind: ".concat(toHex(elemKind)));
+        } // Parse ( vector function index ) *
+
+
+        var _indicesu = readU32();
+
+        var _indices = _indicesu.value;
+        eatBytes(_indicesu.nextIndex);
+        dump([_indices], "num indices");
+        var _indexValues = [];
+
+        for (var _i6 = 0; _i6 < _indices; _i6++) {
+          var _indexu2 = readU32();
+
+          var _index3 = _indexu2.value;
+          eatBytes(_indexu2.nextIndex);
+          dump([_index3], "index");
+
+          _indexValues.push(t.indexLiteral(_index3));
+        } // TODO: emit a AST node, for now just make it parse.
+
+      } else if (bitfield === 2) {
+        var u32 = readU32();
+        var tableidx = u32.value;
+        eatBytes(u32.nextIndex);
+        dump([tableidx], "tableidx"); // Parse instructions
+
+        var _instr3 = [];
+        parseInstructionBlock(_instr3);
+
+        var _elemKind = readByte();
+
+        eatBytes(1);
+
+        if (_elemKind !== 0) {
+          throw new Error("unexpected Elem kind: ".concat(toHex(_elemKind)));
+        } // Parse ( vector function index ) *
+
+
+        var _indicesu2 = readU32();
+
+        var _indices2 = _indicesu2.value;
+        eatBytes(_indicesu2.nextIndex);
+        dump([_indices2], "num indices");
+        var _indexValues2 = [];
+
+        for (var _i7 = 0; _i7 < _indices2; _i7++) {
+          var _indexu3 = readU32();
+
+          var _index4 = _indexu3.value;
+          eatBytes(_indexu3.nextIndex);
+          dump([_index4], "index");
+
+          _indexValues2.push(t.indexLiteral(_index4));
+        }
+
+        var _elemNode = function () {
+          var endLoc = getPosition();
+          return t.withLoc(t.elem(t.indexLiteral(bitfield), _instr3, _indexValues2), endLoc, _startLoc12);
+        }();
+
+        elems.push(_elemNode);
+      } else if (bitfield === 3) {
+        var _elemKind2 = readByte();
+
+        eatBytes(1);
+
+        if (_elemKind2 !== 0) {
+          throw new Error("unexpected Elem kind: ".concat(toHex(_elemKind2)));
+        } // Parse ( vector function index ) *
+
+
+        var countU32 = readU32();
+        var count = countU32.value;
+        eatBytes(countU32.nextIndex);
+        dump([count], "count");
+
+        for (var _i8 = 0; _i8 < count; _i8++) {
+          var _indexu4 = readU32();
+
+          var _index5 = _indexu4.value;
+          eatBytes(_indexu4.nextIndex);
+          dump([_index5], "index");
+        } // TODO: emit a AST node, for now just make it parse.
+
+      } else if (bitfield === 4) {
+        var expr = [];
+        parseInstructionBlock(expr);
+
+        var _countU = readU32();
+
+        var _count = _countU.value;
+        eatBytes(_countU.nextIndex);
+        dump([_count], "count");
+
+        for (var _i9 = 0; _i9 < _count; _i9++) {
+          var code = [];
+          parseInstructionBlock(code);
+        } // TODO: emit a AST node, for now just make it parse.
+
+      } else if (bitfield === 5) {
+        var reftype = readByte();
+        eatBytes(1);
+        dump([reftype], "reftype");
+
+        var _countU2 = readU32();
+
+        var _count2 = _countU2.value;
+        eatBytes(_countU2.nextIndex);
+        dump([_count2], "count");
+
+        for (var _i10 = 0; _i10 < _count2; _i10++) {
+          var _code = [];
+          parseInstructionBlock(_code);
+        } // TODO: emit a AST node, for now just make it parse.
+
+      } else if (bitfield === 7) {
+        var _reftype = readByte();
+
+        eatBytes(1);
+        dump([_reftype], "reftype");
+
+        var _countU3 = readU32();
+
+        var _count3 = _countU3.value;
+        eatBytes(_countU3.nextIndex);
+        dump([_count3], "count");
+
+        for (var _i11 = 0; _i11 < _count3; _i11++) {
+          var _code2 = [];
+          parseInstructionBlock(_code2);
+        } // TODO: emit a AST node, for now just make it parse.
+
+      } else {
+        throw new Error("unexpected Elem with bitfield ".concat(toHex(bitfield)));
       }
-
-      var elemNode = function () {
-        var endLoc = getPosition();
-        return t.withLoc(t.elem(t.indexLiteral(tableindex), instr, indexValues), endLoc, _startLoc12);
-      }();
-
-      elems.push(elemNode);
     }
 
     return elems;
@@ -1323,10 +1468,10 @@ function decode(ab, opts) {
     var sectionId = readByte();
     eatBytes(1);
 
-    if (sectionId >= sectionIndex || sectionIndex === _helperWasmBytecode.default.sections.custom) {
+    if (sectionId >= sectionIndex || sectionIndex === _helperWasmBytecode["default"].sections.custom) {
       sectionIndex = sectionId + 1;
     } else {
-      if (sectionId !== _helperWasmBytecode.default.sections.custom) throw new _helperApiError.CompileError("Unexpected section: " + toHex(sectionId));
+      if (sectionId !== _helperWasmBytecode["default"].sections.custom) throw new _helperApiError.CompileError("Unexpected section: " + toHex(sectionId));
     }
 
     var nextSectionIndex = sectionIndex;
@@ -1342,7 +1487,7 @@ function decode(ab, opts) {
     }();
 
     switch (sectionId) {
-      case _helperWasmBytecode.default.sections.type:
+      case _helperWasmBytecode["default"].sections.type:
         {
           dumpSep("section Type");
           dump([sectionId], "section code");
@@ -1354,22 +1499,19 @@ function decode(ab, opts) {
 
           var numberOfTypes = _u.value;
           eatBytes(_u.nextIndex);
-
-          var _metadata = t.sectionMetadata("type", startOffset, sectionSizeInBytesNode, function () {
+          var metadata = t.sectionMetadata("type", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfTypes), endLoc, _startLoc13);
           }());
-
-          var _nodes = parseTypeSection(numberOfTypes);
-
+          var nodes = parseTypeSection(numberOfTypes);
           return {
-            nodes: _nodes,
-            metadata: _metadata,
+            nodes: nodes,
+            metadata: metadata,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.table:
+      case _helperWasmBytecode["default"].sections.table:
         {
           dumpSep("section Table");
           dump([sectionId], "section code");
@@ -1383,21 +1525,21 @@ function decode(ab, opts) {
           eatBytes(_u2.nextIndex);
           dump([numberOfTable], "num tables");
 
-          var _metadata2 = t.sectionMetadata("table", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata = t.sectionMetadata("table", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfTable), endLoc, _startLoc14);
           }());
 
-          var _nodes2 = parseTableSection(numberOfTable);
+          var _nodes = parseTableSection(numberOfTable);
 
           return {
-            nodes: _nodes2,
-            metadata: _metadata2,
+            nodes: _nodes,
+            metadata: _metadata,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.import:
+      case _helperWasmBytecode["default"].sections["import"]:
         {
           dumpSep("section Import");
           dump([sectionId], "section code");
@@ -1410,21 +1552,21 @@ function decode(ab, opts) {
           eatBytes(numberOfImportsu32.nextIndex);
           dump([numberOfImports], "number of imports");
 
-          var _metadata3 = t.sectionMetadata("import", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata2 = t.sectionMetadata("import", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfImports), endLoc, _startLoc15);
           }());
 
-          var _nodes3 = parseImportSection(numberOfImports);
+          var _nodes2 = parseImportSection(numberOfImports);
 
           return {
-            nodes: _nodes3,
-            metadata: _metadata3,
+            nodes: _nodes2,
+            metadata: _metadata2,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.func:
+      case _helperWasmBytecode["default"].sections.func:
         {
           dumpSep("section Function");
           dump([sectionId], "section code");
@@ -1436,21 +1578,21 @@ function decode(ab, opts) {
           var numberOfFunctions = numberOfFunctionsu32.value;
           eatBytes(numberOfFunctionsu32.nextIndex);
 
-          var _metadata4 = t.sectionMetadata("func", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata3 = t.sectionMetadata("func", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfFunctions), endLoc, _startLoc16);
           }());
 
           parseFuncSection(numberOfFunctions);
-          var _nodes4 = [];
+          var _nodes3 = [];
           return {
-            nodes: _nodes4,
-            metadata: _metadata4,
+            nodes: _nodes3,
+            metadata: _metadata3,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.export:
+      case _helperWasmBytecode["default"].sections["export"]:
         {
           dumpSep("section Export");
           dump([sectionId], "section code");
@@ -1463,21 +1605,21 @@ function decode(ab, opts) {
           var numberOfExport = _u3.value;
           eatBytes(_u3.nextIndex);
 
-          var _metadata5 = t.sectionMetadata("export", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata4 = t.sectionMetadata("export", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfExport), endLoc, _startLoc17);
           }());
 
           parseExportSection(numberOfExport);
-          var _nodes5 = [];
+          var _nodes4 = [];
           return {
-            nodes: _nodes5,
-            metadata: _metadata5,
+            nodes: _nodes4,
+            metadata: _metadata4,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.code:
+      case _helperWasmBytecode["default"].sections.code:
         {
           dumpSep("section Code");
           dump([sectionId], "section code");
@@ -1490,7 +1632,7 @@ function decode(ab, opts) {
           var numberOfFuncs = _u4.value;
           eatBytes(_u4.nextIndex);
 
-          var _metadata6 = t.sectionMetadata("code", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata5 = t.sectionMetadata("code", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfFuncs), endLoc, _startLoc18);
           }());
@@ -1502,7 +1644,23 @@ function decode(ab, opts) {
             parseCodeSection(numberOfFuncs);
           }
 
-          var _nodes6 = [];
+          var _nodes5 = [];
+          return {
+            nodes: _nodes5,
+            metadata: _metadata5,
+            nextSectionIndex: nextSectionIndex
+          };
+        }
+
+      case _helperWasmBytecode["default"].sections.start:
+        {
+          dumpSep("section Start");
+          dump([sectionId], "section code");
+          dump([sectionSizeInBytes], "section size");
+
+          var _metadata6 = t.sectionMetadata("start", startOffset, sectionSizeInBytesNode);
+
+          var _nodes6 = [parseStartSection()];
           return {
             nodes: _nodes6,
             metadata: _metadata6,
@@ -1510,23 +1668,7 @@ function decode(ab, opts) {
           };
         }
 
-      case _helperWasmBytecode.default.sections.start:
-        {
-          dumpSep("section Start");
-          dump([sectionId], "section code");
-          dump([sectionSizeInBytes], "section size");
-
-          var _metadata7 = t.sectionMetadata("start", startOffset, sectionSizeInBytesNode);
-
-          var _nodes7 = [parseStartSection()];
-          return {
-            nodes: _nodes7,
-            metadata: _metadata7,
-            nextSectionIndex: nextSectionIndex
-          };
-        }
-
-      case _helperWasmBytecode.default.sections.element:
+      case _helperWasmBytecode["default"].sections.element:
         {
           dumpSep("section Element");
           dump([sectionId], "section code");
@@ -1538,21 +1680,21 @@ function decode(ab, opts) {
           var numberOfElements = numberOfElementsu32.value;
           eatBytes(numberOfElementsu32.nextIndex);
 
-          var _metadata8 = t.sectionMetadata("element", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata7 = t.sectionMetadata("element", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfElements), endLoc, _startLoc19);
           }());
 
-          var _nodes8 = parseElemSection(numberOfElements);
+          var _nodes7 = parseElemSection(numberOfElements);
 
           return {
-            nodes: _nodes8,
-            metadata: _metadata8,
+            nodes: _nodes7,
+            metadata: _metadata7,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.global:
+      case _helperWasmBytecode["default"].sections.global:
         {
           dumpSep("section Global");
           dump([sectionId], "section code");
@@ -1564,21 +1706,21 @@ function decode(ab, opts) {
           var numberOfGlobals = numberOfGlobalsu32.value;
           eatBytes(numberOfGlobalsu32.nextIndex);
 
-          var _metadata9 = t.sectionMetadata("global", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata8 = t.sectionMetadata("global", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(numberOfGlobals), endLoc, _startLoc20);
           }());
 
-          var _nodes9 = parseGlobalSection(numberOfGlobals);
+          var _nodes8 = parseGlobalSection(numberOfGlobals);
 
           return {
-            nodes: _nodes9,
-            metadata: _metadata9,
+            nodes: _nodes8,
+            metadata: _metadata8,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.memory:
+      case _helperWasmBytecode["default"].sections.memory:
         {
           dumpSep("section Memory");
           dump([sectionId], "section code");
@@ -1591,27 +1733,27 @@ function decode(ab, opts) {
           var _numberOfElements = _numberOfElementsu.value;
           eatBytes(_numberOfElementsu.nextIndex);
 
-          var _metadata10 = t.sectionMetadata("memory", startOffset, sectionSizeInBytesNode, function () {
+          var _metadata9 = t.sectionMetadata("memory", startOffset, sectionSizeInBytesNode, function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(_numberOfElements), endLoc, _startLoc21);
           }());
 
-          var _nodes10 = parseMemorySection(_numberOfElements);
+          var _nodes9 = parseMemorySection(_numberOfElements);
 
           return {
-            nodes: _nodes10,
-            metadata: _metadata10,
+            nodes: _nodes9,
+            metadata: _metadata9,
             nextSectionIndex: nextSectionIndex
           };
         }
 
-      case _helperWasmBytecode.default.sections.data:
+      case _helperWasmBytecode["default"].sections.data:
         {
           dumpSep("section Data");
           dump([sectionId], "section code");
           dump([sectionSizeInBytes], "section size");
 
-          var _metadata11 = t.sectionMetadata("data", startOffset, sectionSizeInBytesNode);
+          var _metadata10 = t.sectionMetadata("data", startOffset, sectionSizeInBytesNode);
 
           var _startLoc22 = getPosition();
 
@@ -1620,7 +1762,7 @@ function decode(ab, opts) {
           var _numberOfElements2 = _numberOfElementsu2.value;
           eatBytes(_numberOfElementsu2.nextIndex);
 
-          _metadata11.vectorOfSize = function () {
+          _metadata10.vectorOfSize = function () {
             var endLoc = getPosition();
             return t.withLoc(t.numberLiteralFromRaw(_numberOfElements2), endLoc, _startLoc22);
           }();
@@ -1633,26 +1775,26 @@ function decode(ab, opts) {
             dumpSep("ignore data (" + sectionSizeInBytes + " bytes)");
             return {
               nodes: [],
-              metadata: _metadata11,
+              metadata: _metadata10,
               nextSectionIndex: nextSectionIndex
             };
           } else {
-            var _nodes11 = parseDataSection(_numberOfElements2);
+            var _nodes10 = parseDataSection(_numberOfElements2);
 
             return {
-              nodes: _nodes11,
-              metadata: _metadata11,
+              nodes: _nodes10,
+              metadata: _metadata10,
               nextSectionIndex: nextSectionIndex
             };
           }
         }
 
-      case _helperWasmBytecode.default.sections.custom:
+      case _helperWasmBytecode["default"].sections.custom:
         {
           dumpSep("section Custom");
           dump([sectionId], "section code");
           dump([sectionSizeInBytes], "section size");
-          var _metadata12 = [t.sectionMetadata("custom", startOffset, sectionSizeInBytesNode)];
+          var _metadata11 = [t.sectionMetadata("custom", startOffset, sectionSizeInBytesNode)];
           var sectionName = readUTF8String();
           eatBytes(sectionName.nextIndex);
           dump([], "section name (".concat(sectionName.value, ")"));
@@ -1663,7 +1805,7 @@ function decode(ab, opts) {
             var initialOffset = offset;
 
             try {
-              _metadata12.push.apply(_metadata12, _toConsumableArray(parseNameSection(_remainingBytes2)));
+              _metadata11.push.apply(_metadata11, _toConsumableArray(parseNameSection(_remainingBytes2)));
             } catch (e) {
               console.warn("Failed to decode custom \"name\" section @".concat(offset, "; ignoring (").concat(e.message, ")."));
               eatBytes(offset - (initialOffset + _remainingBytes2));
@@ -1672,7 +1814,7 @@ function decode(ab, opts) {
             var _initialOffset = offset;
 
             try {
-              _metadata12.push(parseProducersSection());
+              _metadata11.push(parseProducersSection());
             } catch (e) {
               console.warn("Failed to decode custom \"producers\" section @".concat(offset, "; ignoring (").concat(e.message, ")."));
               eatBytes(offset - (_initialOffset + _remainingBytes2));
@@ -1685,13 +1827,48 @@ function decode(ab, opts) {
 
           return {
             nodes: [],
-            metadata: _metadata12,
+            metadata: _metadata11,
             nextSectionIndex: nextSectionIndex
           };
         }
     }
 
-    throw new _helperApiError.CompileError("Unexpected section: " + toHex(sectionId));
+    if (opts.errorOnUnknownSection) {
+      throw new _helperApiError.CompileError("Unexpected section: " + toHex(sectionId));
+    } else {
+      dumpSep("section " + toHex(sectionId));
+      dump([sectionId], "section code");
+      dump([sectionSizeInBytes], "section size");
+      eatBytes(sectionSizeInBytes);
+      dumpSep("ignoring (" + sectionSizeInBytes + " bytes)");
+      return {
+        nodes: [],
+        metadata: [],
+        nextSectionIndex: 0
+      };
+    }
+  }
+
+  function parseBlockType() {
+    var blocktypeByte = readByte();
+    var blocktype = _helperWasmBytecode["default"].blockTypes[blocktypeByte];
+
+    if (typeof blocktype !== "undefined") {
+      eatBytes(1);
+      dump([blocktypeByte], "blocktype"); // value type
+
+      return blocktype;
+    } else {
+      // type index
+      var u32 = readU32();
+      eatBytes(u32.nextIndex);
+      var signature = state.typesInModule[u32.value];
+      console.log({
+        signature: signature
+      });
+      dump([u32.value], "typeidx");
+      return u32.value;
+    }
   }
 
   parseModuleHeader();
@@ -1710,17 +1887,18 @@ function decode(ab, opts) {
 
   while (offset < buf.length) {
     var _parseSection = parseSection(sectionIndex),
-        _nodes12 = _parseSection.nodes,
-        _metadata13 = _parseSection.metadata,
+        nodes = _parseSection.nodes,
+        metadata = _parseSection.metadata,
         nextSectionIndex = _parseSection.nextSectionIndex;
 
-    moduleFields.push.apply(moduleFields, _toConsumableArray(_nodes12));
-    var metadataArray = Array.isArray(_metadata13) ? _metadata13 : [_metadata13];
+    moduleFields.push.apply(moduleFields, _toConsumableArray(nodes));
+    var metadataArray = Array.isArray(metadata) ? metadata : [metadata];
     metadataArray.forEach(function (metadataItem) {
+      // $FlowIgnore
       if (metadataItem.type === "FunctionNameMetadata") {
-        moduleMetadata.functionNames.push(metadataItem);
+        moduleMetadata.functionNames.push(metadataItem); // $FlowIgnore
       } else if (metadataItem.type === "LocalNameMetadata") {
-        moduleMetadata.localNames.push(metadataItem);
+        moduleMetadata.localNames.push(metadataItem); // $FlowIgnore
       } else if (metadataItem.type === "ProducersSectionMetadata") {
         moduleMetadata.producers.push(metadataItem);
       } else {

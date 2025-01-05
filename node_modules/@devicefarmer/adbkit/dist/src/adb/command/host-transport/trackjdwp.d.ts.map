@@ -1,0 +1,1 @@
+{"version":3,"file":"trackjdwp.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/trackjdwp.ts"],"names":[],"mappings":"AAAA,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,WAAW,MAAM,mBAAmB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,gBAAiB,SAAQ,OAAO,CAAC,WAAW,CAAC;IAChE,OAAO,IAAI,QAAQ,CAAC,WAAW,CAAC;CAajC"}

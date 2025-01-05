@@ -1,6 +1,6 @@
 {
   "name": "@webassemblyjs/leb128",
-  "version": "1.11.1",
+  "version": "1.13.2",
   "description": "LEB128 decoder and encoder",
   "license": "Apache-2.0",
   "main": "lib/index.js",
@@ -19,5 +19,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "3f07e2db2031afe0ce686630418c542938c1674b"
+  "gitHead": "897aeb784f042a46a00626f1d1cca96159aa5db3"
 }

@@ -1,0 +1,1 @@
+{"version":3,"file":"getserialno.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-serial/getserialno.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,OAAO,CAAC,MAAM,CAAC;IAC7D,OAAO,CAAC,MAAM,EAAE,MAAM,GAAG,QAAQ,CAAC,MAAM,CAAC;CAa1C"}

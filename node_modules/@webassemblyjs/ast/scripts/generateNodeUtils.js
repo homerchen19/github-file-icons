@@ -5,19 +5,20 @@ const {
   iterateProps,
   mapProps,
   filterProps,
-  unique
+  unique,
 } = require("./util");
 
 const stdout = process.stdout;
 
 const jsTypes = ["string", "number", "boolean"];
 
-const quote = value => `"${value}"`;
+const quote = (value) => `"${value}"`;
 
 function params(fields) {
-  const optionalDefault = field => (field.default ? ` = ${field.default}` : "");
+  const optionalDefault = (field) =>
+    field.default ? ` = ${field.default}` : "";
   return mapProps(fields)
-    .map(field => `${typeSignature(field)}${optionalDefault(field)}`)
+    .map((field) => `${typeSignature(field)}${optionalDefault(field)}`)
     .join(",");
 }
 
@@ -63,13 +64,11 @@ function assertParam(meta) {
 }
 
 function assertParams(fields) {
-  return mapProps(fields)
-    .map(assertParam)
-    .join("\n");
+  return mapProps(fields).map(assertParam).join("\n");
 }
 
 function buildObject(typeDef) {
-  const optionalField = meta => {
+  const optionalField = (meta) => {
     if (meta.array) {
       // omit optional array properties if the constructor function was supplied
       // with an empty array
@@ -81,9 +80,7 @@ function buildObject(typeDef) {
     } else if (meta.type === "Object") {
       // omit optional object properties if they have no keys
       return `
-        if (typeof ${meta.name} !== "undefined" && Object.keys(${
-        meta.name
-      }).length !== 0) {
+        if (typeof ${meta.name} !== "undefined" && Object.keys(${meta.name}).length !== 0) {
           node.${meta.name} = ${meta.name};
         }
       `;
@@ -104,12 +101,12 @@ function buildObject(typeDef) {
   };
 
   const fields = mapProps(typeDef.fields)
-    .filter(f => !f.optional && !f.constant)
-    .map(f => f.name);
+    .filter((f) => !f.optional && !f.constant)
+    .map((f) => f.name);
 
   const constants = mapProps(typeDef.fields)
-    .filter(f => f.constant)
-    .map(f => `${f.name}: "${f.value}"`);
+    .filter((f) => f.constant)
+    .map((f) => `${f.name}: "${f.value}"`);
 
   return `
     const node: ${typeDef.flowTypeName || typeDef.name} = {
@@ -118,7 +115,7 @@ function buildObject(typeDef) {
     }
 
     ${mapProps(typeDef.fields)
-      .filter(f => f.optional)
+      .filter((f) => f.optional)
       .map(optionalField)
       .join("")}
   `;
@@ -147,13 +144,13 @@ function generate() {
   `);
 
   // Node builders
-  iterateProps(definitions, typeDefinition => {
+  iterateProps(definitions, (typeDefinition) => {
     stdout.write(`
       export function ${lowerCamelCase(typeDefinition.name)} (
-        ${params(filterProps(typeDefinition.fields, f => !f.constant))}
+        ${params(filterProps(typeDefinition.fields, (f) => !f.constant))}
       ): ${typeDefinition.name} {
 
-        ${assertParams(filterProps(typeDefinition.fields, f => !f.constant))}
+        ${assertParams(filterProps(typeDefinition.fields, (f) => !f.constant))}
         ${buildObject(typeDefinition)} 
 
         return node;
@@ -162,33 +159,36 @@ function generate() {
   });
 
   // Node testers
-  iterateProps(definitions, typeDefinition => {
+  iterateProps(definitions, (typeDefinition) => {
     stdout.write(`
-      export const is${typeDefinition.name} =
+      export const is${typeDefinition.name}: ((n: Node) => boolean) =
         isTypeOf("${typeDefinition.name}");
     `);
   });
 
   // Node union type testers
   const unionTypes = unique(
-    flatMap(mapProps(definitions).filter(d => d.unionType), d => d.unionType)
+    flatMap(
+      mapProps(definitions).filter((d) => d.unionType),
+      (d) => d.unionType
+    )
   );
-  unionTypes.forEach(unionType => {
+  unionTypes.forEach((unionType) => {
     stdout.write(
       `
-      export const is${unionType} = (node: Node) => ` +
+      export const is${unionType} = (node: Node): boolean => ` +
         mapProps(definitions)
-          .filter(d => d.unionType && d.unionType.includes(unionType))
-          .map(d => `is${d.name}(node) `)
+          .filter((d) => d.unionType && d.unionType.includes(unionType))
+          .map((d) => `is${d.name}(node) `)
           .join("||") +
         ";\n\n"
     );
   });
 
   // Node assertion
-  iterateProps(definitions, typeDefinition => {
+  iterateProps(definitions, (typeDefinition) => {
     stdout.write(`
-      export const assert${typeDefinition.name} =
+      export const assert${typeDefinition.name}: ((n: Node) => void) =
         assertTypeOf("${typeDefinition.name}");
     `);
   });
@@ -198,8 +198,8 @@ function generate() {
     `
     export const unionTypesMap = {` +
       mapProps(definitions)
-        .filter(d => d.unionType)
-        .map(t => `"${t.name}": [${t.unionType.map(quote).join(",")}]\n`) +
+        .filter((d) => d.unionType)
+        .map((t) => `"${t.name}": [${t.unionType.map(quote).join(",")}]\n`) +
       `};
       `
   );
@@ -209,7 +209,7 @@ function generate() {
     `
     export const nodeAndUnionTypes = [` +
       mapProps(definitions)
-        .map(t => `"${t.name}"`)
+        .map((t) => `"${t.name}"`)
         .concat(unionTypes.map(quote))
         .join(",") +
       `];`

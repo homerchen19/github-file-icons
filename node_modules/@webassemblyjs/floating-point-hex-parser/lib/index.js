@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = parse;
+exports["default"] = parse;
 
 function parse(input) {
   input = input.toUpperCase();

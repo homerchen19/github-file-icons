@@ -11,6 +11,10 @@
 /** @type {WeakMap<Compiler, Set<ChunkLoadingType>>} */
 const enabledTypes = new WeakMap();
 
+/**
+ * @param {Compiler} compiler compiler
+ * @returns {Set<ChunkLoadingType>} enabled types
+ */
 const getEnabledTypes = compiler => {
 	let set = enabledTypes.get(compiler);
 	if (set === undefined) {
@@ -49,8 +53,9 @@ class EnableChunkLoadingPlugin {
 					"EnableChunkLoadingPlugin need to be used to enable this type of chunk loading. " +
 					'This usually happens through the "output.enabledChunkLoadingTypes" option. ' +
 					'If you are using a function as entry which sets "chunkLoading", you need to add all potential chunk loading types to "output.enabledChunkLoadingTypes". ' +
-					"These types are enabled: " +
-					Array.from(getEnabledTypes(compiler)).join(", ")
+					`These types are enabled: ${Array.from(
+						getEnabledTypes(compiler)
+					).join(", ")}`
 			);
 		}
 	}
@@ -81,7 +86,7 @@ class EnableChunkLoadingPlugin {
 					break;
 				}
 				case "require": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const CommonJsChunkLoadingPlugin = require("../node/CommonJsChunkLoadingPlugin");
 					new CommonJsChunkLoadingPlugin({
 						asyncChunkLoading: false
@@ -89,21 +94,19 @@ class EnableChunkLoadingPlugin {
 					break;
 				}
 				case "async-node": {
-					//@ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
+					// @ts-expect-error https://github.com/microsoft/TypeScript/issues/41697
 					const CommonJsChunkLoadingPlugin = require("../node/CommonJsChunkLoadingPlugin");
 					new CommonJsChunkLoadingPlugin({
 						asyncChunkLoading: true
 					}).apply(compiler);
 					break;
 				}
-				case "import": {
+				case "import":
+				case "universal": {
 					const ModuleChunkLoadingPlugin = require("../esm/ModuleChunkLoadingPlugin");
 					new ModuleChunkLoadingPlugin().apply(compiler);
 					break;
 				}
-				case "universal":
-					// TODO implement universal chunk loading
-					throw new Error("Universal Chunk Loading is not implemented yet");
 				default:
 					throw new Error(`Unsupported chunk loading type ${type}.
 Plugins which provide custom chunk loading types must call EnableChunkLoadingPlugin.setEnabled(compiler, type) to disable this error.`);

@@ -1,9 +1,8 @@
-# cli-cursor [![Build Status](https://travis-ci.org/sindresorhus/cli-cursor.svg?branch=master)](https://travis-ci.org/sindresorhus/cli-cursor)
+# cli-cursor
 
 > Toggle the CLI cursor
 
 The cursor is [gracefully restored](https://github.com/sindresorhus/restore-cursor) if the process exits.
-
 
 ## Install
 
@@ -11,18 +10,16 @@ The cursor is [gracefully restored](https://github.com/sindresorhus/restore-curs
 $ npm install cli-cursor
 ```
 
-
 ## Usage
 
 ```js
-const cliCursor = require('cli-cursor');
+import cliCursor from 'cli-cursor';
 
 cliCursor.hide();
 
 const unicornsAreAwesome = true;
 cliCursor.toggle(unicornsAreAwesome);
 ```
-
 
 ## API
 
@@ -38,9 +35,8 @@ Useful for showing or hiding the cursor based on a boolean.
 
 #### stream
 
-Type: `stream.Writable`<br>
+Type: `stream.Writable`\
 Default: `process.stderr`
-
 
 ---
 

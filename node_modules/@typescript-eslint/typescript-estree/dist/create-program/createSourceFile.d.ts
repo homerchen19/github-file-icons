@@ -1,5 +1,7 @@
 import * as ts from 'typescript';
-import { Extra } from '../parser-options';
-declare function createSourceFile(code: string, extra: Extra): ts.SourceFile;
-export { createSourceFile };
+import type { ParseSettings } from '../parseSettings';
+import type { ASTAndNoProgram } from './shared';
+declare function createSourceFile(parseSettings: ParseSettings): ts.SourceFile;
+declare function createNoProgram(parseSettings: ParseSettings): ASTAndNoProgram;
+export { createSourceFile, createNoProgram };
 //# sourceMappingURL=createSourceFile.d.ts.map

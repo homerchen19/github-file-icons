@@ -1,23 +1,19 @@
-import path from 'path'
+import path from 'node:path'
 
 import debug from 'debug'
 
-import { ConfigObjectSymbol } from './searchConfigs.js'
-
 const debugLog = debug('lint-staged:groupFilesByConfig')
 
-export const groupFilesByConfig = async ({ configs, files }) => {
+export const groupFilesByConfig = async ({ configs, files, singleConfigMode }) => {
   debugLog('Grouping %d files by %d configurations', files.length, Object.keys(configs).length)
 
   const filesSet = new Set(files)
   const filesByConfig = {}
 
   /** Configs are sorted deepest first by `searchConfigs` */
-  for (const filepath of Reflect.ownKeys(configs)) {
-    const config = configs[filepath]
-
-    /** When passed an explicit config object via the Node.js API, skip logic */
-    if (filepath === ConfigObjectSymbol) {
+  for (const [filepath, config] of Object.entries(configs)) {
+    /** When passed an explicit config object via the Node.js API‚ or an explicit path, skip logic */
+    if (singleConfigMode) {
       filesByConfig[filepath] = { config, files }
       break
     }

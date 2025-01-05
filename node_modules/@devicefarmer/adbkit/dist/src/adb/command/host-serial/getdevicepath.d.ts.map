@@ -1,0 +1,1 @@
+{"version":3,"file":"getdevicepath.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-serial/getdevicepath.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,oBAAqB,SAAQ,OAAO,CAAC,MAAM,CAAC;IAC/D,OAAO,CAAC,MAAM,EAAE,MAAM,GAAG,QAAQ,CAAC,MAAM,CAAC;CAe1C"}

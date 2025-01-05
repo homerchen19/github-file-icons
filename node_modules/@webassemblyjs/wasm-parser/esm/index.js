@@ -52,7 +52,8 @@ function restoreFunctionNames(ast) {
 
       if (functionName) {
         var oldValue = nodeName.value;
-        nodeName.value = functionName.name;
+        nodeName.value = functionName.name; // $FlowIgnore
+
         nodeName.numeric = oldValue; // $FlowIgnore
 
         delete nodeName.raw;

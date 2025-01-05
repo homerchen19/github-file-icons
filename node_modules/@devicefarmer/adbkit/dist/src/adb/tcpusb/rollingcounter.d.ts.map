@@ -1,0 +1,1 @@
+{"version":3,"file":"rollingcounter.d.ts","sourceRoot":"","sources":["../../../../src/adb/tcpusb/rollingcounter.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,OAAO,cAAc;IAGrB,OAAO,CAAC,QAAQ,CAAC,GAAG;IAAU,OAAO,CAAC,QAAQ,CAAC,GAAG;IAF9D,OAAO,CAAC,GAAG,CAAS;gBAES,GAAG,EAAE,MAAM,EAAmB,GAAG,SAAI;IAI3D,IAAI,IAAI,MAAM;CAMtB"}

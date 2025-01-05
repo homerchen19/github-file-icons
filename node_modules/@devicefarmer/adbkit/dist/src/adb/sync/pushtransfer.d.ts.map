@@ -1,0 +1,1 @@
+{"version":3,"file":"pushtransfer.d.ts","sourceRoot":"","sources":["../../../../src/adb/sync/pushtransfer.ts"],"names":[],"mappings":";AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,QAAQ,CAAC;AAEtC,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,YAAY;IACpD,OAAO,CAAC,MAAM,CAAgB;IACvB,KAAK;;MAEV;IAEK,MAAM,IAAI,OAAO;IAIjB,IAAI,CAAC,SAAS,EAAE,MAAM,GAAG,MAAM;IAI/B,GAAG,IAAI,OAAO;IAQd,GAAG,IAAI,OAAO;CAGtB"}

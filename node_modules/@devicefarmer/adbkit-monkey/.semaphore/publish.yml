@@ -1,0 +1,19 @@
+version: v1.0
+name: Publish
+blocks:
+    - name: Publish
+      task:
+          jobs:
+              - name: NPM publish
+                commands:
+                    - checkout
+                    - sem-version node 12
+                    - cache restore
+                    - npm install
+                    - npm publish --access public
+          secrets:
+              - name: npmjs
+agent:
+    machine:
+        type: e1-standard-2
+        os_image: ubuntu1804

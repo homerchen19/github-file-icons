@@ -1,0 +1,1 @@
+{"version":3,"file":"startservice.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/startservice.ts"],"names":[],"mappings":"AAAA,OAAO,oBAAoB,MAAM,iBAAiB,CAAC;AACnD,OAAO,mBAAmB,MAAM,8BAA8B,CAAC;AAC/D,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,mBAAoB,SAAQ,oBAAoB;IACnE,OAAO,CAAC,OAAO,EAAE,mBAAmB,GAAG,QAAQ,CAAC,OAAO,CAAC;CAOzD"}

@@ -9,7 +9,12 @@ var platformToMethod = {
   netbsd: 'ps',
   win: 'wmic',
   linux: 'ps',
-  aix: 'ps'
+  aix: 'ps',
+};
+
+var methodToRequireFn = {
+  ps: () => require("./ps"),
+  wmic: () => require("./wmic")
 };
 
 var platform = os.platform();
@@ -17,14 +22,14 @@ if (platform.startsWith('win')) {
   platform = 'win';
 }
 
-var file = platformToMethod[platform];
+var method = platformToMethod[platform];
 
 /**
  * Gets the list of all the pids of the system.
  * @param  {Function} callback Called when the list is ready.
  */
 function get(callback) {
-  if (file === undefined) {
+  if (method === undefined) {
     callback(
       new Error(
         os.platform() +
@@ -33,7 +38,7 @@ function get(callback) {
     );
   }
 
-  var list = require('./' + file);
+  var list = methodToRequireFn[method]();
   list(callback);
 }
 

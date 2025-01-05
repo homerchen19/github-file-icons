@@ -1,0 +1,1 @@
+{"version":3,"file":"kill.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host/kill.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,eAAgB,SAAQ,OAAO,CAAC,OAAO,CAAC;IAC3D,OAAO,IAAI,QAAQ,CAAC,OAAO,CAAC;CAa7B"}

@@ -98,7 +98,7 @@ function alloc(length) {
   if (result) {
     bufPool[length] = undefined;
   } else {
-    result = new Buffer(length);
+    result = new Uint8Array(length);
   }
 
   result.fill(0);
@@ -130,7 +130,11 @@ function resize(buffer, length) {
   }
 
   var newBuf = alloc(length);
-  buffer.copy(newBuf);
+
+  for (var i = 0; i <= buffer.length; i++) {
+    newBuf[i] = buffer[i];
+  }
+
   free(buffer);
   return newBuf;
 }
@@ -231,6 +235,12 @@ function writeUInt64(value, buffer) {
 
   var lowWord = value % BIT_32;
   var highWord = Math.floor(value / BIT_32);
-  buffer.writeUInt32LE(lowWord, 0);
-  buffer.writeUInt32LE(highWord, 4);
+  buffer[0] = lowWord & 0xff;
+  buffer[1] = lowWord >> 8 & 0xff;
+  buffer[2] = lowWord >> 16 & 0xff;
+  buffer[3] = lowWord >> 24 & 0xff;
+  buffer[4] = highWord & 0xff;
+  buffer[5] = highWord >> 8 & 0xff;
+  buffer[6] = highWord >> 16 & 0xff;
+  buffer[7] = highWord >> 24 & 0xff;
 }

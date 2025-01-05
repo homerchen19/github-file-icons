@@ -9,11 +9,14 @@ function pify(fn, arg1, arg2) {
   });
 }
 
-// The method startsWith is not defined on string objects in node 0.10
-// eslint-disable-next-line no-extend-native
-String.prototype.startsWith = function(suffix) {
-  return this.substring(0, suffix.length) === suffix;
-};
+// Node versions prior to 4.0.0 do not define have `startsWith`.
+/* istanbul ignore if */
+if (!String.prototype.startsWith) {
+  // eslint-disable-next-line no-extend-native
+  String.prototype.startsWith = function(suffix) {
+    return this.substring(0, suffix.length) === suffix;
+  };
+}
 
 var pidtree = require('./lib/pidtree');
 

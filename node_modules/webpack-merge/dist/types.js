@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomizeRule = void 0;
 var CustomizeRule;
 (function (CustomizeRule) {
@@ -8,5 +8,5 @@ var CustomizeRule;
     CustomizeRule["Append"] = "append";
     CustomizeRule["Prepend"] = "prepend";
     CustomizeRule["Replace"] = "replace";
-})(CustomizeRule = exports.CustomizeRule || (exports.CustomizeRule = {}));
+})(CustomizeRule || (exports.CustomizeRule = CustomizeRule = {}));
 //# sourceMappingURL=types.js.map

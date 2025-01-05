@@ -54,20 +54,26 @@ var types = {
 var exportTypes = {
   0x00: "Func",
   0x01: "Table",
-  0x02: "Mem",
+  0x02: "Memory",
   0x03: "Global"
 };
 var exportTypesByName = invertMap(exportTypes);
 var valtypes = {
+  // numtype
   0x7f: "i32",
   0x7e: "i64",
   0x7d: "f32",
   0x7c: "f64",
-  0x7b: "v128"
+  // vectype
+  0x7b: "v128",
+  // reftype
+  0x70: "anyfunc",
+  0x6f: "externref"
 };
 var valtypesByString = invertMap(valtypes);
 var tableTypes = {
-  0x70: "anyfunc"
+  0x70: "anyfunc",
+  0x6f: "externref"
 };
 var blockTypes = Object.assign({}, valtypes, {
   // https://webassembly.github.io/spec/core/binary/types.html#binary-blocktype
@@ -86,18 +92,18 @@ var globalTypesByString = invertMap(globalTypes);
 var importTypes = {
   0x00: "func",
   0x01: "table",
-  0x02: "mem",
+  0x02: "memory",
   0x03: "global"
 };
 var sections = {
   custom: 0,
   type: 1,
-  import: 2,
+  "import": 2,
   func: 3,
   table: 4,
   memory: 5,
   global: 6,
-  export: 7,
+  "export": 7,
   start: 8,
   element: 9,
   code: 10,
@@ -141,8 +147,8 @@ var symbolsByByte = {
   0x22: createSymbol("tee_local", 1),
   0x23: createSymbol("get_global", 1),
   0x24: createSymbol("set_global", 1),
-  0x25: illegalop,
-  0x26: illegalop,
+  0x25: createSymbol("table.get", 1),
+  0x26: createSymbol("table.set", 1),
   0x27: illegalop,
   0x28: createSymbolObject("load", "u32", 1),
   0x29: createSymbolObject("load", "u64", 1),
@@ -296,6 +302,24 @@ var symbolsByByte = {
   0xbd: createSymbolObject("reinterpret/f64", "i64"),
   0xbe: createSymbolObject("reinterpret/i32", "f32"),
   0xbf: createSymbolObject("reinterpret/i64", "f64"),
+  0xc0: createSymbolObject("extend8_s", "i32"),
+  0xc1: createSymbolObject("extend16_s", "i32"),
+  0xc2: createSymbolObject("extend8_s", "i64"),
+  0xc3: createSymbolObject("extend16_s", "i64"),
+  0xc4: createSymbolObject("extend32_s", "i64"),
+  0xd0: createSymbol("ref.null"),
+  0xd1: createSymbol("ref.is_null"),
+  0xd2: createSymbol("ref.func", 1),
+  0xfc0a: createSymbol("memory.copy"),
+  0xfc0b: createSymbol("memory.fill"),
+  // Table instructions
+  // https://webassembly.github.io/spec/core/binary/instructions.html#table-instructions
+  0xfc0c: createSymbol("table.init", 2),
+  0xfc0d: createSymbol("elem.drop", 1),
+  0xfc0e: createSymbol("table.copy", 2),
+  0xfc0f: createSymbol("table.grow", 1),
+  0xfc10: createSymbol("table.size", 1),
+  0xfc11: createSymbol("table.fill", 1),
   // Atomic Memory Instructions
   0xfe00: createSymbol("memory.atomic.notify", 1),
   0xfe01: createSymbol("memory.atomic.wait32", 1),

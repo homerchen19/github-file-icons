@@ -26,8 +26,7 @@
 
 ## Options
 
-Right click on any space on the page or the extension's icon to open the menu.
-![image](https://user-images.githubusercontent.com/17788706/175961469-354a5e51-b2ca-491a-b93f-7d730587d68b.png)
+Right click on the extension's icon to open the menu.
 
 ### Change image colors
 

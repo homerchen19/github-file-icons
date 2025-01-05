@@ -1,0 +1,1 @@
+{"version":3,"file":"remount.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/remount.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,cAAe,SAAQ,OAAO,CAAC,OAAO,CAAC;IAC1D,OAAO,IAAI,QAAQ,CAAC,OAAO,CAAC;CAa7B"}

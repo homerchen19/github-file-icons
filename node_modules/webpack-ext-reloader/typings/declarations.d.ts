@@ -10,10 +10,7 @@ declare interface IMiddlewareTemplateParams {
   reloadPage: boolean;
 }
 
-declare type InjectMiddleware = (
-  assets: Record<string, any>,
-  chunks: Set<any>,
-) => Record<string, any>;
+declare type InjectMiddleware = (assets: Record<string, any>, chunks: Set<any>) => Record<string, any>;
 
 declare type MiddlewareInjector = (
   { background, contentScript, extensionPage }: IEntriesOption,
@@ -22,10 +19,7 @@ declare type MiddlewareInjector = (
 
 declare type Triggerer = (onlyPageChanged: boolean) => Promise<any>;
 
-declare type TriggererFactory = (
-  port: number,
-  reloadPage: boolean,
-) => Triggerer;
+declare type TriggererFactory = (port: number, reloadPage: boolean) => Triggerer;
 
 declare type VersionPair = [number | undefined, number | undefined];
 
@@ -45,13 +39,7 @@ declare type LOG_WARN = 3;
 declare type LOG_ERROR = 4;
 declare type LOG_DEBUG = 5;
 
-declare type LOG_LEVEL =
-  | LOG_NONE
-  | LOG_LOG
-  | LOG_INFO
-  | LOG_WARN
-  | LOG_ERROR
-  | LOG_DEBUG;
+declare type LOG_LEVEL = LOG_NONE | LOG_LOG | LOG_INFO | LOG_WARN | LOG_ERROR | LOG_DEBUG;
 
 declare interface IWebpackChunk {
   files: string[];
@@ -73,12 +61,10 @@ declare interface IExtensionManifest {
   background?: {
     page?: string;
     scripts?: string[];
+    service_worker?: string;
   };
   icons?: {
     [key: string]: string;
-  };
-  browser_action?: {
-    default_popup: string;
   };
   content_scripts?: [
     {

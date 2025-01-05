@@ -1,0 +1,1 @@
+{"version":3,"file":"auth.d.ts","sourceRoot":"","sources":["../../../src/adb/auth.ts"],"names":[],"mappings":"AAiBA,OAAO,iBAAiB,MAAM,sBAAsB,CAAC;AACrD,OAAO,QAAQ,MAAM,UAAU,CAAC;AAIhC,MAAM,CAAC,OAAO,OAAO,IAAI;IACvB,OAAO,CAAC,MAAM,CAAC,EAAE,CAAuF;WAC1F,cAAc,CAAC,MAAM,EAAE,MAAM,GAAG,QAAQ,CAAC,iBAAiB,CAAC;IAazE,OAAO,CAAC,MAAM,CAAC,uBAAuB;CAgDvC"}

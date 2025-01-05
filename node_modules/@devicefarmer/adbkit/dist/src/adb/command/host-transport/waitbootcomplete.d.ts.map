@@ -1,0 +1,1 @@
+{"version":3,"file":"waitbootcomplete.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/waitbootcomplete.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,uBAAwB,SAAQ,OAAO,CAAC,OAAO,CAAC;IACnE,OAAO,IAAI,QAAQ,CAAC,OAAO,CAAC;CAgB7B"}

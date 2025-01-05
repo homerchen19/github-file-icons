@@ -1,0 +1,21 @@
+{
+  "name": "winreg",
+  "version": "0.0.12",
+  "description": "provides access to the windows registry through the REG tool",
+  "main": "lib/registry.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fresc81/node-winreg.git"
+  },
+  "keywords": [
+    "windows",
+    "registry"
+  ],
+  "author": "Paul Bottin",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "36cfe63a8dcb700cf44b0b7317827099d19c26c1"
+}

@@ -5,7 +5,7 @@ function normalizer(config) {
   return config;
 }
 
-module.exports = function(config) {
+module.exports = function (config) {
   if (Array.isArray(config)) {
     return config.map(normalizer);
   }

@@ -7,7 +7,17 @@ exports.overrideBytesInBuffer = overrideBytesInBuffer;
 exports.makeBuffer = makeBuffer;
 exports.fromHexdump = fromHexdump;
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function concatUint8Arrays() {
   for (var _len = arguments.length, arrays = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -20,8 +30,8 @@ function concatUint8Arrays() {
   var result = new Uint8Array(totalLength);
   var offset = 0;
 
-  for (var _i = 0; _i < arrays.length; _i++) {
-    var arr = arrays[_i];
+  for (var _i = 0, _arrays = arrays; _i < _arrays.length; _i++) {
+    var arr = _arrays[_i];
 
     if (arr instanceof Uint8Array === false) {
       throw new Error("arr must be of type Uint8Array");
@@ -51,6 +61,7 @@ function makeBuffer() {
     splitedBytes[_key2] = arguments[_key2];
   }
 
+  // $FlowIgnore
   var bytes = [].concat.apply([], splitedBytes);
   return new Uint8Array(bytes).buffer;
 }
@@ -74,5 +85,5 @@ function fromHexdump(str) {
     acc.push.apply(acc, _toConsumableArray(bytes));
     return acc;
   }, []);
-  return Buffer.from(bytes);
+  return new Uint8Array(bytes);
 }

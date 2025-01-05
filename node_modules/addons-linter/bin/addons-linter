@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+/* eslint-disable global-require */
+const path = require('path');
+
+const absoluteAppRoot = path.resolve(path.join(__dirname, '..'));
+global.localesRoot = path.join(absoluteAppRoot, 'dist', 'locale');
+global.nodeRequire = require;
+
+(async () => {
+  let instance;
+
+  try {
+    // `../dist/addons-linter` doesn't exist if the linter has not been
+    // built yet. Disable this eslint rule so that users don't get confused
+    // needlessly and aren't required to build the linter for eslint
+    // to pass.
+    // eslint-disable-next-line import/no-unresolved
+    instance = require('../dist/addons-linter').createInstance({
+      runAsBinary: true,
+    });
+    await instance.run();
+  } catch (err) {
+    if (err.code === 'MODULE_NOT_FOUND') {
+      console.log('You did not build addons-linter yet.');
+      console.log(
+        'Please run `npm install` and `npm run build` or see README.md for more information.'
+      );
+
+      // Setting the `process.exitCode` and return from this entry point nodejs script
+      // is mostly the same as calling `process.exit(anExitCode)`.
+      //
+      // We prefer this approach because it would make it easier to cover this file in
+      // a unit test if we want to.
+      process.exitCode = 1;
+      return;
+    }
+
+    // Print the error message without the stack if it is a user error
+    // and --stack cli option wasn't part of the cli option passed to the
+    // linter.
+    if (err.name === 'AddonsLinterUserError' && !instance.config.stack) {
+      console.error(err.message);
+      process.exitCode = 2;
+      return;
+    }
+
+    throw err;
+  }
+})();

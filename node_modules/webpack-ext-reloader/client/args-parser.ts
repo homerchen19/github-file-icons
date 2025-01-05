@@ -1,12 +1,12 @@
 /* eslint-disable no-throw-literal */
-import { resolve } from "path";
-import { cwd } from "process";
-import { log } from "util";
-import { DEFAULT_CONFIG, DEFAULT_PORT } from "../src/constants/options.constants";
-import { IPluginOptions } from "../typings/webpack-ext-reloader";
-import { CONFIG, HELP, MANIFEST, NO_PAGE_RELOAD, PORT } from "./args.constant";
-import { SIG_EXIT } from "./events.constants";
-import manual from "./manual";
+import { resolve } from 'path';
+import { cwd } from 'process';
+import { log } from 'util';
+import { DEFAULT_CONFIG, DEFAULT_PORT } from '../src/constants/options.constants';
+import { IPluginOptions } from '../typings/webpack-ext-reloader';
+import { CONFIG, HELP, MANIFEST, NO_PAGE_RELOAD, PORT } from './args.constant';
+import { SIG_EXIT } from './events.constants';
+import manual from './manual';
 
 export default (args: object) => {
   if (args[HELP]) {
@@ -28,7 +28,7 @@ export default (args: object) => {
 
   try {
     // eslint-disable-next-line no-eval
-    const webpackConfig = eval("require")(optPath);
+    const webpackConfig = eval('require')(optPath);
     return { webpackConfig, pluginOptions };
   } catch (err) {
     log(`[Error] Couldn't require the file: ${optPath}`);

@@ -1,21 +1,26 @@
 import * as tty from "tty"
 
-const env = process.env || {}
-const argv = process.argv || []
+const {
+  env = {},
+  argv = [],
+  platform = "",
+} = typeof process === "undefined" ? {} : process
 
 const isDisabled = "NO_COLOR" in env || argv.includes("--no-color")
 const isForced = "FORCE_COLOR" in env || argv.includes("--color")
-const isWindows = process.platform === "win32"
+const isWindows = platform === "win32"
+const isDumbTerminal = env.TERM === "dumb"
 
 const isCompatibleTerminal =
-  tty && tty.isatty && tty.isatty(1) && env.TERM && env.TERM !== "dumb"
+  tty && tty.isatty && tty.isatty(1) && env.TERM && !isDumbTerminal
 
 const isCI =
   "CI" in env &&
   ("GITHUB_ACTIONS" in env || "GITLAB_CI" in env || "CIRCLECI" in env)
 
 export const isColorSupported =
-  !isDisabled && (isForced || isWindows || isCompatibleTerminal || isCI)
+  !isDisabled &&
+  (isForced || (isWindows && !isDumbTerminal) || isCompatibleTerminal || isCI)
 
 const replaceClose = (
   index,
@@ -92,13 +97,11 @@ const colors = {
   bgWhiteBright: init(107, 49),
 }
 
-const none = (any) => any
-
 export const createColors = ({ useColor = isColorSupported } = {}) =>
   useColor
     ? colors
     : Object.keys(colors).reduce(
-        (colors, key) => ({ ...colors, [key]: none }),
+        (colors, key) => ({ ...colors, [key]: String }),
         {}
       )
 

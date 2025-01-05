@@ -1,6 +1,6 @@
 var resolve = require('resolve');
 
-module.exports = function(cwd, moduleName, register) {
+module.exports = function (cwd, moduleName, register) {
   var result;
   try {
     var modulePath = resolve.sync(moduleName, { basedir: cwd });

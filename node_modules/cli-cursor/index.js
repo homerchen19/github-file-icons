@@ -1,9 +1,11 @@
-'use strict';
-const restoreCursor = require('restore-cursor');
+import process from 'node:process';
+import restoreCursor from 'restore-cursor';
 
 let isHidden = false;
 
-exports.show = (writableStream = process.stderr) => {
+const cliCursor = {};
+
+cliCursor.show = (writableStream = process.stderr) => {
 	if (!writableStream.isTTY) {
 		return;
 	}
@@ -12,7 +14,7 @@ exports.show = (writableStream = process.stderr) => {
 	writableStream.write('\u001B[?25h');
 };
 
-exports.hide = (writableStream = process.stderr) => {
+cliCursor.hide = (writableStream = process.stderr) => {
 	if (!writableStream.isTTY) {
 		return;
 	}
@@ -22,14 +24,16 @@ exports.hide = (writableStream = process.stderr) => {
 	writableStream.write('\u001B[?25l');
 };
 
-exports.toggle = (force, writableStream) => {
+cliCursor.toggle = (force, writableStream) => {
 	if (force !== undefined) {
 		isHidden = force;
 	}
 
 	if (isHidden) {
-		exports.show(writableStream);
+		cliCursor.show(writableStream);
 	} else {
-		exports.hide(writableStream);
+		cliCursor.hide(writableStream);
 	}
 };
+
+export default cliCursor;

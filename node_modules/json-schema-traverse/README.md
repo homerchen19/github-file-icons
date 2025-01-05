@@ -1,9 +1,9 @@
 # json-schema-traverse
 Traverse JSON Schema passing each schema object to callback
 
-[![Build Status](https://travis-ci.org/epoberezkin/json-schema-traverse.svg?branch=master)](https://travis-ci.org/epoberezkin/json-schema-traverse)
-[![npm version](https://badge.fury.io/js/json-schema-traverse.svg)](https://www.npmjs.com/package/json-schema-traverse)
-[![Coverage Status](https://coveralls.io/repos/github/epoberezkin/json-schema-traverse/badge.svg?branch=master)](https://coveralls.io/github/epoberezkin/json-schema-traverse?branch=master)
+[![build](https://github.com/epoberezkin/json-schema-traverse/workflows/build/badge.svg)](https://github.com/epoberezkin/json-schema-traverse/actions?query=workflow%3Abuild)
+[![npm](https://img.shields.io/npm/v/json-schema-traverse)](https://www.npmjs.com/package/json-schema-traverse)
+[![coverage](https://coveralls.io/repos/github/epoberezkin/json-schema-traverse/badge.svg?branch=master)](https://coveralls.io/github/epoberezkin/json-schema-traverse?branch=master)
 
 
 ## Install
@@ -76,6 +76,18 @@ traverse(schema, {allKeys: true, cb});
 ```
 
 Without option `allKeys: true` callback will be called only with root schema.
+
+
+## Enterprise support
+
+json-schema-traverse package is a part of [Tidelift enterprise subscription](https://tidelift.com/subscription/pkg/npm-json-schema-traverse?utm_source=npm-json-schema-traverse&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) - it provides a centralised commercial support to open-source software users, in addition to the support provided by software maintainers.
+
+
+## Security contact
+
+To report a security vulnerability, please use the
+[Tidelift security contact](https://tidelift.com/security).
+Tidelift will coordinate the fix and disclosure. Please do NOT report security vulnerability via GitHub issues.
 
 
 ## License

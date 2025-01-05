@@ -20,6 +20,17 @@ function addImport (ss, s, e, d) {
   return impt;
 }
 
+function addExport (s, e, ls, le) {
+  exports.push({
+    s,
+    e,
+    ls,
+    le,
+    n: s[0] === '"' ? readString(s, '"') : s[0] === "'" ? readString(s, "'") : source.slice(s, e),
+    ln: ls[0] === '"' ? readString(ls, '"') : ls[0] === "'" ? readString(ls, "'") : source.slice(ls, le)
+  });
+}
+
 function readName (impt) {
   let { d, s } = impt;
   if (d !== -1)
@@ -43,7 +54,7 @@ export function parse (_source, _name) {
   name = _name || '@';
 
   imports = [];
-  exports = new Set();
+  exports = [];
 
   source = _source;
   pos = -1;
@@ -175,6 +186,7 @@ export function parse (_source, _name) {
           // - if a closing brace or paren, what token came before the corresponding
           //   opening brace or paren (lastOpenTokenIndex)
           const lastToken = source.charCodeAt(lastTokenPos);
+          const lastExport = exports[exports.length - 1];
           if (isExpressionPunctuator(lastToken) &&
               !(lastToken === 46/*.*/ && (source.charCodeAt(lastTokenPos - 1) >= 48/*0*/ && source.charCodeAt(lastTokenPos - 1) <= 57/*9*/)) &&
               !(lastToken === 43/*+*/ && source.charCodeAt(lastTokenPos - 1) === 43/*+*/) && !(lastToken === 45/*-*/ && source.charCodeAt(lastTokenPos - 1) === 45/*-*/) ||
@@ -183,6 +195,11 @@ export function parse (_source, _name) {
               lastToken === 47/*/*/ && lastSlashWasDivision ||
               isExpressionKeyword(lastTokenPos) ||
               !lastToken) {
+            regularExpression();
+            lastSlashWasDivision = false;
+          }
+          else if (lastExport && lastTokenPos >= lastExport.s && lastTokenPos <= lastExport.e) {
+            // export default /some-regexp/
             regularExpression();
             lastSlashWasDivision = false;
           }
@@ -202,7 +219,7 @@ export function parse (_source, _name) {
   if (templateDepth !== -1 || openTokenDepth)
     syntaxError();
 
-  return [imports, [...exports], facade];
+  return [imports, exports, facade];
 }
 
 function tryParseImportStatement () {
@@ -287,6 +304,7 @@ function tryParseImportStatement () {
 
 function tryParseExportStatement () {
   const sStartPos = pos;
+  const prevExport = exports.length;
 
   pos += 6;
 
@@ -300,7 +318,7 @@ function tryParseExportStatement () {
   switch (ch) {
     // export default ...
     case 100/*d*/:
-      exports.add(source.slice(pos, pos + 7));
+      addExport(pos, pos + 7, -1, -1);
       return;
 
     // export async? function*? name () {
@@ -317,17 +335,18 @@ function tryParseExportStatement () {
       }
       const startPos = pos;
       ch = readToWsOrPunctuator(ch);
-      exports.add(source.slice(startPos, pos));
+      addExport(startPos, pos, startPos, pos);
       pos--;
       return;
 
+    // export class name ...
     case 99/*c*/:
       if (source.startsWith('lass', pos + 1) && isBrOrWsOrPunctuatorNotDot(source.charCodeAt(pos + 5))) {
         pos += 5;
         ch = commentWhitespace(true);
         const startPos = pos;
         ch = readToWsOrPunctuator(ch);
-        exports.add(source.slice(startPos, pos));
+        addExport(startPos, pos, startPos, pos);
         pos--;
         return;
       }
@@ -353,7 +372,7 @@ function tryParseExportStatement () {
         }
         if (pos === startPos)
           return;
-        exports.add(source.slice(startPos, pos));
+        addExport(startPos, pos, startPos, pos);
         ch = commentWhitespace(true);
         if (ch === 61/*=*/) {
           pos--;
@@ -404,6 +423,12 @@ function tryParseExportStatement () {
   if (ch === 102/*f*/ && source.startsWith('rom', pos + 1)) {
     pos += 4;
     readImportString(sStartPos, commentWhitespace(true));
+
+    // There were no local names.
+    for (let i = prevExport; i < exports.length; ++i) {
+      exports[i].ls = exports[i].le = -1;
+      exports[i].ln = undefined;
+    }
   }
   else {
     pos--;
@@ -556,6 +581,7 @@ function readCodePointToString () {
 
 function readExportAs (startPos, endPos) {
   let ch = source.charCodeAt(pos);
+  let ls = startPos, le = endPos;
   if (ch === 97 /*a*/) {
     pos += 2;
     ch = commentWhitespace(true);
@@ -565,7 +591,7 @@ function readExportAs (startPos, endPos) {
     ch = commentWhitespace(true);
   }
   if (pos !== startPos)
-    exports.add(source.slice(startPos, endPos));
+    addExport(startPos, endPos, ls, le);
   return ch;
 }
 

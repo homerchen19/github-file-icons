@@ -1,0 +1,152 @@
+# These environment variables must be set in CircleCI UI
+#
+# NPM_TOKEN - A valid NPM token for releases
+#
+# NOTE:
+# - to validate changes to this file locally using the circleci CLI tool:
+#
+#     circleci config process .circleci/config.yml
+#
+# - to try run jobs locally:
+#
+#     circleci config process .circleci/config.yml > tmp/processed.yaml
+#     circleci local execute -c tmp/processed.yml --job build-nodejs-current
+#
+version: 2.1
+
+references:
+  # NOTE: update the nodejs version strings that follows to change the
+  # set of nodejs versions that should be tested.
+  # The nodejs version set as `nodejs_current` is the one used to
+  # release the package on npm.
+  nodejs_versions:
+    - &nodejs_current "14.19"
+    - &nodejs_next "16.14"
+    - &nodejs_experimental "17.7"
+
+  nodejs_enum: &nodejs_enum
+    type: enum
+    default: *nodejs_current
+    enum:
+      - *nodejs_current
+      - *nodejs_next
+      - *nodejs_experimental
+  repo_path: &repo_path ~/web-ext
+  defaults: &defaults
+    working_directory: *repo_path
+
+commands:
+  attach_project_repo:
+    description: attach repo from workspace
+    steps:
+      - attach_workspace:
+          at: *repo_path
+
+  persist_project_repo:
+    description: persist repo in workspace
+    steps:
+      - persist_to_workspace:
+          root: *repo_path
+          paths: .
+
+  restore_build_cache:
+    description: restore npm package cache
+    parameters:
+      suffix:
+        type: string
+        default: default
+    steps:
+      - restore_cache:
+          keys:
+            - npm-packages-{{ checksum "package-lock.json" }}-<< parameters.suffix >>
+
+  save_build_cache:
+    description: save npm package cache
+    parameters:
+      suffix:
+        type: string
+        default: default
+    steps:
+      - save_cache:
+          key: npm-packages-{{ checksum "package-lock.json" }}-<< parameters.suffix >>
+          paths:
+            - ./node_modules
+
+  run_npm_ci:
+    description: install npm dependencies
+    steps:
+      - run: npm ci
+
+jobs:
+  build:
+    parameters:
+      nodejs:
+        <<: *nodejs_enum
+    <<: *defaults
+    docker:
+      - image: cimg/node:<< parameters.nodejs >>
+    steps:
+      - attach_project_repo
+      - checkout
+      - restore_build_cache:
+          suffix: << parameters.nodejs >>
+      - run_npm_ci
+      - run: npm run test
+      ## Only persist the workspace once (for the same nodejs
+      ## version that release_tag will be executed for).
+      - when:
+          condition:
+            equal: [*nodejs_current, << parameters.nodejs >>]
+          steps:
+            - persist_project_repo
+      - save_build_cache:
+          suffix: << parameters.nodejs >>
+
+  release-tag:
+    parameters:
+      nodejs:
+        <<: *nodejs_enum
+    <<: *defaults
+    docker:
+      - image: cimg/node:<< parameters.nodejs >>
+    steps:
+      - attach_project_repo
+      - run:
+          name: npm registry auth
+          command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+      - run:
+          name: npm registry publish
+          command: npm publish
+
+workflows:
+  default-workflow:
+    jobs:
+      - build:
+          name: build-nodejs-current
+          nodejs: *nodejs_current
+          filters:
+            tags:
+              only: /.*/
+      - build:
+          name: build-nodejs-next
+          nodejs: *nodejs_next
+          filters:
+            tags:
+              only: /.*/
+      - build:
+          name: build-nodejs-experimental
+          nodejs: *nodejs_experimental
+          filters:
+            tags:
+              only: /.*/
+      - release-tag:
+          nodejs: *nodejs_current
+          requires:
+            - build-nodejs-current
+            - build-nodejs-next
+            - build-nodejs-experimental
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/

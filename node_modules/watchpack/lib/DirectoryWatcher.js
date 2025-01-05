@@ -12,7 +12,7 @@ const watchEventSource = require("./watchEventSource");
 
 const EXISTANCE_ONLY_TIME_ENTRY = Object.freeze({});
 
-let FS_ACCURACY = 1000;
+let FS_ACCURACY = 2000;
 
 const IS_OSX = require("os").platform() === "darwin";
 const WATCHPACK_POLLING = process.env.WATCHPACK_POLLING;
@@ -181,7 +181,7 @@ class DirectoryWatcher extends EventEmitter {
 			safeTime = now;
 			accuracy = 0;
 
-			if (old && old.timestamp === mtime && mtime + FS_ACCURACY < now - 1000) {
+			if (old && old.timestamp === mtime && mtime + FS_ACCURACY < now) {
 				// We are sure that mtime is untouched
 				// This can be caused by some file attribute change
 				// e. g. when access time has been changed
@@ -782,4 +782,5 @@ function ensureFsAccuracy(mtime) {
 	if (FS_ACCURACY > 1 && mtime % 1 !== 0) FS_ACCURACY = 1;
 	else if (FS_ACCURACY > 10 && mtime % 10 !== 0) FS_ACCURACY = 10;
 	else if (FS_ACCURACY > 100 && mtime % 100 !== 0) FS_ACCURACY = 100;
+	else if (FS_ACCURACY > 1000 && mtime % 1000 !== 0) FS_ACCURACY = 1000;
 }

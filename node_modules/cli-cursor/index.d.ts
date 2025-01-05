@@ -1,45 +1,47 @@
-/// <reference types="node"/>
+declare const cliCursor: {
+	/**
+	Show cursor.
 
-/**
-Show cursor.
+	@param stream - Default: `process.stderr`.
 
-@param stream - Default: `process.stderr`.
+	@example
+	```
+	import cliCursor from 'cli-cursor';
 
-@example
-```
-import * as cliCursor from 'cli-cursor';
+	cliCursor.show();
+	```
+	*/
+	show(stream?: NodeJS.WritableStream): void;
 
-cliCursor.show();
-```
-*/
-export function show(stream?: NodeJS.WritableStream): void;
+	/**
+	Hide cursor.
 
-/**
-Hide cursor.
+	@param stream - Default: `process.stderr`.
 
-@param stream - Default: `process.stderr`.
+	@example
+	```
+	import cliCursor from 'cli-cursor';
 
-@example
-```
-import * as cliCursor from 'cli-cursor';
+	cliCursor.hide();
+	```
+	*/
+	hide(stream?: NodeJS.WritableStream): void;
 
-cliCursor.hide();
-```
-*/
-export function hide(stream?: NodeJS.WritableStream): void;
+	/**
+	Toggle cursor visibility.
 
-/**
-Toggle cursor visibility.
+	@param force - Is useful to show or hide the cursor based on a boolean.
+	@param stream - Default: `process.stderr`.
 
-@param force - Is useful to show or hide the cursor based on a boolean.
-@param stream - Default: `process.stderr`.
+	@example
+	```
+	import cliCursor from 'cli-cursor';
 
-@example
-```
-import * as cliCursor from 'cli-cursor';
+	const unicornsAreAwesome = true;
+	cliCursor.toggle(unicornsAreAwesome);
+	```
+	*/
+	toggle(force?: boolean, stream?: NodeJS.WritableStream): void;
+};
 
-const unicornsAreAwesome = true;
-cliCursor.toggle(unicornsAreAwesome);
-```
-*/
-export function toggle(force?: boolean, stream?: NodeJS.WritableStream): void;
+export default cliCursor;

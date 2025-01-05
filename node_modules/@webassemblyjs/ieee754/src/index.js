@@ -35,13 +35,13 @@ export function encodeF64(v: number): Array<number> {
 }
 
 export function decodeF32(bytes: Array<Byte>): number {
-  const buffer = Buffer.from(bytes);
+  const buffer = new Uint8Array(bytes);
 
   return read(buffer, 0, true, SINGLE_PRECISION_MANTISSA, NUMBER_OF_BYTE_F32);
 }
 
 export function decodeF64(bytes: Array<Byte>): number {
-  const buffer = Buffer.from(bytes);
+  const buffer = new Uint8Array(bytes);
 
   return read(buffer, 0, true, DOUBLE_PRECISION_MANTISSA, NUMBER_OF_BYTE_F64);
 }

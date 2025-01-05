@@ -1,0 +1,1 @@
+{"version":3,"file":"getpackages.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/getpackages.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,OAAO,CAAC,MAAM,EAAE,CAAC;IAC/D,OAAO,CAAC,KAAK,CAAC,EAAE,MAAM,GAAG,QAAQ,CAAC,MAAM,EAAE,CAAC;IAoB3C,OAAO,CAAC,cAAc;CAavB"}

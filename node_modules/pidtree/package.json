@@ -1,6 +1,6 @@
 {
   "name": "pidtree",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Cross platform children list of a PID",
   "license": "MIT",
   "homepage": "http://github.com/simonepri/pidtree#readme",
@@ -47,13 +47,12 @@
     "release": "np",
     "lint": "xo",
     "test": "nyc ava -m \"!*benchmark*\"",
+    "test:windows": "ava -m \"!*benchmark*\"",
     "types": "tsd",
-    "bench": "ava -m \"*benchmark*\"",
-    "coverage": "codecov"
+    "bench": "ava -m \"*benchmark*\""
   },
   "devDependencies": {
     "ava": "~0.25.0",
-    "codecov": "^3.6.5",
     "mockery": "^2.1.0",
     "np": "^2.20.1",
     "npm-check": "^5.9.2",

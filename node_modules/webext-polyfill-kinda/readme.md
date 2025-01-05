@@ -36,10 +36,10 @@ import chromeP from 'webext-polyfill-kinda';
 
 ## TypeScript Usage
 
-`chromeP` will reuse the global `browser` type if it exists. The suggested solution is to also install this, the types will be automatically available.
+`chromeP` will reuse the global `chrome` type if it exists. The suggested solution is to also install this, the types will be automatically available.
 
 ```sh
-npm install @types/firefox-webext-browser --save-dev
+npm install @types/chrome --save-dev
 ```
 
 ## Related
@@ -47,7 +47,9 @@ npm install @types/firefox-webext-browser --save-dev
 - [webext-options-sync](https://github.com/fregante/webext-options-sync) - Helps you manage and autosave your extension's options. Chrome and Firefox.
 - [webext-storage-cache](https://github.com/fregante/webext-storage-cache) - Map-like promised cache storage with expiration. Chrome and Firefox
 - [web-ext-submit](https://github.com/fregante/web-ext-submit) - Wrapper around Mozilla’s web-ext to submit extensions to AMO.
+- [webext-dynamic-content-scripts](https://github.com/fregante/webext-dynamic-content-scripts) - Automatically registers your content_scripts on domains added via permission.request
 - [Awesome-WebExtensions](https://github.com/fregante/Awesome-WebExtensions) - A curated list of awesome resources for WebExtensions development.
+- [More…](https://github.com/fregante/webext-fun)
 
 ## License
 

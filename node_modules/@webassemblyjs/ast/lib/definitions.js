@@ -1,3 +1,5 @@
+"use strict";
+
 var definitions = {};
 
 function defineType(typeName, metadata) {

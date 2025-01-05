@@ -1,9 +1,8 @@
-# restore-cursor [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master)](https://travis-ci.org/sindresorhus/restore-cursor)
+# restore-cursor
 
 > Gracefully restore the CLI cursor on exit
 
 Prevent the cursor you've hidden interactively from remaining hidden if the process crashes.
-
 
 ## Install
 
@@ -11,16 +10,22 @@ Prevent the cursor you've hidden interactively from remaining hidden if the proc
 $ npm install restore-cursor
 ```
 
-
 ## Usage
 
 ```js
-const restoreCursor = require('restore-cursor');
+import restoreCursor from 'restore-cursor';
 
 restoreCursor();
 ```
 
+---
 
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+<div align="center">
+	<b>
+		<a href="https://tidelift.com/subscription/pkg/npm-restore-cursor?utm_source=npm-restore-cursor&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
+	</b>
+	<br>
+	<sub>
+		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
+	</sub>
+</div>

@@ -3,7 +3,7 @@ function con(n) {
 }
 
 export function encode(str) {
-  const arr = str.split("").map(x => x.charCodeAt(0));
+  const arr = str.split("").map((x) => x.charCodeAt(0));
   return _encode(arr);
 }
 
@@ -36,7 +36,7 @@ function _encode(arr) {
       con(n >>> 12),
       con(n >>> 6),
       con(n),
-      ..._encode(ns)
+      ..._encode(ns),
     ];
   }
 

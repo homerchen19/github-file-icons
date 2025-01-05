@@ -4,14 +4,14 @@ var extension = require('./lib/extension');
 var normalize = require('./lib/normalize');
 var register = require('./lib/register');
 
-exports.prepare = function(extensions, filepath, cwd, nothrow) {
+exports.prepare = function (extensions, filepath, cwd, nothrow) {
   var config, usedExtension, err, option, attempt, error;
   var attempts = [];
   var onlyErrors = true;
   var exts = extension(filepath);
 
   if (exts) {
-    exts.some(function(ext) {
+    exts.some(function (ext) {
       usedExtension = ext;
       config = normalize(extensions[ext]);
       return !!config;
@@ -40,7 +40,7 @@ exports.prepare = function(extensions, filepath, cwd, nothrow) {
   for (var i in config) {
     option = config[i];
     attempt = register(cwd, option.module, option.register);
-    error = (attempt instanceof Error) ? attempt : null;
+    error = attempt instanceof Error ? attempt : null;
     if (error) {
       attempt = null;
     }
@@ -55,7 +55,9 @@ exports.prepare = function(extensions, filepath, cwd, nothrow) {
     }
   }
   if (onlyErrors) {
-    err = new Error('Unable to use specified module loaders for "' + usedExtension + '".');
+    err = new Error(
+      'Unable to use specified module loaders for "' + usedExtension + '".'
+    );
     err.failures = attempts;
     if (nothrow) {
       return err;

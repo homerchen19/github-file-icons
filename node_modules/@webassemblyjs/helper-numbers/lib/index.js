@@ -11,17 +11,17 @@ exports.parse64I = parse64I;
 exports.isInfLiteral = isInfLiteral;
 exports.isNanLiteral = isNanLiteral;
 
-var _long = _interopRequireDefault(require("@xtuc/long"));
+var _long2 = _interopRequireDefault(require("@xtuc/long"));
 
 var _floatingPointHexParser = _interopRequireDefault(require("@webassemblyjs/floating-point-hex-parser"));
 
 var _helperApiError = require("@webassemblyjs/helper-api-error");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function parse32F(sourceString) {
   if (isHexLiteral(sourceString)) {
-    return (0, _floatingPointHexParser.default)(sourceString);
+    return (0, _floatingPointHexParser["default"])(sourceString);
   }
 
   if (isInfLiteral(sourceString)) {
@@ -37,7 +37,7 @@ function parse32F(sourceString) {
 
 function parse64F(sourceString) {
   if (isHexLiteral(sourceString)) {
-    return (0, _floatingPointHexParser.default)(sourceString);
+    return (0, _floatingPointHexParser["default"])(sourceString);
   }
 
   if (isInfLiteral(sourceString)) {
@@ -49,7 +49,7 @@ function parse64F(sourceString) {
   }
 
   if (isHexLiteral(sourceString)) {
-    return (0, _floatingPointHexParser.default)(sourceString);
+    return (0, _floatingPointHexParser["default"])(sourceString);
   }
 
   return parseFloat(sourceString);
@@ -80,19 +80,20 @@ function parseU32(sourceString) {
 }
 
 function parse64I(sourceString) {
-  var long;
+  // $FlowIgnore
+  var _long;
 
   if (isHexLiteral(sourceString)) {
-    long = _long.default.fromString(sourceString, false, 16);
+    _long = _long2["default"].fromString(sourceString, false, 16);
   } else if (isDecimalExponentLiteral(sourceString)) {
     throw new Error("This number literal format is yet to be implemented.");
   } else {
-    long = _long.default.fromString(sourceString);
+    _long = _long2["default"].fromString(sourceString);
   }
 
   return {
-    high: long.high,
-    low: long.low
+    high: _long.high,
+    low: _long.low
   };
 }
 

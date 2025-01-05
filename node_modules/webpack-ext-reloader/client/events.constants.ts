@@ -1,1 +1,1 @@
-export const SIG_EXIT = "SIG_EXIT";
+export const SIG_EXIT = 'SIG_EXIT';

@@ -1,0 +1,1 @@
+{"version":3,"file":"trackdevices.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host/trackdevices.ts"],"names":[],"mappings":"AAEA,OAAO,kBAAkB,MAAM,WAAW,CAAC;AAC3C,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,uBAAwB,SAAQ,kBAAkB;IAGrE,OAAO,IAAI,QAAQ,CAAC,GAAG,CAAC;CAazB"}

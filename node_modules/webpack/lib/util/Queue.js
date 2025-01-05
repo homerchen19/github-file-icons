@@ -13,10 +13,11 @@ class Queue {
 	 * @param {Iterable<T>=} items The initial elements.
 	 */
 	constructor(items) {
-		/** @private @type {Set<T>} */
+		/**
+		 * @private
+		 * @type {Set<T>}
+		 */
 		this._set = new Set(items);
-		/** @private @type {Iterator<T>} */
-		this._iterator = this._set[Symbol.iterator]();
 	}
 
 	/**
@@ -41,8 +42,8 @@ class Queue {
 	 * @returns {T | undefined} The head of the queue of `undefined` if this queue is empty.
 	 */
 	dequeue() {
-		const result = this._iterator.next();
-		if (result.done) return undefined;
+		const result = this._set[Symbol.iterator]().next();
+		if (result.done) return;
 		this._set.delete(result.value);
 		return result.value;
 	}

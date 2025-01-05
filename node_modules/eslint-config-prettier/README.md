@@ -6,4 +6,6 @@ This lets you use your favorite shareable config without letting its stylistic c
 
 Note that this config _only_ turns rules _off,_ so it only makes sense using it together with some other config.
 
+[prettier]: https://github.com/prettier/prettier
+
 **[➡️ Full readme](https://github.com/prettier/eslint-config-prettier/)**

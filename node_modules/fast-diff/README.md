@@ -1,4 +1,4 @@
-# Fast Diff [![Build Status](https://travis-ci.org/jhchen/fast-diff.svg)](https://travis-ci.org/jhchen/fast-diff)
+# Fast Diff ![Build Status](https://github.com/jhchen/fast-diff/actions/workflows/test.yml/badge.svg)
 
 This is a simplified import of the excellent [diff-match-patch](https://code.google.com/p/google-diff-match-patch/) library by [Neil Fraser](https://neil.fraser.name/) into the Node.js environment. The match and patch parts are removed, as well as all the extra diff options. What remains is incredibly fast diffing between two strings.
 

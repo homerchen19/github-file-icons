@@ -1,8 +1,9 @@
 {
   "name": "json-schema-traverse",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "Traverse JSON Schema passing each schema object to callback",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "eslint": "eslint index.js spec",
     "test-spec": "mocha spec -R spec",
@@ -24,10 +25,9 @@
   },
   "homepage": "https://github.com/epoberezkin/json-schema-traverse#readme",
   "devDependencies": {
-    "coveralls": "^2.13.1",
-    "eslint": "^3.19.0",
-    "mocha": "^3.4.2",
-    "nyc": "^11.0.2",
+    "eslint": "^7.3.1",
+    "mocha": "^8.0.1",
+    "nyc": "^15.0.0",
     "pre-commit": "^1.2.2"
   },
   "nyc": {

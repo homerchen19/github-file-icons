@@ -42,11 +42,11 @@ function encodeF64(v) {
 }
 
 function decodeF32(bytes) {
-  var buffer = Buffer.from(bytes);
+  var buffer = new Uint8Array(bytes);
   return (0, _ieee.read)(buffer, 0, true, SINGLE_PRECISION_MANTISSA, NUMBER_OF_BYTE_F32);
 }
 
 function decodeF64(bytes) {
-  var buffer = Buffer.from(bytes);
+  var buffer = new Uint8Array(bytes);
   return (0, _ieee.read)(buffer, 0, true, DOUBLE_PRECISION_MANTISSA, NUMBER_OF_BYTE_F64);
 }

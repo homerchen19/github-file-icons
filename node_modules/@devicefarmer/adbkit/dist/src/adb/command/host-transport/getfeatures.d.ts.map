@@ -1,0 +1,1 @@
+{"version":3,"file":"getfeatures.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/getfeatures.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAChC,OAAO,EAAE,QAAQ,EAAE,MAAM,mBAAmB,CAAC;AAI7C,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,OAAO,CAAC,QAAQ,CAAC;IAC/D,OAAO,IAAI,QAAQ,CAAC,QAAQ,CAAC;IAgB7B,OAAO,CAAC,cAAc;CAQvB"}

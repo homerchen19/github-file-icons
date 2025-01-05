@@ -4,7 +4,7 @@ env:
   browser: true
 rules:
   block-scoped-var: 2
-  complexity: [2, 13]
+  complexity: [2, 15]
   curly: [2, multi-or-nest, consistent]
   dot-location: [2, property]
   dot-notation: 2

@@ -12,6 +12,10 @@
 /** @type {WeakMap<Compiler, Set<WasmLoadingType>>} */
 const enabledTypes = new WeakMap();
 
+/**
+ * @param {Compiler} compiler compiler instance
+ * @returns {Set<WasmLoadingType>} enabled types
+ */
 const getEnabledTypes = compiler => {
 	let set = enabledTypes.get(compiler);
 	if (set === undefined) {
@@ -50,8 +54,9 @@ class EnableWasmLoadingPlugin {
 					"EnableWasmLoadingPlugin need to be used to enable this type of wasm loading. " +
 					'This usually happens through the "output.enabledWasmLoadingTypes" option. ' +
 					'If you are using a function as entry which sets "wasmLoading", you need to add all potential library types to "output.enabledWasmLoadingTypes". ' +
-					"These types are enabled: " +
-					Array.from(getEnabledTypes(compiler)).join(", ")
+					`These types are enabled: ${Array.from(
+						getEnabledTypes(compiler)
+					).join(", ")}`
 			);
 		}
 	}
@@ -72,38 +77,49 @@ class EnableWasmLoadingPlugin {
 		if (typeof type === "string") {
 			switch (type) {
 				case "fetch": {
-					// TODO webpack 6 remove FetchCompileWasmPlugin
-					const FetchCompileWasmPlugin = require("../web/FetchCompileWasmPlugin");
-					const FetchCompileAsyncWasmPlugin = require("../web/FetchCompileAsyncWasmPlugin");
-					new FetchCompileWasmPlugin({
-						mangleImports: compiler.options.optimization.mangleWasmImports
-					}).apply(compiler);
-					new FetchCompileAsyncWasmPlugin().apply(compiler);
+					if (compiler.options.experiments.syncWebAssembly) {
+						// TODO webpack 6 remove FetchCompileWasmPlugin
+						const FetchCompileWasmPlugin = require("../web/FetchCompileWasmPlugin");
+						new FetchCompileWasmPlugin({
+							mangleImports: compiler.options.optimization.mangleWasmImports
+						}).apply(compiler);
+					}
+
+					if (compiler.options.experiments.asyncWebAssembly) {
+						const FetchCompileAsyncWasmPlugin = require("../web/FetchCompileAsyncWasmPlugin");
+						new FetchCompileAsyncWasmPlugin().apply(compiler);
+					}
+
 					break;
 				}
 				case "async-node": {
-					// TODO webpack 6 remove ReadFileCompileWasmPlugin
-					const ReadFileCompileWasmPlugin = require("../node/ReadFileCompileWasmPlugin");
-					// @ts-expect-error typescript bug for duplicate require
-					const ReadFileCompileAsyncWasmPlugin = require("../node/ReadFileCompileAsyncWasmPlugin");
-					new ReadFileCompileWasmPlugin({
-						mangleImports: compiler.options.optimization.mangleWasmImports
-					}).apply(compiler);
-					new ReadFileCompileAsyncWasmPlugin({ type }).apply(compiler);
+					if (compiler.options.experiments.syncWebAssembly) {
+						// TODO webpack 6 remove ReadFileCompileWasmPlugin
+						const ReadFileCompileWasmPlugin = require("../node/ReadFileCompileWasmPlugin");
+						new ReadFileCompileWasmPlugin({
+							mangleImports: compiler.options.optimization.mangleWasmImports,
+							import:
+								compiler.options.output.environment.module &&
+								compiler.options.output.environment.dynamicImport
+						}).apply(compiler);
+					}
+
+					if (compiler.options.experiments.asyncWebAssembly) {
+						const ReadFileCompileAsyncWasmPlugin = require("../node/ReadFileCompileAsyncWasmPlugin");
+						new ReadFileCompileAsyncWasmPlugin({
+							import:
+								compiler.options.output.environment.module &&
+								compiler.options.output.environment.dynamicImport
+						}).apply(compiler);
+					}
+
 					break;
 				}
-				case "async-node-module": {
-					// @ts-expect-error typescript bug for duplicate require
-					const ReadFileCompileAsyncWasmPlugin = require("../node/ReadFileCompileAsyncWasmPlugin");
-					new ReadFileCompileAsyncWasmPlugin({ type, import: true }).apply(
-						compiler
-					);
+				case "universal": {
+					const UniversalCompileAsyncWasmPlugin = require("../wasm-async/UniversalCompileAsyncWasmPlugin");
+					new UniversalCompileAsyncWasmPlugin().apply(compiler);
 					break;
 				}
-				case "universal":
-					throw new Error(
-						"Universal WebAssembly Loading is not implemented yet"
-					);
 				default:
 					throw new Error(`Unsupported wasm loading type ${type}.
 Plugins which provide custom wasm loading types must call EnableWasmLoadingPlugin.setEnabled(compiler, type) to disable this error.`);

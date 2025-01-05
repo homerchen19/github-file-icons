@@ -1,0 +1,1 @@
+{"version":3,"file":"DeviceWithPath.d.ts","sourceRoot":"","sources":["../../src/DeviceWithPath.ts"],"names":[],"mappings":"AAAA,OAAO,MAAM,MAAM,UAAU,CAAC;AAE9B,MAAM,CAAC,OAAO,WAAW,cAAe,SAAQ,MAAM;IACpD,IAAI,EAAE,MAAM,CAAC;IACb,OAAO,EAAE,MAAM,CAAC;IAChB,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAE,MAAM,CAAC;IACf,WAAW,EAAE,MAAM,CAAC;CACrB"}

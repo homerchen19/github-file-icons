@@ -1,0 +1,46 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.22
+    - 14.14.24
+    - 14.14.25
+    - 14.14.26
+    - 14.14.28
+    - 15.0.0
+  - dependency-name: sinon
+    versions:
+    - 10.0.0
+    - 9.0.2
+  - dependency-name: commander
+    versions:
+    - 7.0.0
+    - 7.1.0
+  - dependency-name: mocha
+    versions:
+    - 8.2.1
+    - 8.3.0
+  - dependency-name: debug
+    versions:
+    - 4.3.1
+  - dependency-name: "@types/bluebird"
+    versions:
+    - 3.5.33
+  - dependency-name: sinon-chai
+    versions:
+    - 2.14.0
+  - dependency-name: bluebird
+    versions:
+    - 3.7.2
+  - dependency-name: chai
+    versions:
+    - 4.2.0
+  - dependency-name: split
+    versions:
+    - 1.0.1

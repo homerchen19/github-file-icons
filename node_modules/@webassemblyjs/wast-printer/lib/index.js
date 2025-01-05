@@ -9,13 +9,21 @@ var _ast = require("@webassemblyjs/ast");
 
 var _long = _interopRequireDefault(require("@xtuc/long"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _slicedToArray(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return _sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var compact = false;
 var space = " ";
@@ -213,15 +221,15 @@ function printData(n, depth) {
   out += printInstruction(n.offset, depth);
   out += space;
   out += '"';
-  n.init.values.forEach(function (byte) {
+  n.init.values.forEach(function (_byte) {
     // Avoid non-displayable characters
-    if (byte <= 31 || byte == 34 || byte == 92 || byte >= 127) {
+    if (_byte <= 31 || _byte == 34 || _byte == 92 || _byte >= 127) {
       out += "\\";
-      out += ("00" + byte.toString(16)).substr(-2);
-    } else if (byte > 255) {
-      throw new Error("Unsupported byte in data segment: " + byte);
+      out += ("00" + _byte.toString(16)).substr(-2);
+    } else if (_byte > 255) {
+      throw new Error("Unsupported byte in data segment: " + _byte);
     } else {
-      out += String.fromCharCode(byte);
+      out += String.fromCharCode(_byte);
     }
   });
   out += '"';
@@ -763,6 +771,14 @@ function printGenericInstruction(n, depth) {
     out += space;
     out += printFuncInstructionArg(arg, depth + 1);
   });
+
+  if (n.namedArgs !== undefined) {
+    for (var key in n.namedArgs) {
+      out += space + key + "=";
+      out += printFuncInstructionArg(n.namedArgs[key], depth + 1);
+    }
+  }
+
   out += ")";
   return out;
 }
@@ -775,7 +791,7 @@ function printLongNumberLiteral(n) {
   var _n$value = n.value,
       low = _n$value.low,
       high = _n$value.high;
-  var v = new _long.default(low, high);
+  var v = new _long["default"](low, high);
   return v.toString();
 }
 
@@ -846,7 +862,7 @@ function printModuleExport(n) {
     out += space;
     out += printIndex(n.descr.id);
     out += ")";
-  } else if (n.descr.exportType === "Memory" || n.descr.exportType === "Mem") {
+  } else if (n.descr.exportType === "Memory") {
     out += space;
     out += "(";
     out += "memory";
@@ -907,7 +923,7 @@ function printLimit(n) {
     out += String(n.max);
 
     if (n.shared === true) {
-      out += ' shared';
+      out += " shared";
     }
   }
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"isinstalled.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/isinstalled.ts"],"names":[],"mappings":"AAEA,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,OAAO,CAAC,OAAO,CAAC;IAC9D,OAAO,CAAC,GAAG,EAAE,MAAM,GAAG,QAAQ,CAAC,OAAO,CAAC;CAyBxC"}

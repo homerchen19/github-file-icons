@@ -1,0 +1,1 @@
+{"version":3,"file":"connect.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host/connect.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAQhC,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,OAAO,CAAC,MAAM,CAAC;IAC7D,OAAO,CAAC,IAAI,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,GAAG,QAAQ,CAAC,MAAM,CAAC;CAmBtD"}

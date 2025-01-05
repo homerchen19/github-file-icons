@@ -1,0 +1,36 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const command_1 = __importDefault(require("../../command"));
+const protocol_1 = __importDefault(require("../../protocol"));
+// Possible replies:
+// "unable to connect to 192.168.2.2:5555"
+// "connected to 192.168.2.2:5555"
+// "already connected to 192.168.2.2:5555"
+const RE_OK = /connected to|already connected/;
+class HostConnectCommand extends command_1.default {
+    execute(host, port) {
+        this._send(`host:connect:${host}:${port}`);
+        return this.parser.readAscii(4).then((reply) => {
+            switch (reply) {
+                case protocol_1.default.OKAY:
+                    return this.parser.readValue().then(function (value) {
+                        if (RE_OK.test(value.toString())) {
+                            return `${host}:${port}`;
+                        }
+                        else {
+                            throw new Error(value.toString());
+                        }
+                    });
+                case protocol_1.default.FAIL:
+                    return this.parser.readError();
+                default:
+                    return this.parser.unexpected(reply, 'OKAY or FAIL');
+            }
+        });
+    }
+}
+exports.default = HostConnectCommand;
+//# sourceMappingURL=connect.js.map

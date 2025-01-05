@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.1 (2022-09-16)
+- Now provides both esm and cjs builds
+- Update TypeScript to 4.8.3
+
 ## v0.3.0 (2019-04-16)
 **Dev Experience Changes**
 - Project now compiled with TypeScript and provides typings

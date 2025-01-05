@@ -5,9 +5,7 @@ const { typeSignature, mapProps, iterateProps, unique } = require("./util");
 const stdout = process.stdout;
 
 function params(fields) {
-  return mapProps(fields)
-    .map(typeSignature)
-    .join(",");
+  return mapProps(fields).map(typeSignature).join(",");
 }
 
 function generate() {
@@ -21,21 +19,24 @@ function generate() {
 
   // generate union types
   const unionTypes = unique(
-    flatMap(mapProps(definitions).filter(d => d.unionType), d => d.unionType)
+    flatMap(
+      mapProps(definitions).filter((d) => d.unionType),
+      (d) => d.unionType
+    )
   );
-  unionTypes.forEach(unionType => {
+  unionTypes.forEach((unionType) => {
     stdout.write(
       `type ${unionType} = ` +
         mapProps(definitions)
-          .filter(d => d.unionType && d.unionType.includes(unionType))
-          .map(d => d.name)
+          .filter((d) => d.unionType && d.unionType.includes(unionType))
+          .map((d) => d.name)
           .join("|") +
         ";\n\n"
     );
   });
 
   // generate the type definitions
-  iterateProps(definitions, typeDef => {
+  iterateProps(definitions, (typeDef) => {
     stdout.write(`type ${typeDef.name} = {
         ...BaseNode,
         type: "${typeDef.name}",

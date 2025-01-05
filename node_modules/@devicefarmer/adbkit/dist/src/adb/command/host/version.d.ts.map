@@ -1,0 +1,1 @@
+{"version":3,"file":"version.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host/version.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,eAAe,CAAC;AAEpC,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,OAAO,CAAC,MAAM,CAAC;IAC7D,OAAO,IAAI,QAAQ,CAAC,MAAM,CAAC;IAgB3B,aAAa,CAAC,OAAO,EAAE,MAAM,GAAG,MAAM;CAGvC"}

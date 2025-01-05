@@ -6,7 +6,7 @@ var nodeModulesPaths = require('./node-modules-paths');
 var normalizeOptions = require('./normalize-options');
 var isCore = require('is-core-module');
 
-var realpathFS = fs.realpath && typeof fs.realpath.native === 'function' ? fs.realpath.native : fs.realpath;
+var realpathFS = process.platform !== 'win32' && fs.realpath && typeof fs.realpath.native === 'function' ? fs.realpath.native : fs.realpath;
 
 var homedir = getHomedir();
 var defaultPaths = function () {

@@ -1,0 +1,49 @@
+{
+  "name": "@devicefarmer/adbkit-monkey",
+  "version": "1.2.1",
+  "description": "A Node.js interface to the Android monkey tool.",
+  "keywords": [
+    "adb",
+    "adbkit",
+    "monkey",
+    "monkeyrunner"
+  ],
+  "bugs": {
+    "url": "https://github.com/CyberAgent/adbkit-monkey/issues"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "DeviceFarmer",
+    "email": "contact@devicefarmer.com",
+    "url": "https://devicefarmer.com/"
+  },
+  "main": "./lib/monkey.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DeviceFarmer/adbkit-monkey.git"
+  },
+  "scripts": {
+    "postpublish": "grunt clean",
+    "prepublish": "grunt coffee",
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "coffee-script": "~1.6.3",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.11",
+    "grunt-coffeelint": "~0.0.7",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-exec": "~0.4.2",
+    "grunt-jsonlint": "~1.0.2",
+    "grunt-notify": "~0.2.16",
+    "mocha": "~1.14.0",
+    "sinon": "~1.17.7",
+    "sinon-chai": "~2.4.0"
+  },
+  "engines": {
+    "node": ">= 0.10.4"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "zip-dir",
+  "version": "2.0.0",
+  "description": "Zips up directories into buffers or saves zipped files to disk",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --ui bdd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jsantell/node-zip-dir"
+  },
+  "author": "Jordan Santell",
+  "devDependencies": {
+    "buffer-equal": "*",
+    "chai": "*",
+    "fs-extra": "^9.0.1",
+    "mocha": "*",
+    "unzipper": "^0.10.11"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jszip": "^3.2.2",
+    "async": "^3.2.0"
+  }
+}

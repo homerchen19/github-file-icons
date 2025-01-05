@@ -1,0 +1,1 @@
+{"version":3,"file":"monkey.d.ts","sourceRoot":"","sources":["../../../../../src/adb/command/host-transport/monkey.ts"],"names":[],"mappings":";AAAA,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,OAAO,OAAO,MAAM,eAAe,CAAC;AACpC,OAAO,EAAE,MAAM,EAAE,MAAM,QAAQ,CAAC;AAEhC,MAAM,CAAC,OAAO,OAAO,aAAc,SAAQ,OAAO,CAAC,MAAM,CAAC;IACxD,OAAO,CAAC,IAAI,EAAE,MAAM,GAAG,QAAQ,CAAC,MAAM,CAAC;CAsCxC"}

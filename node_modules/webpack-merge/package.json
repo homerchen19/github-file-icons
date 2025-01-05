@@ -2,12 +2,12 @@
   "name": "webpack-merge",
   "description": "Variant of merge that's useful for webpack configuration",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
-  "version": "5.8.0",
+  "version": "6.0.1",
   "scripts": {
     "build": "tsc",
     "format": "prettier . --write --ignore-path .gitignore",
-    "start": "tsdx watch",
-    "test": "tsdx test",
+    "start": "dts watch",
+    "test": "dts test",
     "prepare": "npm run build"
   },
   "main": "dist/index.js",
@@ -17,16 +17,18 @@
   ],
   "dependencies": {
     "clone-deep": "^4.0.1",
-    "wildcard": "^2.0.0"
+    "flat": "^5.0.2",
+    "wildcard": "^2.0.1"
   },
   "devDependencies": {
-    "@types/estree": "0.0.48",
+    "@types/estree": "1.0.2",
+    "@types/flat": "^5.0.3",
+    "dts-cli": "^2.0.3",
     "husky": "^6.0.0",
-    "prettier": "^2.3.1",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.2.0",
-    "typescript": "^4.3.2",
-    "webpack": "^5.38.1"
+    "prettier": "^3.0.3",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0"
   },
   "repository": {
     "type": "git",
@@ -41,7 +43,7 @@
     "merge"
   ],
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=18.0.0"
   },
   "jest": {
     "collectCoverage": true,

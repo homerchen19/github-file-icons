@@ -207,10 +207,12 @@ function decodeIntBuffer(encodedBuffer, index) {
 }
 
 function encodeInt32(num) {
-  var buf = bufs.alloc(4);
-  buf.writeInt32LE(num, 0);
+  var buf = new Uint8Array(4);
+  buf[0] = num & 0xff;
+  buf[1] = num >> 8 & 0xff;
+  buf[2] = num >> 16 & 0xff;
+  buf[3] = num >> 24 & 0xff;
   var result = encodeIntBuffer(buf);
-  bufs.free(buf);
   return result;
 }
 
@@ -239,7 +241,15 @@ function encodeInt64(num) {
 }
 
 function decodeInt64(encodedBuffer, index) {
-  var result = decodeIntBuffer(encodedBuffer, index);
+  var result = decodeIntBuffer(encodedBuffer, index); // sign-extend if necessary
+
+  var length = result.value.length;
+
+  if (result.value[length - 1] >> 7) {
+    result.value = bufs.resize(result.value, 8);
+    result.value.fill(255, length);
+  }
+
   var value = Long.fromBytesLE(result.value, false);
   bufs.free(result.value);
   return {
@@ -258,10 +268,12 @@ function decodeUIntBuffer(encodedBuffer, index) {
 }
 
 function encodeUInt32(num) {
-  var buf = bufs.alloc(4);
-  buf.writeUInt32LE(num, 0);
+  var buf = new Uint8Array(4);
+  buf[0] = num & 0xff;
+  buf[1] = num >> 8 & 0xff;
+  buf[2] = num >> 16 & 0xff;
+  buf[3] = num >> 24 & 0xff;
   var result = encodeUIntBuffer(buf);
-  bufs.free(buf);
   return result;
 }
 

@@ -15,7 +15,7 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 function mergeWith(objects, customizer) {
     var _a = __read(objects), first = _a[0], rest = _a.slice(1);
     var ret = first;
@@ -34,5 +34,5 @@ function mergeTo(a, b, customizer) {
     });
     return ret;
 }
-exports["default"] = mergeWith;
+exports.default = mergeWith;
 //# sourceMappingURL=merge-with.js.map
