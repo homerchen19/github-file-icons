@@ -1,5 +1,5 @@
 import domLoaded from 'dom-loaded';
-import select from 'select-dom';
+import { $ as select, $$ as selectAll } from 'select-dom';
 import mobile from 'is-mobile';
 import { observe } from 'selector-observer';
 import { getIconClass, type ColorMode } from 'atom-file-icons';
@@ -126,7 +126,7 @@ const replaceIcon = ({
   const filename =
     isGitHub && isMobile
       ? getGitHubMobileFilename(filenameDom)
-      : filenameDom.textContent?.trim() ?? '';
+      : (filenameDom.textContent?.trim() ?? '');
 
   if (iconDom && iconDom.classList.contains('octicon-file-directory')) {
     return;
@@ -172,8 +172,8 @@ const replaceIcon = ({
 };
 
 const update = () => {
-  const filenameDoms = select.all(filenameSelector);
-  const iconDoms = select.all(iconSelector);
+  const filenameDoms = selectAll(filenameSelector);
+  const iconDoms = selectAll(iconSelector);
 
   for (let i = 0; i < filenameDoms.length; i += 1) {
     replaceIcon({
@@ -242,12 +242,11 @@ const init = async () => {
 chrome.storage.sync.get(
   [StorageKey.ColorsDisabled, StorageKey.DarkMode],
   (result) => {
-    colorsDisabled =
-      result.colorsDisabled === undefined
-        ? colorsDisabled
-        : result.colorsDisabled;
+    colorsDisabled = !!(result.colorsDisabled === undefined
+      ? colorsDisabled
+      : result.colorsDisabled);
 
-    darkMode = result.darkMode === undefined ? darkMode : result.darkMode;
+    darkMode = !!(result.darkMode === undefined ? darkMode : result.darkMode);
 
     init();
   },
